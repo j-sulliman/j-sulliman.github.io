@@ -8,7 +8,15 @@ Cisco continues to work towards increasing cross domain integrations (DNAC and M
 
 What Cisco does have, is best in class APIs across architectures and a great set of resources in DevNet that allow Enterprises, MSPs, DevOps teams, or those that just like to automate, a high degree of flexibility when automating their environments.
 
-In this multi-part blog series, we use REST APIs, Python, Django Webframework, PostgresSQL and Grafana to deliver a multi-domain API based monitoring and visualisations Dashboard for a range of network and Infrastructure domains:
+In this multi-part blog series, we use REST APIs, Python, Django Webframework, PostgresSQL and Grafana to deliver a multi-domain API based monitoring and visualisations Dashboard for a range of network and Infrastructure domains.
+
+Inline-style:
+![alt text](https://github.com/j-sulliman/j-sulliman.github.io/blob/master/Grafana.Dashboard.png "Logo Title Text 1")
+
+Reference-style:
+![alt text][logo]
+
+[logo]: https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 2"
 
 #### Part 2:  Overview
 * Resources
