@@ -10,13 +10,10 @@ What Cisco does have, is best in class APIs across architectures and a great set
 
 In this multi-part blog series, we use REST APIs, Python, Django Webframework, PostgresSQL and Grafana to deliver a multi-domain API based monitoring and visualisations Dashboard for a range of network and Infrastructure domains.
 
-Inline-style:
-![alt text](https://github.com/j-sulliman/j-sulliman.github.io/blob/master/Grafana.Dashboard.png "Logo Title Text 1")
+##### Fault Aggregation:
+![alt text](https://github.com/j-sulliman/j-sulliman.github.io/blob/master/Grafana.Dashboard.png?raw=true)
 
-Reference-style:
-![alt text][logo]
 
-[logo]: https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 2"
 
 #### Part 2:  Overview
 * Resources
@@ -26,10 +23,17 @@ Reference-style:
 
 #### Part 3: Campus LAN Use Case
 * (a) Cisco Meraki
+##### Meraki Devices:
+![alt text](https://github.com/j-sulliman/j-sulliman.github.io/blob/master/Meraki.Devices.png?raw=true)
+
+
 * (b) Cisco DNA-C
+##### DNAC Devices:
+![alt text](https://github.com/j-sulliman/j-sulliman.github.io/blob/master/Screen%20Shot%202021-04-27%20at%209.23.26%20AM.png?raw=true)
 
 #### Part 4: Software Defined WAN Use Case
 * Cisco SDWAN (Viptella)
+![alt text](https://github.com/j-sulliman/j-sulliman.github.io/blob/master/SDWAN.png?raw=true)
 
 #### Part 5: Datacenter Network Use Case
 * (a) Cisco ACI
@@ -40,3 +44,5 @@ Reference-style:
 
 #### Part 7: Vulnerability Monitoring Use Case
 * Openvuln API
+#### Openvuln API Dashboard
+![alt text](https://github.com/j-sulliman/j-sulliman.github.io/blob/master/openvuln.png?raw=true)
