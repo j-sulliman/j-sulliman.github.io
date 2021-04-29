@@ -4,10 +4,7 @@ author: Jamie Sullivan
 date:  2021-04-27 08:00:34 +1200
 ---
 # Introduction - Network and Infra Monitoring with Grafana, Django and Python
-
-Cisco has an API First approach across its technology domains that allows Enterprises, MSPs, DevOps practitioners the flexibility to automate their networks and infrastructure and to integrate with other platforms.
-
-In this multi-part blog series, we use REST APIs, Python, Django Webframework, PostgresSQL and Grafana to demonstrate building a multi-domain visualisations Dashboard for a range of network and Infrastructure domains using REST APIs.
+In this series, we use REST APIs, Python, Django Webframework, PostgresSQL and Grafana to demonstrate building a cross-domain visualisations Dashboard for Cisco network and Infrastructure domains using REST APIs.
 
 ##### Solution Overview
 ![alt text](https://github.com/j-sulliman/j-sulliman.github.io/blob/master/Overview_1.png?raw=true)
@@ -27,7 +24,7 @@ In this multi-part blog series, we use REST APIs, Python, Django Webframework, P
 * **Tool availability**:  Tools such as PgAdmin reduce complexity and knowledge needed to interact with and validate databases
 * **Integration**: SQLLite is the default database deployed with Django, Postgres is also fully supported by both the Django models/database API and Grafana for visualisations.
 * **Scalability**
-* **Simple requirements**:  For a mock lab and self learning, Postgres SQL has more capability than I need. For production environments you'll want to analyse requirements specific to your usecase and understand the pros and cons of timeseries databases such as **InfluxDB**, **prometheus** and **Logstash** for event/syslog aggregation.  
+* **Simple requirements**:  For a mock lab and self learning, Postgres SQL has more capability than I need.  For production environments you'll want to analyse requirements specific to your usecase and understand the pros and cons of timeseries databases such as **InfluxDB**, **prometheus** and **Logstash** for event/syslog aggregation.  
 
 **Resources**
 * [Postgres Installation](https://www.postgresql.org/download/)
@@ -37,11 +34,11 @@ In this multi-part blog series, we use REST APIs, Python, Django Webframework, P
 Python Requests module used to make REST API calls to various controllers, ingest replies in JSON encoded format.
 From the returned JSON / Python Dictionary, use the Django database abstraction API to write returned JSON into a table hosted on a Postgres SQL database.
 
-The django Webframework is also written in Python.
+The django Webframework package is also written in Python.
 
-We'll step through defining our django models, ingesting REST-API output from controller and cloud APIs into the django models, and verifying table entries using PgAdmin to ultimately creating Dashboards such as below:
+We'll step through defining our django models, ingesting REST-API output from controller and cloud APIs into the django models, verifying table entries using PgAdmin and ultimately creating Dashboards such as below:
 
-At the end of this series, we'll have stepped through creating basic dashboards and visualisations for:
+At the end of this series, we'll created basic dashboards and visualisations such as below for:
 * Meraki Dashboard
 * Cisco SDWAN (vManage)
 * Cisco ACI
@@ -64,3 +61,64 @@ At the end of this series, we'll have stepped through creating basic dashboards 
 
 ##### Openvuln API Dashboard
 ![alt text](https://github.com/j-sulliman/j-sulliman.github.io/blob/master/openvuln.png?raw=true)
+
+### Initial Setup
+
+##### Create and activate a virtualenvironment and initialise an empty git repository
+```python
+zsh-shell Documents % mkdir grafana-cisco-demo             
+zsh-shell Documents % cd grafana-cisco-demo
+zsh-shell grafana-cisco-demo % virtualenv venv
+zsh-shell grafana-cisco-demo % source venv/bin/activate
+(venv) zsh-shell grafana-cisco-demo % git init
+(venv) zsh-shell grafana-cisco-demo % nano .gitignore
+^^ Add the venv/ directory to above .gitignore file
+```
+
+##### Install django
+```python
+(venv) zsh-shell grafana-cisco-demo % python -m pip install django
+(venv) zsh-shell grafana-cisco-demo % python -m django --version
+3.2
+(venv) zsh-shell grafana-cisco-demo % cd cisco_grafana
+(venv) zsh-shell cisco_grafana % python manage.py runserver
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CONTROL-C.
+```
+
+#### Install postgresql - or supported database of your choice
+
+For installation options see - [Postgres Installation](https://www.postgresql.org/download/)
+
+Once you've validated postgres's installed, edit your django settings file, so that django points to the postgres database.
+
+```python
+# Database
+# https://docs.djangoproject.com/en/3.1/ref/settings/#databases
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
+    }
+}
+```
+
+Install python postgres sql package
+
+```python
+(venv) zsh-shell cisco_grafana % pip install psycopg2
+```
+We'll start working with controller APIs, making requests, parsing responses, ingesting into our database and generating visualisations in the next update.
+
+
+
+1. [x] This post - Introduction and Initial Setup
+1. [ ] Next - Cisco Meraki Dashboard
+   1. [ ] API Calls with Python Requests
+   1. [ ] Commiting to databases
+   1. [ ] Visualisation Database Tables with Grafana
