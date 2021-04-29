@@ -113,9 +113,12 @@ Install python postgres sql package
 ```python
 (venv) zsh-shell cisco_grafana % pip install psycopg2
 ```
+
+### Wrap-up
+
 We'll begin working with controller APIs, making requests, parsing responses, ingesting into our database and generating visualisations in the next update.
 
-In team meantime - checkout DevNet if you haven't already. We'll re-use a lot of the code and examples shared in the [DevNet Learning Tracks](https://developer.cisco.com/startnow/) and the sandbox environments.
+In the meantime - checkout DevNet if you haven't already. We'll re-use a lot of the code and examples shared in the [DevNet Learning Tracks](https://developer.cisco.com/startnow/) and the sandbox environments.
 
 1. [x] This post - Introduction and Initial Setup
 1. [ ] Next - Cisco Meraki Dashboard
