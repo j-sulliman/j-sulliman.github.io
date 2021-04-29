@@ -36,7 +36,7 @@ From the returned JSON / Python Dictionary, use the Django database abstraction 
 
 The django Webframework package is also written in Python.
 
-We'll step through defining our django models, ingesting REST-API output from controller and cloud APIs into the django models, verifying table entries using PgAdmin and ultimately creating Dashboards such as below:
+We'll step through defining our django models, ingesting REST-API output from controller and cloud APIs into the django models, verifying table entries using PgAdmin and ultimately creating Dashboards such as below.
 
 At the end of this series, we'll created basic dashboards and visualisations such as below for:
 * Meraki Dashboard
@@ -115,7 +115,7 @@ Install python postgres sql package
 ```
 We'll begin working with controller APIs, making requests, parsing responses, ingesting into our database and generating visualisations in the next update.
 
-
+In team meantime - checkout DevNet if you haven't already. I re-use a lot of the code and examples shared in the [DevNet Learning Tracks](https://developer.cisco.com/startnow/)
 
 1. [x] This post - Introduction and Initial Setup
 1. [ ] Next - Cisco Meraki Dashboard
