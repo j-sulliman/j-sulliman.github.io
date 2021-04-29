@@ -114,6 +114,7 @@ Install python postgres sql package
 (venv) zsh-shell cisco_grafana % pip install psycopg2
 ```
 
+
 ### Wrap-up
 
 We'll begin working with controller APIs, making requests, parsing responses, ingesting into our database and generating visualisations in the next update.
