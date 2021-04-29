@@ -6,7 +6,7 @@ date:  2021-04-27 08:00:34 +1200
 # Introduction - Network and Infra Monitoring with Grafana, Django and Python
 In this series, we use REST APIs, Python, Django Webframework, PostgresSQL and Grafana to demonstrate building a cross-domain visualisations Dashboard for Cisco network and Infrastructure domains using REST APIs.
 
-##### Solution Overview
+##### Lab Overview
 ![alt text](https://github.com/j-sulliman/j-sulliman.github.io/blob/master/Overview_1.png?raw=true)
 
 ### Overview and Functional Components
@@ -113,7 +113,7 @@ Install python postgres sql package
 ```python
 (venv) zsh-shell cisco_grafana % pip install psycopg2
 ```
-We'll start working with controller APIs, making requests, parsing responses, ingesting into our database and generating visualisations in the next update.
+We'll begin working with controller APIs, making requests, parsing responses, ingesting into our database and generating visualisations in the next update.
 
 
 
