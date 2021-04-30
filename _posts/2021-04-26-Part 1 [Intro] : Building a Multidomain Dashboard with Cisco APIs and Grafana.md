@@ -121,6 +121,8 @@ We'll begin working with controller APIs, making requests, parsing responses, in
 
 In the meantime - checkout DevNet if you haven't already. We'll re-use a lot of the code and examples shared in the [DevNet Learning Tracks](https://developer.cisco.com/startnow/) and the sandbox environments.
 
+Continue to [Part 2 [meraki] : building a multidomain dashboard with cisco apis and grafana](https://j-sulliman.github.io/2021/04/26/Part-2-Meraki-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html) 
+
 1. [x] This post - Introduction and Initial Setup
 1. [ ] Next - Cisco Meraki Dashboard
    1. [ ] API Calls with Python Requests
