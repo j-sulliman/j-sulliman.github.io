@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-05-01T12:07:20+12:00</updated><id>/feed.xml</id><title type="html">Jamie Sullivan’s Blog</title><subtitle>Personal Blog for Networking, Datacenter and automation / programmability.  All content is my own and does not represent the views of my employer.</subtitle><entry><title type="html">Part 1 [intro] : building a multidomain dashboard with cisco apis and grafana</title><link href="/2021/04/27/Part-1-Intro-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html" rel="alternate" type="text/html" title="Part 1 [intro] : building a multidomain dashboard with cisco apis and grafana" /><published>2021-04-27T08:00:34+12:00</published><updated>2021-04-27T08:00:34+12:00</updated><id>/2021/04/27/Part%201%20%5BIntro%5D%20:%20Building%20a%20Multidomain%20Dashboard%20with%20Cisco%20APIs%20and%20Grafana</id><content type="html" xml:base="/2021/04/27/Part-1-Intro-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html">&lt;h1 id=&quot;introduction---network-and-infra-monitoring-with-grafana-django-and-python&quot;&gt;Introduction - Network and Infra Monitoring with Grafana, Django and Python&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-05-04T16:51:01+12:00</updated><id>/feed.xml</id><title type="html">Jamie Sullivan’s Blog</title><subtitle>Personal Blog for Networking, Datacenter and automation / programmability.  All content is my own and does not represent the views of my employer.</subtitle><entry><title type="html">Part 1 [intro] : building a multidomain dashboard with cisco apis and grafana</title><link href="/2021/04/27/Part-1-Intro-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html" rel="alternate" type="text/html" title="Part 1 [intro] : building a multidomain dashboard with cisco apis and grafana" /><published>2021-04-27T08:00:34+12:00</published><updated>2021-04-27T08:00:34+12:00</updated><id>/2021/04/27/Part%201%20%5BIntro%5D%20:%20Building%20a%20Multidomain%20Dashboard%20with%20Cisco%20APIs%20and%20Grafana</id><content type="html" xml:base="/2021/04/27/Part-1-Intro-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html">&lt;h1 id=&quot;introduction---network-and-infra-monitoring-with-grafana-django-and-python&quot;&gt;Introduction - Network and Infra Monitoring with Grafana, Django and Python&lt;/h1&gt;
 &lt;p&gt;In this series, we use REST APIs, Python, Django Webframework, PostgresSQL and Grafana to demonstrate building a cross-domain visualisations Dashboard for Cisco network and Infrastructure domains using REST APIs.&lt;/p&gt;
 
 &lt;h5 id=&quot;lab-overview&quot;&gt;Lab Overview&lt;/h5&gt;
@@ -431,4 +431,132 @@ here &lt;a href=&quot;https://grafana.com/docs/grafana/latest/installation/&quot
 
 &lt;p&gt;…follow up for DCNM dashboard to follow soon.&lt;/p&gt;
 
-&lt;p&gt;Jamie&lt;/p&gt;</content><author><name>Jamie Sullivan</name></author><summary type="html">Building a Meraki Dashboard with Grafana, Django and Python We continue from our overview and initial setup discussed in part (1), by exploring Meraki’s APIs, adding functionality and models to our django install and visualising the captured data with Grafana.</summary></entry></feed>
+&lt;p&gt;Jamie&lt;/p&gt;</content><author><name>Jamie Sullivan</name></author><summary type="html">Building a Meraki Dashboard with Grafana, Django and Python We continue from our overview and initial setup discussed in part (1), by exploring Meraki’s APIs, adding functionality and models to our django install and visualising the captured data with Grafana.</summary></entry><entry><title type="html">Part 3a [dcnm lab build] : building a multidomain dashboard with cisco apis and grafana</title><link href="/2021/04/27/Part-3a-DCNM-Lab-Build-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html" rel="alternate" type="text/html" title="Part 3a [dcnm lab build] : building a multidomain dashboard with cisco apis and grafana" /><published>2021-04-27T08:00:34+12:00</published><updated>2021-04-27T08:00:34+12:00</updated><id>/2021/04/27/Part%203a%20%5BDCNM%20-%20Lab%20Build%5D%20:%20Building%20a%20Multidomain%20Dashboard%20with%20Cisco%20APIs%20and%20Grafana</id><content type="html" xml:base="/2021/04/27/Part-3a-DCNM-Lab-Build-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html">&lt;h1 id=&quot;part-3a-dcnm-and-vxlan-bgp-and-evpn-lab-with-nexus-9000v&quot;&gt;Part (3a) DCNM and VXLAN BGP and EVPN Lab with Nexus 9000v&lt;/h1&gt;
+&lt;p&gt;In this update we outline of the lab topology used as the automation sandbox to explore APIs and Visualisations with Grafana and DCNM.  If you already have a DCNM environment available, you can skip this page and continue to Part 3b.&lt;/p&gt;
+
+&lt;ol class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Previous post - Introduction and Initial Setup&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Previous Post - Cisco Meraki Dashboard
+    &lt;ol class=&quot;task-list&quot;&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;API Calls with Python Requests&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Commiting to databases&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Visualisation Database Tables with Grafana&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;This Post - Cisco DCNM and EVPN Dashboard - a. Lab Setup&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Next Post - Cisco DCNM and EVPN Dashboard - b. Visualisations with Grafana&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h5 id=&quot;dcnm-vxlan-bgp-and-evpn-lab-overview&quot;&gt;DCNM VXLAN BGP and EVPN Lab Overview&lt;/h5&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/j-sulliman/j-sulliman.github.io/master/images/DCNM_EVPN_Topology.png&quot; alt=&quot;alt text&quot; /&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;dcnm-vxlan-bgp-and-evpn-lab-components&quot;&gt;DCNM VXLAN BGP and EVPN Lab Components&lt;/h5&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Appliance&lt;/th&gt;
+      &lt;th&gt;Image name&lt;/th&gt;
+      &lt;th&gt;Version&lt;/th&gt;
+      &lt;th&gt;Memory&lt;/th&gt;
+      &lt;th&gt;CPU&lt;/th&gt;
+      &lt;th&gt;Disk&lt;/th&gt;
+      &lt;th&gt;Qty&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;DCNM&lt;/td&gt;
+      &lt;td&gt;dcnm-va.11.5.1.iso&lt;/td&gt;
+      &lt;td&gt;11.5&lt;/td&gt;
+      &lt;td&gt;24768MB&lt;/td&gt;
+      &lt;td&gt;8vCPUs&lt;/td&gt;
+      &lt;td&gt;100G&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;n9000v&lt;/td&gt;
+      &lt;td&gt;nexus9300v.9.3.7.qcow2&lt;/td&gt;
+      &lt;td&gt;9.3.7&lt;/td&gt;
+      &lt;td&gt;8096MB&lt;/td&gt;
+      &lt;td&gt;2vCPUs&lt;/td&gt;
+      &lt;td&gt;-&lt;/td&gt;
+      &lt;td&gt;10&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;em&gt;Remove or add nexus 9000v to suit.&lt;/em&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;dcnm-vxlan-bgp-and-evpn-resources&quot;&gt;DCNM VXLAN BGP and EVPN Resources&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://developer.cisco.com/docs/data-center-network-manager/11-5-1/&quot;&gt;DCNM REST API Reference Guide&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.cisco.com/c/en/us/td/docs/dcn/dcnm/1151/configuration/lanfabric/cisco-dcnm-lanfabric-configuration-guide-1151/managing-greenfield-vxlan-fabric.html&quot;&gt;Easy Provisioning of VXLAN BGP EVPN Fabrics&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.cisco.com/c/en/us/td/docs/dcn/dcnm/1151/configuration/lanfabric/cisco-dcnm-lanfabric-configuration-guide-1151/border-provisioning-multisite.html&quot;&gt;Auto-Provisioning Border Gateways with Multi-Site Domains&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;pre-requisites-and-guidelines&quot;&gt;Pre-requisites and Guidelines&lt;/h4&gt;
+&lt;p&gt;Note the following pre-requisites from the MSD configuration guide&lt;/p&gt;
+
+&lt;p&gt;“To ensure consistency across fabrics, ensure the following:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;The &lt;em&gt;underlay IP addresses across the fabrics&lt;/em&gt;, the loopback 0 address and the loopback 1 address subnets should be &lt;em&gt;unique&lt;/em&gt;.&lt;/li&gt;
+  &lt;li&gt;Ensure that each fabric has a &lt;em&gt;unique IP address pool&lt;/em&gt; to avoid duplicates.&lt;/li&gt;
+  &lt;li&gt;Each fabric should have a &lt;em&gt;unique site ID and BGP AS number&lt;/em&gt; associated and configured.&lt;/li&gt;
+  &lt;li&gt;All fabrics should have the &lt;em&gt;same Anycast Gateway MAC&lt;/em&gt; address.”&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;base-configuration---hostname-management-address-and-boot-image&quot;&gt;Base Configuration - hostname, management address and boot image&lt;/h4&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;conf t
+interface mgmt 0
+  ip address [192.168.200.229/24]
+!
+ip route 0.0.0.0 0.0.0.0 [192.168.200.1] vrf management
+hostname [dc2-bdlf-001]
+boot nxos bootflash:///nxos.9.3.7.bin
+copy run st
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt; – When using DHCP assigned address on Mgmt0 without POAP, I encountered &lt;em&gt;“Error during configuration read or intent”&lt;/em&gt; error when Saving and Deploying configuration. The workaround was to statically assign IP addresses to Mgmt0.&lt;/p&gt;
+
+&lt;h3 id=&quot;site-1-auckland-fabric-deployment-and-the-easy_fabric-template&quot;&gt;Site 1 “Auckland Fabric” Deployment and the Easy_Fabric template&lt;/h3&gt;
+&lt;p&gt;From the &lt;em&gt;Control&lt;/em&gt; menu, select &lt;em&gt;Fabric Builder&lt;/em&gt;, &lt;em&gt;Create Fabric&lt;/em&gt;, name the fabric and provide a BGP ASN
+&lt;img src=&quot;https://raw.githubusercontent.com/j-sulliman/j-sulliman.github.io/master/images/dcnm_1.png&quot; alt=&quot;alt text&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;As we are using N9000v’s for our lab,  Under advanced &lt;strong&gt;“Greenfield Cleanup”&lt;/strong&gt; – select &lt;strong&gt;“enable”&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;From the configuration guide linked above -
+&lt;em&gt;“Greenfield Cleanup Option – Enable the switch cleanup option for switches imported into DCNM with Preserve-Config=No, without a switch reload. This option is typically recommended only for the fabric environments with Cisco Nexus 9000v Switches to improve on the switch clean up time.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/j-sulliman/j-sulliman.github.io/master/images/dcnm_easy_frabric_2.png&quot; alt=&quot;alt text&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;On the Resources tab – either accept defaults for the first fabric, or if connecting multiple sites, note the IP and VNI ranges as these will need to be unique to each site.&lt;/p&gt;
+
+&lt;p&gt;Defaults are fine for Manageability , Bootstrap, Configuration Backup&lt;/p&gt;
+
+&lt;h4 id=&quot;add-switches-to-site-1-auckland-fabric&quot;&gt;Add switches to Site 1 “Auckland Fabric”&lt;/h4&gt;
+&lt;p&gt;Management address, username and password define in &lt;em&gt;base configuration&lt;/em&gt;
+&lt;img src=&quot;https://raw.githubusercontent.com/j-sulliman/j-sulliman.github.io/master/images/dcnm_add_switches.png&quot; alt=&quot;Add Switches&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Select &lt;em&gt;manageable&lt;/em&gt; switches and &lt;strong&gt;Import to Fabric&lt;/strong&gt;
+&lt;img src=&quot;https://raw.githubusercontent.com/j-sulliman/j-sulliman.github.io/master/images/dcnm_add_switches_3.png&quot; alt=&quot;Import Switches&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Right click on spines and set roles, in my case I also have a border leaf that I added after the initial deployment, click &lt;strong&gt;“Save and Deploy”&lt;/strong&gt;
+&lt;img src=&quot;https://raw.githubusercontent.com/j-sulliman/j-sulliman.github.io/master/images/dcnm_assign_roles.png&quot; alt=&quot;Assign Roles&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Deploy the Configuration
+&lt;img src=&quot;https://raw.githubusercontent.com/j-sulliman/j-sulliman.github.io/master/images/dcnm_push_config.png&quot; alt=&quot;Deploy Config&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;site-2-wellington-fabric-deployment-and-the-easy_fabric-template&quot;&gt;Site 2 “Wellington Fabric” Deployment and the Easy_Fabric template&lt;/h3&gt;
+&lt;p&gt;Create the fabric for the second site, defining unique subnet ranges and BGP ASNs as described in the pre-requisites&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/j-sulliman/j-sulliman.github.io/master/images/dcnm_fabric_two_1.png&quot; alt=&quot;Add Switches&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Define the spine and Border Gateway Roles as required and &lt;em&gt;Deploy Config&lt;/em&gt; - site two should now be &lt;strong&gt;In Sync&lt;/strong&gt;
+&lt;img src=&quot;https://raw.githubusercontent.com/j-sulliman/j-sulliman.github.io/master/images/dcnm_fabric_two_3.png&quot; alt=&quot;Fabric Two&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;multi-site-domain-deployment&quot;&gt;Multi-Site Domain deployment&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/j-sulliman/j-sulliman.github.io/master/images/msd_1.png&quot; alt=&quot;one&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/j-sulliman/j-sulliman.github.io/master/images/dcnm_msd_2.png&quot; alt=&quot;two&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/j-sulliman/j-sulliman.github.io/master/images/dcnm_msd_3.png&quot; alt=&quot;three&quot; /&gt;&lt;/p&gt;</content><author><name>Jamie Sullivan</name></author><summary type="html">Part (3a) DCNM and VXLAN BGP and EVPN Lab with Nexus 9000v In this update we outline of the lab topology used as the automation sandbox to explore APIs and Visualisations with Grafana and DCNM. If you already have a DCNM environment available, you can skip this page and continue to Part 3b.</summary></entry></feed>

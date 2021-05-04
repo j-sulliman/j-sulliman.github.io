@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Part 3a [dcnm lab build] : building a multidomain dashboard with cisco apis and grafana | Jamie Sullivan’s Blog</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Part 3a [dcnm lab build] : building a multidomain dashboard with cisco apis and grafana" />
+<meta name="author" content="Jamie Sullivan" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Part (3a) DCNM and VXLAN BGP and EVPN Lab with Nexus 9000v In this update we outline of the lab topology used as the automation sandbox to explore APIs and Visualisations with Grafana and DCNM. If you already have a DCNM environment available, you can skip this page and continue to Part 3b." />
+<meta property="og:description" content="Part (3a) DCNM and VXLAN BGP and EVPN Lab with Nexus 9000v In this update we outline of the lab topology used as the automation sandbox to explore APIs and Visualisations with Grafana and DCNM. If you already have a DCNM environment available, you can skip this page and continue to Part 3b." />
+<link rel="canonical" href="/2021/04/27/Part-3a-DCNM-Lab-Build-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html" />
+<meta property="og:url" content="/2021/04/27/Part-3a-DCNM-Lab-Build-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html" />
+<meta property="og:site_name" content="Jamie Sullivan’s Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-04-27T08:00:34+12:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Part 3a [dcnm lab build] : building a multidomain dashboard with cisco apis and grafana" />
+<script type="application/ld+json">
+{"@type":"BlogPosting","url":"/2021/04/27/Part-3a-DCNM-Lab-Build-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html","headline":"Part 3a [dcnm lab build] : building a multidomain dashboard with cisco apis and grafana","dateModified":"2021-04-27T08:00:34+12:00","datePublished":"2021-04-27T08:00:34+12:00","author":{"@type":"Person","name":"Jamie Sullivan"},"mainEntityOfPage":{"@type":"WebPage","@id":"/2021/04/27/Part-3a-DCNM-Lab-Build-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html"},"description":"Part (3a) DCNM and VXLAN BGP and EVPN Lab with Nexus 9000v In this update we outline of the lab topology used as the automation sandbox to explore APIs and Visualisations with Grafana and DCNM. If you already have a DCNM environment available, you can skip this page and continue to Part 3b.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Jamie Sullivan's Blog" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Jamie Sullivan&#39;s Blog</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Part 3a [dcnm   lab build] : building a multidomain dashboard with cisco apis and grafana</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2021-04-27T08:00:34+12:00" itemprop="datePublished">Apr 27, 2021
+      </time>• <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Jamie Sullivan</span></span></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <h1 id="part-3a-dcnm-and-vxlan-bgp-and-evpn-lab-with-nexus-9000v">Part (3a) DCNM and VXLAN BGP and EVPN Lab with Nexus 9000v</h1>
+<p>In this update we outline of the lab topology used as the automation sandbox to explore APIs and Visualisations with Grafana and DCNM.  If you already have a DCNM environment available, you can skip this page and continue to Part 3b.</p>
+
+<ol class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Previous post - Introduction and Initial Setup</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Previous Post - Cisco Meraki Dashboard
+    <ol class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />API Calls with Python Requests</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Commiting to databases</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Visualisation Database Tables with Grafana</li>
+    </ol>
+  </li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />This Post - Cisco DCNM and EVPN Dashboard - a. Lab Setup</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Next Post - Cisco DCNM and EVPN Dashboard - b. Visualisations with Grafana</li>
+</ol>
+
+<h5 id="dcnm-vxlan-bgp-and-evpn-lab-overview">DCNM VXLAN BGP and EVPN Lab Overview</h5>
+<p><img src="https://raw.githubusercontent.com/j-sulliman/j-sulliman.github.io/master/images/DCNM_EVPN_Topology.png" alt="alt text" /></p>
+
+<h5 id="dcnm-vxlan-bgp-and-evpn-lab-components">DCNM VXLAN BGP and EVPN Lab Components</h5>
+
+<table>
+  <thead>
+    <tr>
+      <th>Appliance</th>
+      <th>Image name</th>
+      <th>Version</th>
+      <th>Memory</th>
+      <th>CPU</th>
+      <th>Disk</th>
+      <th>Qty</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>DCNM</td>
+      <td>dcnm-va.11.5.1.iso</td>
+      <td>11.5</td>
+      <td>24768MB</td>
+      <td>8vCPUs</td>
+      <td>100G</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>n9000v</td>
+      <td>nexus9300v.9.3.7.qcow2</td>
+      <td>9.3.7</td>
+      <td>8096MB</td>
+      <td>2vCPUs</td>
+      <td>-</td>
+      <td>10</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>Remove or add nexus 9000v to suit.</em></p>
+
+<h4 id="dcnm-vxlan-bgp-and-evpn-resources">DCNM VXLAN BGP and EVPN Resources</h4>
+<ul>
+  <li><a href="https://developer.cisco.com/docs/data-center-network-manager/11-5-1/">DCNM REST API Reference Guide</a></li>
+  <li><a href="https://www.cisco.com/c/en/us/td/docs/dcn/dcnm/1151/configuration/lanfabric/cisco-dcnm-lanfabric-configuration-guide-1151/managing-greenfield-vxlan-fabric.html">Easy Provisioning of VXLAN BGP EVPN Fabrics</a></li>
+  <li><a href="https://www.cisco.com/c/en/us/td/docs/dcn/dcnm/1151/configuration/lanfabric/cisco-dcnm-lanfabric-configuration-guide-1151/border-provisioning-multisite.html">Auto-Provisioning Border Gateways with Multi-Site Domains</a></li>
+</ul>
+
+<h4 id="pre-requisites-and-guidelines">Pre-requisites and Guidelines</h4>
+<p>Note the following pre-requisites from the MSD configuration guide</p>
+
+<p>“To ensure consistency across fabrics, ensure the following:</p>
+<ul>
+  <li>The <em>underlay IP addresses across the fabrics</em>, the loopback 0 address and the loopback 1 address subnets should be <em>unique</em>.</li>
+  <li>Ensure that each fabric has a <em>unique IP address pool</em> to avoid duplicates.</li>
+  <li>Each fabric should have a <em>unique site ID and BGP AS number</em> associated and configured.</li>
+  <li>All fabrics should have the <em>same Anycast Gateway MAC</em> address.”</li>
+</ul>
+
+<h4 id="base-configuration---hostname-management-address-and-boot-image">Base Configuration - hostname, management address and boot image</h4>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conf t
+interface mgmt 0
+  ip address [192.168.200.229/24]
+!
+ip route 0.0.0.0 0.0.0.0 [192.168.200.1] vrf management
+hostname [dc2-bdlf-001]
+boot nxos bootflash:///nxos.9.3.7.bin
+copy run st
+</code></pre></div></div>
+<p><strong>Note</strong> – When using DHCP assigned address on Mgmt0 without POAP, I encountered <em>“Error during configuration read or intent”</em> error when Saving and Deploying configuration. The workaround was to statically assign IP addresses to Mgmt0.</p>
+
+<h3 id="site-1-auckland-fabric-deployment-and-the-easy_fabric-template">Site 1 “Auckland Fabric” Deployment and the Easy_Fabric template</h3>
+<p>From the <em>Control</em> menu, select <em>Fabric Builder</em>, <em>Create Fabric</em>, name the fabric and provide a BGP ASN
+<img src="https://raw.githubusercontent.com/j-sulliman/j-sulliman.github.io/master/images/dcnm_1.png" alt="alt text" /></p>
+
+<p>As we are using N9000v’s for our lab,  Under advanced <strong>“Greenfield Cleanup”</strong> – select <strong>“enable”</strong></p>
+
+<p>From the configuration guide linked above -
+<em>“Greenfield Cleanup Option – Enable the switch cleanup option for switches imported into DCNM with Preserve-Config=No, without a switch reload. This option is typically recommended only for the fabric environments with Cisco Nexus 9000v Switches to improve on the switch clean up time.</em></p>
+
+<p><img src="https://raw.githubusercontent.com/j-sulliman/j-sulliman.github.io/master/images/dcnm_easy_frabric_2.png" alt="alt text" /></p>
+
+<p>On the Resources tab – either accept defaults for the first fabric, or if connecting multiple sites, note the IP and VNI ranges as these will need to be unique to each site.</p>
+
+<p>Defaults are fine for Manageability , Bootstrap, Configuration Backup</p>
+
+<h4 id="add-switches-to-site-1-auckland-fabric">Add switches to Site 1 “Auckland Fabric”</h4>
+<p>Management address, username and password define in <em>base configuration</em>
+<img src="https://raw.githubusercontent.com/j-sulliman/j-sulliman.github.io/master/images/dcnm_add_switches.png" alt="Add Switches" /></p>
+
+<p>Select <em>manageable</em> switches and <strong>Import to Fabric</strong>
+<img src="https://raw.githubusercontent.com/j-sulliman/j-sulliman.github.io/master/images/dcnm_add_switches_3.png" alt="Import Switches" /></p>
+
+<p>Right click on spines and set roles, in my case I also have a border leaf that I added after the initial deployment, click <strong>“Save and Deploy”</strong>
+<img src="https://raw.githubusercontent.com/j-sulliman/j-sulliman.github.io/master/images/dcnm_assign_roles.png" alt="Assign Roles" /></p>
+
+<p>Deploy the Configuration
+<img src="https://raw.githubusercontent.com/j-sulliman/j-sulliman.github.io/master/images/dcnm_push_config.png" alt="Deploy Config" /></p>
+
+<h3 id="site-2-wellington-fabric-deployment-and-the-easy_fabric-template">Site 2 “Wellington Fabric” Deployment and the Easy_Fabric template</h3>
+<p>Create the fabric for the second site, defining unique subnet ranges and BGP ASNs as described in the pre-requisites</p>
+
+<p><img src="https://raw.githubusercontent.com/j-sulliman/j-sulliman.github.io/master/images/dcnm_fabric_two_1.png" alt="Add Switches" /></p>
+
+<p>Define the spine and Border Gateway Roles as required and <em>Deploy Config</em> - site two should now be <strong>In Sync</strong>
+<img src="https://raw.githubusercontent.com/j-sulliman/j-sulliman.github.io/master/images/dcnm_fabric_two_3.png" alt="Fabric Two" /></p>
+
+<h3 id="multi-site-domain-deployment">Multi-Site Domain deployment</h3>
+<p><img src="https://raw.githubusercontent.com/j-sulliman/j-sulliman.github.io/master/images/msd_1.png" alt="one" /></p>
+
+<p><img src="https://raw.githubusercontent.com/j-sulliman/j-sulliman.github.io/master/images/dcnm_msd_2.png" alt="two" /></p>
+
+<p><img src="https://raw.githubusercontent.com/j-sulliman/j-sulliman.github.io/master/images/dcnm_msd_3.png" alt="three" /></p>
+
+  </div><a class="u-url" href="/2021/04/27/Part-3a-DCNM-Lab-Build-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Jamie Sullivan&#39;s Blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Jamie Sullivan&#39;s Blog</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/j-sulliman"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">j-sulliman</span></a></li><li><a href="https://www.linkedin.com/in/jamie-sullivan-71575421"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#linkedin"></use></svg> <span class="username">jamie-sullivan-71575421</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Personal Blog for Networking, Datacenter and automation / programmability.  All content is my own and does not represent the views of my employer.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
