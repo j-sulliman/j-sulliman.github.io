@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Part 3a [dcnm lab] : building a multidomain dashboard with cisco apis and grafana | Jamie Sullivan’s Blog</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Part 3a [dcnm lab] : building a multidomain dashboard with cisco apis and grafana" />
+<meta name="author" content="Jamie Sullivan" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Part (3a) DCNM and VXLAN BGP and EVPN Lab with Nexus 9000v In this update we outline of the virtual lab topology used as the sandbox to explore APIs and Visualisations with Grafana and DCNM. If you already have a DCNM environment available, you can skip this page and continue to Part 3b." />
+<meta property="og:description" content="Part (3a) DCNM and VXLAN BGP and EVPN Lab with Nexus 9000v In this update we outline of the virtual lab topology used as the sandbox to explore APIs and Visualisations with Grafana and DCNM. If you already have a DCNM environment available, you can skip this page and continue to Part 3b." />
+<link rel="canonical" href="/2021/05/05/Part-3a-DCNM-Lab-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html" />
+<meta property="og:url" content="/2021/05/05/Part-3a-DCNM-Lab-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html" />
+<meta property="og:site_name" content="Jamie Sullivan’s Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-05-05T08:00:34+12:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Part 3a [dcnm lab] : building a multidomain dashboard with cisco apis and grafana" />
+<script type="application/ld+json">
+{"@type":"BlogPosting","headline":"Part 3a [dcnm lab] : building a multidomain dashboard with cisco apis and grafana","dateModified":"2021-05-05T08:00:34+12:00","datePublished":"2021-05-05T08:00:34+12:00","url":"/2021/05/05/Part-3a-DCNM-Lab-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html","mainEntityOfPage":{"@type":"WebPage","@id":"/2021/05/05/Part-3a-DCNM-Lab-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html"},"author":{"@type":"Person","name":"Jamie Sullivan"},"description":"Part (3a) DCNM and VXLAN BGP and EVPN Lab with Nexus 9000v In this update we outline of the virtual lab topology used as the sandbox to explore APIs and Visualisations with Grafana and DCNM. If you already have a DCNM environment available, you can skip this page and continue to Part 3b.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Jamie Sullivan's Blog" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Jamie Sullivan&#39;s Blog</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Part 3a [dcnm   lab] : building a multidomain dashboard with cisco apis and grafana</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2021-05-05T08:00:34+12:00" itemprop="datePublished">May 5, 2021
+      </time>• <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Jamie Sullivan</span></span></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <h1 id="part-3a-dcnm-and-vxlan-bgp-and-evpn-lab-with-nexus-9000v">Part (3a) DCNM and VXLAN BGP and EVPN Lab with Nexus 9000v</h1>
+<p>In this update we outline of the virtual lab topology used as the sandbox to explore APIs and Visualisations with Grafana and DCNM.  If you already have a DCNM environment available, you can skip this page and continue to Part 3b.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Section</th>
+      <th>Architecture</th>
+      <th>Link</th>
+      <th>Topic</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Introduction</td>
+      <td><a href="https://j-sulliman.github.io/2021/04/26/Part-1-Intro-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html">building a multidomain dashboard with cisco apis and grafana</a></td>
+      <td>Solution Overview</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Meraki</td>
+      <td><a href="https://j-sulliman.github.io/2021/04/26/Part-2-Meraki-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html">Building a Meraki Dashboard with Grafana, Django and Python</a></td>
+      <td>Visualising Meraki APIs with Grafana.</td>
+    </tr>
+    <tr>
+      <td>3a</td>
+      <td>DCNM &amp; EVPN VXLAN</td>
+      <td><a href="https://j-sulliman.github.io/2021/04/26/Part-3a-DCNM-Lab-Build-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html">DCNM and VXLAN BGP and EVPN Lab with Nexus 9000v</a></td>
+      <td>DCNM, N9000v, EVPN and VXLAN Lab deployment</td>
+    </tr>
+    <tr>
+      <td>3b</td>
+      <td>DCNM &amp; EVPN VXLAN</td>
+      <td>Work In Progress</td>
+      <td>Visualising DCNM APIs with Grafana.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="dcnm-vxlan-bgp-and-evpn-resources">DCNM VXLAN BGP and EVPN Resources</h4>
+<ul>
+  <li><a href="https://developer.cisco.com/docs/data-center-network-manager/11-5-1/">DCNM REST API Reference Guide</a></li>
+  <li><a href="https://www.cisco.com/c/en/us/td/docs/dcn/dcnm/1151/configuration/lanfabric/cisco-dcnm-lanfabric-configuration-guide-1151/managing-greenfield-vxlan-fabric.html">Easy Provisioning of VXLAN BGP EVPN Fabrics</a></li>
+  <li><a href="https://www.cisco.com/c/en/us/td/docs/dcn/dcnm/1151/configuration/lanfabric/cisco-dcnm-lanfabric-configuration-guide-1151/border-provisioning-multisite.html">Auto-Provisioning Border Gateways with Multi-Site Domains</a></li>
+  <li><a href="https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/white-paper-c11-739942.html">VXLAN EVPN Multi-Site Design and Deployment Whitepaper</a></li>
+  <li><a href="https://www.cisco.com/c/en/us/td/docs/dcn/dcnm/1151/configuration/lanfabric/cisco-dcnm-lanfabric-configuration-guide-1151/border-provisioning-multisite.html">Cisco Communities - Data Center</a></li>
+</ul>
+
+<h5 id="dcnm-vxlan-bgp-and-evpn-lab-overview">DCNM VXLAN BGP and EVPN Lab Overview</h5>
+<p><img src="https://raw.githubusercontent.com/j-sulliman/j-sulliman.github.io/master/images/DCNM_EVPN_Topology_1.png" alt="alt text" /></p>
+
+<p>The Lab includes the following:</p>
+<ul>
+  <li>2 x Fabrics <em>Auckland</em> and <em>Wellington</em>, each fabric has:
+    <ul>
+      <li>2 x spines</li>
+      <li>2 x leafs</li>
+      <li>1 x Border Gateway for DCI between Fabrics</li>
+      <li>1 x ubuntu guest - connected to a leaf switch in each fabrics</li>
+    </ul>
+  </li>
+  <li>1 x ubuntu guest connected to the management network</li>
+</ul>
+
+<h5 id="cisco-modelling-labs-gns3-and-eve-ng-deployment-guides">Cisco Modelling Labs, GNS3 and EVE-NG Deployment Guides</h5>
+
+<ul>
+  <li><a href="https://developer.cisco.com/docs/modeling-labs/#!cml-users-guide">Cisco Modelling Labs 2.1 User Guide</a></li>
+  <li><a href="https://gns3.com/marketplace/appliances/cisco-dcnm">GNS3 Market Place</a></li>
+  <li><a href="https://www.eve-ng.net/index.php/documentation/howtos/howto-add-cisco-dcnm-data-center-network-manager/">EVE-NG: DCNM How To</a></li>
+</ul>
+
+<h5 id="dcnm-vxlan-bgp-and-evpn-lab-virtual-appliances">DCNM VXLAN BGP and EVPN Lab Virtual Appliances</h5>
+
+<table>
+  <thead>
+    <tr>
+      <th>Appliance</th>
+      <th>Image name</th>
+      <th>Version</th>
+      <th>Memory</th>
+      <th>CPU</th>
+      <th>Disk</th>
+      <th>Qty</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>DCNM</td>
+      <td>dcnm-va.11.5.1.iso</td>
+      <td>11.5</td>
+      <td>24768MB</td>
+      <td>8vCPUs</td>
+      <td>100G</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>n9000v</td>
+      <td>nexus9300v.9.3.7.qcow2</td>
+      <td>9.3.7</td>
+      <td>8096MB</td>
+      <td>2vCPUs</td>
+      <td>-</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>Ubuntu Desktop</td>
+      <td>Ubuntu 20.10 (64bit).vmdk</td>
+      <td>20.10</td>
+      <td>1024MB</td>
+      <td>1vCPUs</td>
+      <td>-</td>
+      <td>3</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Note:</strong> If CPU, Disk or memory for DCNM is under-provisioned, you’ll be redirected to <em>https://[DCNM-IP]:2443/resourceerror.html</em>.  Shutdown the DCNM virtual-machine and assign the minimum virtual machine requirements as above.</p>
+
+<h4 id="pre-requisites-and-guidelines">Pre-requisites and Guidelines</h4>
+<p>Note the following pre-requisites from the MSD configuration guide:</p>
+
+<ul>
+  <li>The <em>underlay IP addresses across the fabrics</em>, the loopback 0 address and the loopback 1 address subnets should be <em>unique</em>.</li>
+  <li>Ensure that each fabric has a <em>unique IP address pool</em> to avoid duplicates.</li>
+  <li>Each fabric should have a <em>unique site ID and BGP AS number</em> associated and configured.</li>
+  <li>All fabrics should have the <em>same Anycast Gateway MAC</em> address.</li>
+</ul>
+
+<h4 id="base-configuration---hostname-management-address-and-boot-image">Base Configuration - hostname, management address and boot image</h4>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conf t
+interface mgmt 0
+  ip address [192.168.200.229/24]
+!
+ip route 0.0.0.0 0.0.0.0 [192.168.200.1] vrf management
+hostname [dc2-bdlf-001]
+boot nxos bootflash:///nxos.9.3.7.bin
+copy run st
+</code></pre></div></div>
+<p><strong>Note</strong> – With a DHCP assigned address on Mgmt0, you might encounter -  <em>“Error during configuration read or intent”</em> error when Saving and Deploying configuration.  Statically assigned IP addresses to Mgmt0 resolved in my case.</p>
+
+<h3 id="site-1-auckland-fabric-deployment-and-the-easy_fabric-template">Site 1 “Auckland Fabric” Deployment and the Easy_Fabric template</h3>
+<p>From the <em>Control</em> menu, select <em>Fabric Builder</em>, <em>Create Fabric</em>, name the fabric and provide a BGP ASN
+<img src="https://raw.githubusercontent.com/j-sulliman/j-sulliman.github.io/master/images/dcnm_1.png" alt="alt text" /></p>
+
+<p>As we are using N9000v’s for our lab,  Under advanced <strong>“Greenfield Cleanup”</strong> – select <strong>“enable”</strong></p>
+
+<p>From the configuration guide:
+<em>“Greenfield Cleanup Option – Enable the switch cleanup option for switches imported into DCNM with Preserve-Config=No, without a switch reload. This option is typically recommended only for the fabric environments with Cisco Nexus 9000v Switches to improve on the switch clean up time.</em></p>
+
+<p><img src="https://raw.githubusercontent.com/j-sulliman/j-sulliman.github.io/master/images/dcnm_easy_frabric_2.png" alt="alt text" /></p>
+
+<p>On the Resources tab – either accept defaults for the first fabric, or if connecting multiple sites, note the IP and VNI ranges as these will need to be unique to each site.</p>
+
+<p>Defaults are fine for Manageability , Bootstrap, Configuration Backup tabs</p>
+
+<h4 id="add-switches-to-site-1-auckland-fabric">Add switches to Site 1 “Auckland Fabric”</h4>
+<p>Management address, username and password define in <em>base configuration</em>
+<img src="https://raw.githubusercontent.com/j-sulliman/j-sulliman.github.io/master/images/dcnm_add_switches.png" alt="Add Switches" /></p>
+
+<p>Select <em>manageable</em> switches and <strong>Import to Fabric</strong>
+<img src="https://raw.githubusercontent.com/j-sulliman/j-sulliman.github.io/master/images/dcnm_add_switches_3.png" alt="Import Switches" /></p>
+
+<p>Right click on spines and set roles, in my case I also have a border leaf that I added after the initial deployment, click <strong>“Save and Deploy”</strong>
+<img src="https://raw.githubusercontent.com/j-sulliman/j-sulliman.github.io/master/images/dcnm_assign_roles.png" alt="Assign Roles" /></p>
+
+<p>Deploy the Configuration
+<img src="https://raw.githubusercontent.com/j-sulliman/j-sulliman.github.io/master/images/dcnm_push_config.png" alt="Deploy Config" /></p>
+
+<h3 id="site-2-wellington-fabric-deployment-and-the-easy_fabric-template">Site 2 “Wellington Fabric” Deployment and the Easy_Fabric template</h3>
+<p>Create the fabric for the second site, defining unique subnet ranges and BGP ASNs as described in the pre-requisites</p>
+
+<p><img src="https://raw.githubusercontent.com/j-sulliman/j-sulliman.github.io/master/images/dcnm_fabric_two_1.png" alt="Add Switches" /></p>
+
+<p>Define the spine and Border Gateway Roles as required and <em>Deploy Config</em> - site two should now be <strong>In Sync</strong>
+<img src="https://raw.githubusercontent.com/j-sulliman/j-sulliman.github.io/master/images/dcnm_fabric_two_3.png" alt="Fabric Two" /></p>
+
+<h3 id="multi-site-domain-msd-deployment">Multi-Site Domain (MSD) Deployment</h3>
+<p>To interconnect our two VXLAN EVPN fabrics together, we’ll use DCNM’s Multi-Site feature and MSD_Fabric template.  This will provision the configuration required to deploy Datacenter interconnect (DCI) overlays to the border gateway switches (BGWs) defined previously.</p>
+
+<p>The MSD feature will be the control point for overlay networks that are stretched between fabrics</p>
+
+<h5 id="fabric-definition">Fabric Definition</h5>
+<p><img src="https://raw.githubusercontent.com/j-sulliman/j-sulliman.github.io/master/images/msd_1.png" alt="one" /></p>
+
+<p><img src="https://raw.githubusercontent.com/j-sulliman/j-sulliman.github.io/master/images/dcnm_msd_2.png" alt="two" /></p>
+
+<p><img src="https://raw.githubusercontent.com/j-sulliman/j-sulliman.github.io/master/images/dcnm_msd_3.png" alt="three" /></p>
+
+<h5 id="fabric-members-and-operational-state">Fabric Members and Operational State</h5>
+<p><img src="https://github.com/j-sulliman/j-sulliman.github.io/blob/master/images/DCNM_Tab_view.png?raw=true" alt="four" /></p>
+
+<h4 id="verification">Verification</h4>
+
+<h5 id="features">Features</h5>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dc1-leaf-001# show feature | grep enabled | exclude "not-run"
+bgp                    1          enabled
+dhcp                   1          enabled
+hmm                    1          enabled
+icam                   1          enabled
+interface-vlan         1          enabled
+lacp                   1          enabled
+lldp                   1          enabled
+ngoam                  1          enabled
+nve                    1          enabled
+nxapi                  1          enabled
+ospf                   1          enabled
+pim                    1          enabled
+sshServer              1          enabled
+vnseg_vlan             1          enabled
+vpc                    1          enabled
+</code></pre></div></div>
+<h5 id="nve-interface">NVE interface</h5>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dc1-leaf-001# show nve interface nve 1 detail
+Interface: nve1, State: Up, encapsulation: VXLAN
+ VPC Capability: VPC-VIP-Only [notified]
+ Local Router MAC: 0c44.b700.1b08
+ Host Learning Mode: Control-Plane
+ Source-Interface: loopback1 (primary: 10.3.0.3, secondary: 10.3.0.1)
+ Source Interface State: Up
+ Virtual RMAC Advertisement: No
+ NVE Flags:
+ Interface Handle: 0x49000001
+ Source Interface hold-down-time: 180
+ Source Interface hold-up-time: 30
+ Remaining hold-down time: 0 seconds
+ Virtual Router MAC: 0200.0a03.0001
+ Interface state: nve-intf-add-complete
+</code></pre></div></div>
+
+<h5 id="vpc">vPC</h5>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> dc1-leaf-001# show vpc brief
+ Legend:
+                 (*) - local vPC is down, forwarding via vPC peer-link
+
+ vPC domain id                     : 1   
+ Peer status                       : peer adjacency formed ok      
+ vPC keep-alive status             : peer is alive                 
+ Configuration consistency status  : success
+ Per-vlan consistency status       : success                       
+ Type-2 consistency status         : success
+ vPC role                          : primary                       
+ Number of vPCs configured         : 0   
+ Peer Gateway                      : Enabled
+ Dual-active excluded VLANs        : -
+ Graceful Consistency Check        : Enabled
+ Auto-recovery status              : Enabled, timer is off.(timeout = 360s)
+ Delay-restore status              : Timer is off.(timeout = 150s)
+ Delay-restore SVI status          : Timer is off.(timeout = 10s)
+ Operational Layer3 Peer-router    : Disabled
+ Virtual-peerlink mode             : Disabled
+
+ vPC Peer-link status
+ ---------------------------------------------------------------------
+ id    Port   Status Active vlans    
+ --    ----   ------ -------------------------------------------------
+ 1     Po500  up     1,3600
+</code></pre></div></div>
+
+<h5 id="bgp">BGP</h5>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dc1-spine-002# show bgp l2vpn evpn summary vrf all
+BGP summary information for VRF default, address family L2VPN EVPN
+BGP router identifier 10.2.0.4, local AS number 65001
+BGP table version is 13, L2VPN EVPN config peers 3, capable peers 3
+1 network entries and 1 paths using 244 bytes of memory
+BGP attribute entries [1/172], BGP AS path entries [0/0]
+BGP community entries [0/0], BGP clusterlist entries [0/0]
+
+Neighbor        V    AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State/PfxRcd
+10.2.0.1        4 65001    2491    2491       13    0    0    1d17h 0         
+10.2.0.2        4 65001    2491    2491       13    0    0    1d17h 0         
+10.2.0.5        4 65001    1696    1698       13    0    0 17:45:00 1
+</code></pre></div></div>
+<h5 id="evpn-fabric-links">EVPN Fabric links</h5>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dc1-bdlf-001# show nve multisite fabric-links
+Interface      State
+---------      -----
+Ethernet1/1    Up   
+Ethernet1/2    Up
+</code></pre></div></div>
+
+<h5 id="evpn-dci-links">EVPN DCI Links</h5>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dc1-bdlf-001# show nve multisite dci-links
+Interface      State
+---------      -----
+Ethernet1/3    Up  
+</code></pre></div></div>
+
+<h4 id="designated-forwaders">Designated Forwaders</h4>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dc1-bdlf-001# show nve multisite fabric-links
+Interface      State
+---------      -----
+Ethernet1/1    Up   
+Ethernet1/2    Up   
+
+dc1-bdlf-001# show nve e
+ethernet-segment   evi                
+dc1-bdlf-001# show nve ethernet-segment
+
+ESI: 0300.0000.00fd.e900.0309
+   Parent interface: nve1
+  ES State: Up
+  Port-channel state: N/A
+  NVE Interface: nve1
+   NVE State: Up
+   Host Learning Mode: control-plane
+  Active Vlans: 1
+   DF Vlans: 1
+   Active VNIs: \
+  CC failed for VLANs:  
+  VLAN CC timer: no-timer
+  Number of ES members: 1
+  My ordinal: 0
+  DF timer start time: 00:00:00
+  Config State: N/A
+  DF List: 10.3.0.2  
+  ES route added to L2RIB: True
+  EAD/ES routes added to L2RIB: False
+  EAD/EVI route timer age: not running
+----------------------------------------
+</code></pre></div></div>
+
+<p>This ends the overview of DCNM Virtual Lab setup.  We’ll look into DCNM APIs and Dashboards in the next update.</p>
+
+  </div><a class="u-url" href="/2021/05/05/Part-3a-DCNM-Lab-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Jamie Sullivan&#39;s Blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Jamie Sullivan&#39;s Blog</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/j-sulliman"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">j-sulliman</span></a></li><li><a href="https://www.linkedin.com/in/jamie-sullivan-71575421"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#linkedin"></use></svg> <span class="username">jamie-sullivan-71575421</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Personal Blog for Networking, Datacenter and automation / programmability.  All content is my own and does not represent the views of my employer.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
