@@ -1,18 +1,18 @@
 ---
 layout: post
 author: Jamie Sullivan
-date:  2021-04-27 08:00:34 +1200
+date:  2021-05-05 08:00:34 +1200
 ---
 # Part (3a) DCNM and VXLAN BGP and EVPN Lab with Nexus 9000v
 In this update we outline of the lab topology used as the automation sandbox to explore APIs and Visualisations with Grafana and DCNM.  If you already have a DCNM environment available, you can skip this page and continue to Part 3b.
 
-1. [x] Previous post - Introduction and Initial Setup
-1. [x] Previous Post - Cisco Meraki Dashboard
-   1. [x] API Calls with Python Requests
-   1. [x] Commiting to databases
-   1. [x] Visualisation Database Tables with Grafana
-1. [ ] This Post - Cisco DCNM and EVPN Dashboard - a. Lab Setup
-1. [ ] Next Post - Cisco DCNM and EVPN Dashboard - b. Visualisations with Grafana
+
+| Section | Architecture | Link | Topic
+------------ | ------------ | ------------- | -------------
+1 | Introduction | [building a multidomain dashboard with cisco apis and grafana](https://j-sulliman.github.io/2021/04/26/Part-1-Intro-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html) | Solution Overview
+2 | Meraki | [Building a Meraki Dashboard with Grafana, Django and Python](https://j-sulliman.github.io/2021/04/26/Part-2-Meraki-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html) | Visualising Meraki APIs with Grafana.
+3a | DCNM & EVPN VXLAN | [DCNM and VXLAN BGP and EVPN Lab with Nexus 9000v](https://j-sulliman.github.io/2021/04/26/Part-3a-DCNM-Lab-Build-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html) | DCNM, N9000v, EVPN and VXLAN Lab deployment
+3b | DCNM & EVPN VXLAN | [Building a Meraki Dashboard with Grafana, Django and Python](https://j-sulliman.github.io/2021/04/26/Part-2-Meraki-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html) | Visualising DCNM APIs with Grafana.
 
 
 ##### DCNM VXLAN BGP and EVPN Lab Overview
@@ -34,6 +34,7 @@ n9000v | nexus9300v.9.3.7.qcow2 | 9.3.7 | 8096MB | 2vCPUs | - | 10
 * [DCNM REST API Reference Guide](https://developer.cisco.com/docs/data-center-network-manager/11-5-1/)
 * [Easy Provisioning of VXLAN BGP EVPN Fabrics](https://www.cisco.com/c/en/us/td/docs/dcn/dcnm/1151/configuration/lanfabric/cisco-dcnm-lanfabric-configuration-guide-1151/managing-greenfield-vxlan-fabric.html)
 * [Auto-Provisioning Border Gateways with Multi-Site Domains](https://www.cisco.com/c/en/us/td/docs/dcn/dcnm/1151/configuration/lanfabric/cisco-dcnm-lanfabric-configuration-guide-1151/border-provisioning-multisite.html )
+* [Cisco Communities - Data Center](https://www.cisco.com/c/en/us/td/docs/dcn/dcnm/1151/configuration/lanfabric/cisco-dcnm-lanfabric-configuration-guide-1151/border-provisioning-multisite.html )
 
 
 
@@ -105,3 +106,5 @@ Define the spine and Border Gateway Roles as required and *Deploy Config* - site
 ![two](https://raw.githubusercontent.com/j-sulliman/j-sulliman.github.io/master/images/dcnm_msd_2.png)
 
 ![three](https://raw.githubusercontent.com/j-sulliman/j-sulliman.github.io/master/images/dcnm_msd_3.png)
+
+![four](https://github.com/j-sulliman/j-sulliman.github.io/blob/master/images/DCNM_Tab_view.png?raw=true)
