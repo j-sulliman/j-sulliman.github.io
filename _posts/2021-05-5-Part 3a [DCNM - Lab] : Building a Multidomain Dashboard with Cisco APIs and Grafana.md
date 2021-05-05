@@ -22,8 +22,13 @@ In this update we outline of the virtual lab topology used as the sandbox to exp
 * [VXLAN EVPN Multi-Site Design and Deployment Whitepaper](https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/white-paper-c11-739942.html)
 * [Cisco Communities - Data Center](https://www.cisco.com/c/en/us/td/docs/dcn/dcnm/1151/configuration/lanfabric/cisco-dcnm-lanfabric-configuration-guide-1151/border-provisioning-multisite.html )
 
-##### DCNM VXLAN BGP and EVPN Lab Overview
-![alt text](https://raw.githubusercontent.com/j-sulliman/j-sulliman.github.io/master/images/DCNM_EVPN_Topology_1.png)
+##### Cisco Modelling Labs, GNS3 and EVE-NG Deployment Guides
+
+* [Cisco Modelling Labs 2.1 User Guide](https://developer.cisco.com/docs/modeling-labs/#!cml-users-guide)
+* [GNS3 Market Place](https://gns3.com/marketplace/appliances/cisco-dcnm)
+* [EVE-NG: DCNM How To](https://www.eve-ng.net/index.php/documentation/howtos/howto-add-cisco-dcnm-data-center-network-manager/)
+
+#### DCNM VXLAN BGP and EVPN Lab Overview
 
 The Lab includes the following:
 * 2 x Fabrics *Auckland* and *Wellington*, each fabric has:
@@ -33,11 +38,7 @@ The Lab includes the following:
   *  1 x ubuntu guest - connected to a leaf switch in each fabrics
 * 1 x ubuntu guest connected to the management network
 
-##### Cisco Modelling Labs, GNS3 and EVE-NG Deployment Guides
-
-* [Cisco Modelling Labs 2.1 User Guide](https://developer.cisco.com/docs/modeling-labs/#!cml-users-guide)
-* [GNS3 Market Place](https://gns3.com/marketplace/appliances/cisco-dcnm)
-* [EVE-NG: DCNM How To](https://www.eve-ng.net/index.php/documentation/howtos/howto-add-cisco-dcnm-data-center-network-manager/)
+![alt text](https://raw.githubusercontent.com/j-sulliman/j-sulliman.github.io/master/images/DCNM_EVPN_Topology_1.png)
 
 ##### DCNM VXLAN BGP and EVPN Lab Virtual Appliances
 

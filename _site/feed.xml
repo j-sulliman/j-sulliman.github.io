@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-05-05T16:05:04+12:00</updated><id>/feed.xml</id><title type="html">Jamie Sullivan’s Blog</title><subtitle>Personal Blog for Networking, Datacenter and automation / programmability.  All content is my own and does not represent the views of my employer.</subtitle><entry><title type="html">Part 3a [dcnm lab] : building a multidomain dashboard with cisco apis and grafana</title><link href="/2021/05/05/Part-3a-DCNM-Lab-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html" rel="alternate" type="text/html" title="Part 3a [dcnm lab] : building a multidomain dashboard with cisco apis and grafana" /><published>2021-05-05T08:00:34+12:00</published><updated>2021-05-05T08:00:34+12:00</updated><id>/2021/05/05/Part%203a%20%5BDCNM%20-%20Lab%5D%20:%20Building%20a%20Multidomain%20Dashboard%20with%20Cisco%20APIs%20and%20Grafana</id><content type="html" xml:base="/2021/05/05/Part-3a-DCNM-Lab-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html">&lt;h1 id=&quot;part-3a-dcnm-and-vxlan-bgp-and-evpn-lab-with-nexus-9000v&quot;&gt;Part (3a) DCNM and VXLAN BGP and EVPN Lab with Nexus 9000v&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-05-05T16:33:05+12:00</updated><id>/feed.xml</id><title type="html">Jamie Sullivan’s Blog</title><subtitle>Personal Blog for Networking, Datacenter and automation / programmability.  All content is my own and does not represent the views of my employer.</subtitle><entry><title type="html">Part 3a [dcnm lab] : building a multidomain dashboard with cisco apis and grafana</title><link href="/2021/05/05/Part-3a-DCNM-Lab-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html" rel="alternate" type="text/html" title="Part 3a [dcnm lab] : building a multidomain dashboard with cisco apis and grafana" /><published>2021-05-05T08:00:34+12:00</published><updated>2021-05-05T08:00:34+12:00</updated><id>/2021/05/05/Part%203a%20%5BDCNM%20-%20Lab%5D%20:%20Building%20a%20Multidomain%20Dashboard%20with%20Cisco%20APIs%20and%20Grafana</id><content type="html" xml:base="/2021/05/05/Part-3a-DCNM-Lab-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html">&lt;h1 id=&quot;part-3a-dcnm-and-vxlan-bgp-and-evpn-lab-with-nexus-9000v&quot;&gt;Part (3a) DCNM and VXLAN BGP and EVPN Lab with Nexus 9000v&lt;/h1&gt;
 &lt;p&gt;In this update we outline of the virtual lab topology used as the sandbox to explore APIs and Visualisations with Grafana and DCNM.  If you already have a DCNM environment available, you can skip this page and continue to Part 3b.&lt;/p&gt;
 
 &lt;table&gt;
@@ -47,8 +47,15 @@
   &lt;li&gt;&lt;a href=&quot;https://www.cisco.com/c/en/us/td/docs/dcn/dcnm/1151/configuration/lanfabric/cisco-dcnm-lanfabric-configuration-guide-1151/border-provisioning-multisite.html&quot;&gt;Cisco Communities - Data Center&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h5 id=&quot;dcnm-vxlan-bgp-and-evpn-lab-overview&quot;&gt;DCNM VXLAN BGP and EVPN Lab Overview&lt;/h5&gt;
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/j-sulliman/j-sulliman.github.io/master/images/DCNM_EVPN_Topology_1.png&quot; alt=&quot;alt text&quot; /&gt;&lt;/p&gt;
+&lt;h5 id=&quot;cisco-modelling-labs-gns3-and-eve-ng-deployment-guides&quot;&gt;Cisco Modelling Labs, GNS3 and EVE-NG Deployment Guides&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://developer.cisco.com/docs/modeling-labs/#!cml-users-guide&quot;&gt;Cisco Modelling Labs 2.1 User Guide&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://gns3.com/marketplace/appliances/cisco-dcnm&quot;&gt;GNS3 Market Place&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.eve-ng.net/index.php/documentation/howtos/howto-add-cisco-dcnm-data-center-network-manager/&quot;&gt;EVE-NG: DCNM How To&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;dcnm-vxlan-bgp-and-evpn-lab-overview&quot;&gt;DCNM VXLAN BGP and EVPN Lab Overview&lt;/h4&gt;
 
 &lt;p&gt;The Lab includes the following:&lt;/p&gt;
 &lt;ul&gt;
@@ -63,13 +70,7 @@
   &lt;li&gt;1 x ubuntu guest connected to the management network&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h5 id=&quot;cisco-modelling-labs-gns3-and-eve-ng-deployment-guides&quot;&gt;Cisco Modelling Labs, GNS3 and EVE-NG Deployment Guides&lt;/h5&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://developer.cisco.com/docs/modeling-labs/#!cml-users-guide&quot;&gt;Cisco Modelling Labs 2.1 User Guide&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://gns3.com/marketplace/appliances/cisco-dcnm&quot;&gt;GNS3 Market Place&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.eve-ng.net/index.php/documentation/howtos/howto-add-cisco-dcnm-data-center-network-manager/&quot;&gt;EVE-NG: DCNM How To&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/j-sulliman/j-sulliman.github.io/master/images/DCNM_EVPN_Topology_1.png&quot; alt=&quot;alt text&quot; /&gt;&lt;/p&gt;
 
 &lt;h5 id=&quot;dcnm-vxlan-bgp-and-evpn-lab-virtual-appliances&quot;&gt;DCNM VXLAN BGP and EVPN Lab Virtual Appliances&lt;/h5&gt;
 
