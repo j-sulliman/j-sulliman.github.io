@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Part 3.2 [dcnm] : building a multidomain dashboard with cisco apis and grafana | Jamie Sullivan’s Blog</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Part 3.2 [dcnm] : building a multidomain dashboard with cisco apis and grafana" />
+<meta name="author" content="Jamie Sullivan" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Part (3a) DCNM and VXLAN BGP and EVPN Lab with Nexus 9000v In this update we outline of the virtual lab topology used as the sandbox to explore APIs and Visualisations with Grafana and DCNM. If you already have a DCNM environment available, you can skip this page and continue to Part 3.2." />
+<meta property="og:description" content="Part (3a) DCNM and VXLAN BGP and EVPN Lab with Nexus 9000v In this update we outline of the virtual lab topology used as the sandbox to explore APIs and Visualisations with Grafana and DCNM. If you already have a DCNM environment available, you can skip this page and continue to Part 3.2." />
+<link rel="canonical" href="/2021/05/05/Part-3.2-DCNM-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html" />
+<meta property="og:url" content="/2021/05/05/Part-3.2-DCNM-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html" />
+<meta property="og:site_name" content="Jamie Sullivan’s Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-05-05T08:00:34+12:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Part 3.2 [dcnm] : building a multidomain dashboard with cisco apis and grafana" />
+<script type="application/ld+json">
+{"@type":"BlogPosting","headline":"Part 3.2 [dcnm] : building a multidomain dashboard with cisco apis and grafana","dateModified":"2021-05-05T08:00:34+12:00","datePublished":"2021-05-05T08:00:34+12:00","url":"/2021/05/05/Part-3.2-DCNM-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html","mainEntityOfPage":{"@type":"WebPage","@id":"/2021/05/05/Part-3.2-DCNM-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html"},"author":{"@type":"Person","name":"Jamie Sullivan"},"description":"Part (3a) DCNM and VXLAN BGP and EVPN Lab with Nexus 9000v In this update we outline of the virtual lab topology used as the sandbox to explore APIs and Visualisations with Grafana and DCNM. If you already have a DCNM environment available, you can skip this page and continue to Part 3.2.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Jamie Sullivan's Blog" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Jamie Sullivan&#39;s Blog</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Part 3.2 [dcnm] : building a multidomain dashboard with cisco apis and grafana</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2021-05-05T08:00:34+12:00" itemprop="datePublished">May 5, 2021
+      </time>• <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Jamie Sullivan</span></span></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <h1 id="part-3a-dcnm-and-vxlan-bgp-and-evpn-lab-with-nexus-9000v">Part (3a) DCNM and VXLAN BGP and EVPN Lab with Nexus 9000v</h1>
+<p>In this update we outline of the virtual lab topology used as the sandbox to explore APIs and Visualisations with Grafana and DCNM.  If you already have a DCNM environment available, you can skip this page and continue to Part 3.2.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Section</th>
+      <th>Architecture</th>
+      <th>Link</th>
+      <th>Topic</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Introduction</td>
+      <td><a href="https://j-sulliman.github.io/2021/04/26/Part-1-Intro-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html">building a multidomain dashboard with cisco apis and grafana</a></td>
+      <td>Solution Overview</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Meraki</td>
+      <td><a href="https://j-sulliman.github.io/2021/04/26/Part-2-Meraki-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html">Building a Meraki Dashboard with Grafana, Django and Python</a></td>
+      <td>Visualising Meraki APIs with Grafana.</td>
+    </tr>
+    <tr>
+      <td>3.1</td>
+      <td>DCNM &amp; EVPN VXLAN</td>
+      <td><a href="https://j-sulliman.github.io/2021/04/26/Part-3a-DCNM-Lab-Build-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html">DCNM and VXLAN BGP and EVPN Lab with Nexus 9000v</a></td>
+      <td>DCNM, N9000v, EVPN and VXLAN Lab deployment</td>
+    </tr>
+    <tr>
+      <td>3.2</td>
+      <td>DCNM &amp; EVPN VXLAN</td>
+      <td>Work In Progress</td>
+      <td>Visualising DCNM APIs with Grafana.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="dcnm-vxlan-bgp-and-evpn-resources">DCNM VXLAN BGP and EVPN Resources</h4>
+<ul>
+  <li><a href="https://developer.cisco.com/docs/data-center-network-manager/11-5-1/">DCNM REST API Reference Guide</a></li>
+  <li><a href="https://www.cisco.com/c/en/us/td/docs/dcn/dcnm/1151/configuration/lanfabric/cisco-dcnm-lanfabric-configuration-guide-1151/managing-greenfield-vxlan-fabric.html">Easy Provisioning of VXLAN BGP EVPN Fabrics</a></li>
+  <li><a href="https://www.cisco.com/c/en/us/td/docs/dcn/dcnm/1151/configuration/lanfabric/cisco-dcnm-lanfabric-configuration-guide-1151/border-provisioning-multisite.html">Auto-Provisioning Border Gateways with Multi-Site Domains</a></li>
+  <li><a href="https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/white-paper-c11-739942.html">VXLAN EVPN Multi-Site Design and Deployment Whitepaper</a></li>
+  <li><a href="https://www.cisco.com/c/en/us/td/docs/dcn/dcnm/1151/configuration/lanfabric/cisco-dcnm-lanfabric-configuration-guide-1151/border-provisioning-multisite.html">Cisco Communities - Data Center</a></li>
+</ul>
+
+<h4 id="create-the-dcnm-app-directory-structure-in-django">Create the DCNM App (Directory Structure) in django</h4>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">$</span> <span class="n">python</span> <span class="n">manage</span><span class="p">.</span><span class="n">py</span> <span class="n">startapp</span> <span class="n">dcnm</span>
+<span class="err">$</span> <span class="n">ls</span> <span class="n">dcnm</span><span class="o">/</span>
+<span class="n">admin</span><span class="p">.</span><span class="n">py</span>  <span class="n">apps</span><span class="p">.</span><span class="n">py</span>  <span class="n">__init__</span><span class="p">.</span><span class="n">py</span>  <span class="n">migrations</span>  <span class="n">models</span><span class="p">.</span><span class="n">py</span>  <span class="n">tests</span><span class="p">.</span><span class="n">py</span>  <span class="n">views</span><span class="p">.</span><span class="n">py</span>
+</code></pre></div></div>
+
+<p>Add the grafana app to cisco-grafana/settings.py:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Application definition
+</span>
+<span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s">'django.contrib.admin'</span><span class="p">,</span>
+    <span class="s">'django.contrib.auth'</span><span class="p">,</span>
+    <span class="s">'django.contrib.contenttypes'</span><span class="p">,</span>
+    <span class="s">'django.contrib.sessions'</span><span class="p">,</span>
+    <span class="s">'django.contrib.messages'</span><span class="p">,</span>
+    <span class="s">'django.contrib.staticfiles'</span><span class="p">,</span>
+    <span class="s">'meraki'</span><span class="p">,</span>
+    <span class="s">'dcnm'</span><span class="p">,</span> <span class="c1"># Add this
+</span><span class="p">]</span>
+</code></pre></div></div>
+
+<h4 id="create-python-api-requests-functions">Create Python API Requests functions</h4>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">DCNM_USER</span> <span class="o">=</span> <span class="s">"admin"</span>
+<span class="n">DCNM_PASSWORD</span> <span class="o">=</span> <span class="s">"Cisco123!"</span>
+<span class="n">dcnm</span> <span class="o">=</span> <span class="s">'192.168.200.230'</span>
+
+<span class="k">def</span> <span class="nf">get_auth_token</span><span class="p">():</span>
+    <span class="s">"""
+    Building out Auth request. Using requests.post to make a call to the Auth Endpoint
+    """</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s">'https://{}/rest/logon'</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">dcnm</span><span class="p">)</span>       <span class="c1"># Endpoint URL
+</span>    <span class="n">data</span><span class="o">=</span> <span class="s">'{"expirationTime": 360000}'</span>
+    <span class="n">resp</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">auth</span><span class="o">=</span><span class="n">HTTPBasicAuth</span><span class="p">(</span><span class="n">DCNM_USER</span><span class="p">,</span> <span class="n">DCNM_PASSWORD</span><span class="p">),</span> <span class="n">verify</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>  <span class="c1"># Make the POST Request
+</span>    <span class="n">token</span> <span class="o">=</span> <span class="n">resp</span><span class="p">.</span><span class="n">json</span><span class="p">()[</span><span class="s">'Dcnm-Token'</span><span class="p">]</span>    <span class="c1"># Retrieve the Token from the returned JSON
+</span>    <span class="k">print</span><span class="p">(</span><span class="s">"Token Retrieved: {}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">token</span><span class="p">))</span>  <span class="c1"># Print out the Token
+</span>    <span class="k">return</span> <span class="n">token</span>    <span class="c1"># Create a return statement to send the token back for later use
+</span>
+
+<span class="k">def</span> <span class="nf">dcnm_http_get</span><span class="p">(</span><span class="n">dcnm_class</span><span class="p">):</span>
+    <span class="n">token</span> <span class="o">=</span> <span class="n">get_auth_token</span><span class="p">()</span> <span class="c1"># Get a Token
+</span>    <span class="n">url</span> <span class="o">=</span> <span class="n">url</span> <span class="o">=</span> <span class="s">'https://{}/rest{}'</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">dcnm</span><span class="p">,</span> <span class="n">dcnm_class</span><span class="p">)</span>  <span class="c1">#Network Device endpoint
+</span>    <span class="n">payload</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">hdr</span> <span class="o">=</span> <span class="p">{</span><span class="s">'Dcnm-Token'</span><span class="p">:</span> <span class="n">token</span><span class="p">,</span> <span class="s">'content-type'</span> <span class="p">:</span> <span class="s">'application/json'</span><span class="p">}</span>
+    <span class="n">querystring</span> <span class="o">=</span> <span class="s">''</span>
+
+    <span class="n">resp</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">hdr</span><span class="p">,</span> <span class="n">verify</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>  <span class="c1"># Make the Get Request
+</span>    <span class="n">device_list</span> <span class="o">=</span> <span class="n">resp</span><span class="p">.</span><span class="n">json</span><span class="p">()</span> <span class="c1"># Capture data from the controller
+</span>    <span class="n">pp</span><span class="p">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">device_list</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">device_list</span> <span class="c1"># Pretty print the data
+</span></code></pre></div></div>
+<p>Run the function and validate the output.  You should receive a ‘200’ response and your organisation id.  If not  (i.e. you receive an http response of 400), check that your API key and URL is correct - you can test the API call in Postman to validate that it’s been enabled.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">dcnm_http_get</span><span class="p">(</span><span class="s">'/inventory/switches'</span><span class="p">)</span>
+<span class="n">dcnm_http_get</span><span class="p">(</span><span class="s">'/control/fabrics'</span><span class="p">)</span>
+
+<span class="sb">``</span><span class="err">`</span><span class="n">python</span>
+<span class="k">def</span> <span class="nf">get_dcnm_network_device</span><span class="p">(</span><span class="n">query_class</span><span class="p">):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">devices</span> <span class="o">=</span> <span class="n">dcnm_http_get</span><span class="p">(</span><span class="n">query_class</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">device</span> <span class="ow">in</span> <span class="n">devices</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">device</span><span class="p">[</span><span class="s">'fabricType'</span><span class="p">]</span> <span class="o">==</span> <span class="s">'Switch_Fabric'</span><span class="p">:</span>
+                        <span class="n">device_entry</span><span class="o">=</span><span class="n">dcnm_network_device</span><span class="p">(</span>
+                            <span class="n">dcnm_addr</span> <span class="o">=</span> <span class="n">dcnm</span><span class="p">,</span>
+                            <span class="n">asn</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'asn'</span><span class="p">],</span>
+                            <span class="n">deviceType</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'deviceType'</span><span class="p">],</span>
+                            <span class="n">fabricId</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'fabricId'</span><span class="p">],</span>
+                            <span class="n">fabricName</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'fabricName'</span><span class="p">],</span>
+                            <span class="n">fabricTechnology</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'fabricTechnology'</span><span class="p">],</span>
+                            <span class="n">fabricType</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'fabricType'</span><span class="p">],</span>
+                            <span class="nb">id</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'id'</span><span class="p">],</span>
+                            <span class="n">networkTemplate</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'networkTemplate'</span><span class="p">],</span>
+                            <span class="n">ADVERTISE_PIP_BGP</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'nvPairs'</span><span class="p">][</span><span class="s">'ADVERTISE_PIP_BGP'</span><span class="p">],</span>
+                            <span class="n">ANYCAST_GW_MAC</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'nvPairs'</span><span class="p">][</span><span class="s">'ANYCAST_GW_MAC'</span><span class="p">],</span>
+                            <span class="n">ANYCAST_RP_IP_RANGE</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'nvPairs'</span><span class="p">][</span><span class="s">'ANYCAST_RP_IP_RANGE'</span><span class="p">],</span>
+                            <span class="n">BFD_ENABLE</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'nvPairs'</span><span class="p">][</span><span class="s">'BFD_ENABLE'</span><span class="p">],</span>
+                            <span class="n">BFD_AUTH_ENABLE</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'nvPairs'</span><span class="p">][</span><span class="s">'BFD_AUTH_ENABLE'</span><span class="p">],</span>
+                            <span class="n">BGP_AS</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'nvPairs'</span><span class="p">][</span><span class="s">'BGP_AS'</span><span class="p">],</span>
+                            <span class="n">BGP_AUTH_ENABLE</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'nvPairs'</span><span class="p">][</span><span class="s">'BGP_AUTH_ENABLE'</span><span class="p">],</span>
+                            <span class="n">DCI_SUBNET_RANGE</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'nvPairs'</span><span class="p">][</span><span class="s">'DCI_SUBNET_RANGE'</span><span class="p">],</span>
+                            <span class="n">DCI_SUBNET_TARGET_MASK</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'nvPairs'</span><span class="p">][</span><span class="s">'DCI_SUBNET_TARGET_MASK'</span><span class="p">],</span>
+                            <span class="n">DHCP_ENABLE</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'nvPairs'</span><span class="p">][</span><span class="s">'DHCP_ENABLE'</span><span class="p">],</span>
+                            <span class="n">ENABLE_EVPN</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'nvPairs'</span><span class="p">][</span><span class="s">'ENABLE_EVPN'</span><span class="p">],</span>
+                            <span class="n">ENABLE_NXAPI</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'nvPairs'</span><span class="p">][</span><span class="s">'ENABLE_NXAPI'</span><span class="p">],</span>
+                            <span class="n">FABRIC_INTERFACE_TYPE</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'nvPairs'</span><span class="p">][</span><span class="s">'FABRIC_INTERFACE_TYPE'</span><span class="p">],</span>
+                            <span class="n">FABRIC_MTU</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'nvPairs'</span><span class="p">][</span><span class="s">'FABRIC_MTU'</span><span class="p">],</span>
+                            <span class="n">FABRIC_NAME</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'nvPairs'</span><span class="p">][</span><span class="s">'FABRIC_NAME'</span><span class="p">],</span>
+                            <span class="n">L2_SEGMENT_ID_RANGE</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'nvPairs'</span><span class="p">][</span><span class="s">'L2_SEGMENT_ID_RANGE'</span><span class="p">],</span>
+                            <span class="n">L3_PARTITION_ID_RANGE</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'nvPairs'</span><span class="p">][</span><span class="s">'L3_PARTITION_ID_RANGE'</span><span class="p">],</span>
+                            <span class="n">LINK_STATE_ROUTING</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'nvPairs'</span><span class="p">][</span><span class="s">'LINK_STATE_ROUTING'</span><span class="p">],</span>
+                            <span class="n">LINK_STATE_ROUTING_TAG</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'nvPairs'</span><span class="p">][</span><span class="s">'LINK_STATE_ROUTING_TAG'</span><span class="p">],</span>
+                            <span class="n">LOOPBACK0_IP_RANGE</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'nvPairs'</span><span class="p">][</span><span class="s">'LOOPBACK0_IP_RANGE'</span><span class="p">],</span>
+                            <span class="n">LOOPBACK1_IP_RANGE</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'nvPairs'</span><span class="p">][</span><span class="s">'LOOPBACK1_IP_RANGE'</span><span class="p">],</span>
+                            <span class="n">MULTICAST_GROUP_SUBNET</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'nvPairs'</span><span class="p">][</span><span class="s">'MULTICAST_GROUP_SUBNET'</span><span class="p">],</span>
+                            <span class="n">NETWORK_VLAN_RANGE</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'nvPairs'</span><span class="p">][</span><span class="s">'NETWORK_VLAN_RANGE'</span><span class="p">],</span>
+                            <span class="n">OSPF_AREA_ID</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'nvPairs'</span><span class="p">][</span><span class="s">'OSPF_AREA_ID'</span><span class="p">],</span>
+                            <span class="n">OSPF_AUTH_ENABLE</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'nvPairs'</span><span class="p">][</span><span class="s">'OSPF_AUTH_ENABLE'</span><span class="p">],</span>
+                            <span class="n">REPLICATION_MODE</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'nvPairs'</span><span class="p">][</span><span class="s">'REPLICATION_MODE'</span><span class="p">],</span>
+                            <span class="n">RR_COUNT</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'nvPairs'</span><span class="p">][</span><span class="s">'RR_COUNT'</span><span class="p">],</span>
+                            <span class="n">SERVICE_NETWORK_VLAN_RANGE</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'nvPairs'</span><span class="p">][</span><span class="s">'SERVICE_NETWORK_VLAN_RANGE'</span><span class="p">],</span>
+                            <span class="n">SUBNET_RANGE</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'nvPairs'</span><span class="p">][</span><span class="s">'SUBNET_RANGE'</span><span class="p">],</span>
+                            <span class="n">replicationMode</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'replicationMode'</span><span class="p">],</span>
+                            <span class="n">templateName</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'templateName'</span><span class="p">])</span>
+                        <span class="n">device_entry</span><span class="p">.</span><span class="n">save</span><span class="p">()</span>
+                <span class="n">aci_model_pruner</span><span class="p">(</span><span class="n">dnac_network_device</span><span class="p">.</span><span class="n">objects</span><span class="p">.</span><span class="nb">all</span><span class="p">(),</span> <span class="n">obj_type</span><span class="o">=</span><span class="s">"DCNM Fabric"</span><span class="p">,</span> <span class="n">retention_period</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="k">print</span><span class="p">(</span><span class="s">'Unable to query devices on DCNM {}'</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">dcnm</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">get_dcnm_network_switch</span><span class="p">(</span><span class="n">query_class</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">devices</span> <span class="o">=</span> <span class="n">dcnm_http_get</span><span class="p">(</span><span class="n">query_class</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">device</span> <span class="ow">in</span> <span class="n">devices</span><span class="p">:</span>
+            <span class="n">device_entry</span><span class="o">=</span><span class="n">dcnm_network_switch</span><span class="p">(</span>
+                <span class="n">dcnm_addr</span> <span class="o">=</span> <span class="n">dcnm</span><span class="p">,</span>
+                <span class="n">activeSupSlot</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'activeSupSlot'</span><span class="p">],</span>
+                <span class="n">availPorts</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'availPorts'</span><span class="p">],</span>
+                <span class="n">consistencyState</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'consistencyState'</span><span class="p">],</span>
+                <span class="n">cpuUsage</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'cpuUsage'</span><span class="p">],</span>
+                <span class="n">fabricName</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'fabricName'</span><span class="p">],</span>
+                <span class="n">health</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'health'</span><span class="p">],</span>
+                <span class="n">hostName</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'hostName'</span><span class="p">],</span>
+                <span class="n">ipAddress</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'ipAddress'</span><span class="p">],</span>
+                <span class="n">isVpcConfigured</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'isVpcConfigured'</span><span class="p">],</span>
+                <span class="n">licenseViolation</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'licenseViolation'</span><span class="p">],</span>
+                <span class="n">logicalName</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'logicalName'</span><span class="p">],</span>
+                <span class="n">managable</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'managable'</span><span class="p">],</span>
+                <span class="n">memoryUsage</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'memoryUsage'</span><span class="p">],</span>
+                <span class="n">mode</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'mode'</span><span class="p">],</span>
+                <span class="n">model</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'model'</span><span class="p">],</span>
+                <span class="n">network</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'network'</span><span class="p">],</span>
+                <span class="n">numberOfPorts</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'numberOfPorts'</span><span class="p">],</span>
+                <span class="n">present</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'present'</span><span class="p">],</span>
+                <span class="n">release</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'release'</span><span class="p">],</span>
+                <span class="n">serialNumber</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'serialNumber'</span><span class="p">],</span>
+                <span class="n">upTime</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'upTime'</span><span class="p">],</span>
+                <span class="n">vendor</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'vendor'</span><span class="p">],</span>
+                <span class="n">vpcDomain</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'vpcDomain'</span><span class="p">]</span>
+                <span class="p">)</span>
+            <span class="n">device_entry</span><span class="p">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="n">aci_model_pruner</span><span class="p">(</span><span class="n">dnac_network_device</span><span class="p">.</span><span class="n">objects</span><span class="p">.</span><span class="nb">all</span><span class="p">(),</span> <span class="n">obj_type</span><span class="o">=</span><span class="s">"DCNM Switch"</span><span class="p">,</span> <span class="n">retention_period</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'Unable to query devices on DCNM {}'</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">dcnm</span><span class="p">))</span>
+<span class="n">Verify</span> <span class="n">devices</span> <span class="n">have</span> <span class="n">been</span> <span class="n">retrieved</span> <span class="ow">and</span> <span class="n">written</span> <span class="n">to</span> <span class="n">database</span> <span class="k">with</span> <span class="n">PgAdmin</span><span class="p">.</span>
+</code></pre></div></div>
+
+<h3 id="grafana-visualisations">Grafana Visualisations</h3>
+
+<h4 id="installation">Installation</h4>
+<p>Installation of Grafana is straightforward - you can find guides for Linux, macOS, Windows and containers
+here <a href="https://grafana.com/docs/grafana/latest/installation/">Grafana Installation</a></p>
+
+<p>Point Grafana to PostgresSQL as below
+<img src="https://github.com/j-sulliman/j-sulliman.github.io/blob/master/Postgres%20datasource.png?raw=true" alt="alt text" /></p>
+
+<p>Create a new dashboard and add a new panel - configure <strong>query options</strong> as below.  Note - if you don’t configure <strong>“aggregate: count”</strong> as shown, you’ll most likely receive an error.</p>
+
+<p>Select PieChartv2 from the right, optionally change the PieChart type to <strong>donut</strong>, add the labels name, value and percent and give the chart a title.</p>
+
+<p>Your preview pane should now look like below - click save and apply
+<img src="https://github.com/j-sulliman/j-sulliman.github.io/blob/master/meraki_query.png?raw=true" alt="alt text" /></p>
+
+<p>Return to the dashboard and duplicate the Devices PieChart, edit the duplicate chart, in the <strong>query options</strong>, replace <strong>model</strong> metric columns with <strong>firmware</strong>, you’ll now have a summary of firmware breakdowns in the environment also.</p>
+
+<ul>
+  <li>Return to the dashboard and add another panel, again select the <strong>MerakiDevices</strong> table.</li>
+  <li>From the right hand pane, select <strong>table</strong></li>
+  <li>In the <strong>query options</strong>, select “format as: table”</li>
+  <li>Add columns of interest to the table</li>
+</ul>
+
+<p><img src="https://github.com/j-sulliman/j-sulliman.github.io/blob/master/Meraki_device_table.png?raw=true" alt="alt text" /></p>
+
+<p>If you’ve managed to follow the above successfully, your dashboard should look like below.
+<img src="https://github.com/j-sulliman/j-sulliman.github.io/blob/master/Meraki%20Dashboard%20Example.png?raw=true" alt="alt text" /></p>
+
+<p>Using the <a href="https://developer.cisco.com/meraki/api-v1/">Meraki API Documentation</a> as a guide, you can experiment with this process to create visualisations and graphs for other devices.</p>
+
+<p>…follow up for DCNM dashboard to follow soon.</p>
+
+<p>Jamie</p>
+
+  </div><a class="u-url" href="/2021/05/05/Part-3.2-DCNM-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Jamie Sullivan&#39;s Blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Jamie Sullivan&#39;s Blog</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/j-sulliman"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">j-sulliman</span></a></li><li><a href="https://www.linkedin.com/in/jamie-sullivan-71575421"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#linkedin"></use></svg> <span class="username">jamie-sullivan-71575421</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Personal Blog for Networking, Datacenter and automation / programmability.  All content is my own and does not represent the views of my employer.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
