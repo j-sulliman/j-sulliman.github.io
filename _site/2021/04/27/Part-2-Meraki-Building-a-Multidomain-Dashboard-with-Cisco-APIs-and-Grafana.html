@@ -18,7 +18,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Part 2 [meraki] : building a multidomain dashboard with cisco apis and grafana" />
 <script type="application/ld+json">
-{"@type":"BlogPosting","headline":"Part 2 [meraki] : building a multidomain dashboard with cisco apis and grafana","dateModified":"2021-04-27T08:00:34+12:00","datePublished":"2021-04-27T08:00:34+12:00","url":"/2021/04/27/Part-2-Meraki-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html","mainEntityOfPage":{"@type":"WebPage","@id":"/2021/04/27/Part-2-Meraki-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html"},"author":{"@type":"Person","name":"Jamie Sullivan"},"description":"Building a Meraki Dashboard with Grafana, Django and Python We continue from our overview and initial setup discussed in part (1), by exploring Meraki’s APIs, adding functionality and models to our django install and visualising the captured data with Grafana.","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","url":"/2021/04/27/Part-2-Meraki-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html","headline":"Part 2 [meraki] : building a multidomain dashboard with cisco apis and grafana","dateModified":"2021-04-27T08:00:34+12:00","datePublished":"2021-04-27T08:00:34+12:00","author":{"@type":"Person","name":"Jamie Sullivan"},"mainEntityOfPage":{"@type":"WebPage","@id":"/2021/04/27/Part-2-Meraki-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html"},"description":"Building a Meraki Dashboard with Grafana, Django and Python We continue from our overview and initial setup discussed in part (1), by exploring Meraki’s APIs, adding functionality and models to our django install and visualising the captured data with Grafana.","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Jamie Sullivan's Blog" /></head>
 <body><header class="site-header" role="banner">
@@ -51,17 +51,42 @@
     <h1 id="building-a-meraki-dashboard-with-grafana-django-and-python">Building a Meraki Dashboard with Grafana, Django and Python</h1>
 <p>We continue from our overview and initial setup discussed in part (1), by exploring Meraki’s APIs, adding functionality and models to our django install and visualising the captured data with Grafana.</p>
 
-<ol class="task-list">
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Previous post - Introduction and Initial Setup</li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />This Post - Cisco Meraki Dashboard
-    <ol class="task-list">
-      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />API Calls with Python Requests</li>
-      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Commiting to databases</li>
-      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Visualisation Database Tables with Grafana</li>
-    </ol>
-  </li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Next Post - Cisco DCNM and EVPN Dashboard</li>
-</ol>
+<table>
+  <thead>
+    <tr>
+      <th>Section</th>
+      <th>Architecture</th>
+      <th>Link</th>
+      <th>Topic</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1.0</td>
+      <td>Introduction</td>
+      <td><a href="https://j-sulliman.github.io/2021/04/26/Part-1-Intro-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html">building a multidomain dashboard with cisco apis and grafana</a></td>
+      <td>Solution Overview</td>
+    </tr>
+    <tr>
+      <td>2.0</td>
+      <td>Meraki</td>
+      <td><a href="https://j-sulliman.github.io/2021/04/26/Part-2-Meraki-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html">Building a Meraki Dashboard with Grafana, Django and Python</a></td>
+      <td>Visualising Meraki APIs with Grafana.</td>
+    </tr>
+    <tr>
+      <td>3.1</td>
+      <td>DCNM &amp; EVPN VXLAN</td>
+      <td><a href="https://j-sulliman.github.io/2021/04/26/Part-3a-DCNM-Lab-Build-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html">DCNM and VXLAN BGP and EVPN Lab with Nexus 9000v</a></td>
+      <td>DCNM, N9000v, EVPN and VXLAN Lab deployment</td>
+    </tr>
+    <tr>
+      <td>3.2</td>
+      <td>DCNM &amp; EVPN VXLAN</td>
+      <td>Work In Progress</td>
+      <td>Visualising DCNM APIs with Grafana.</td>
+    </tr>
+  </tbody>
+</table>
 
 <h5 id="part-2--cisco-meraki-apis-and-visualisations-with-grafana-green-components">Part 2:  Cisco Meraki APIs and Visualisations with Grafana (green components)</h5>
 <p><img src="https://github.com/j-sulliman/j-sulliman.github.io/blob/master/Meraki_Solution_overview.png?raw=true" alt="alt text" /></p>

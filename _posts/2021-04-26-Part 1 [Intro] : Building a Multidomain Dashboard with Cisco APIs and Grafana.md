@@ -6,6 +6,13 @@ date:  2021-04-27 08:00:34 +1200
 # Introduction - Network and Infra Monitoring with Grafana, Django and Python
 In this series, we use REST APIs, Python, Django Webframework, PostgresSQL and Grafana to demonstrate building a cross-domain visualisations Dashboard for Cisco network and Infrastructure domains using REST APIs.
 
+| Section | Architecture | Link | Topic
+------------ | ------------ | ------------- | -------------
+1.0 | Introduction | [building a multidomain dashboard with cisco apis and grafana](https://j-sulliman.github.io/2021/04/26/Part-1-Intro-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html) | Solution Overview
+2.0 | Meraki | [Building a Meraki Dashboard with Grafana, Django and Python](https://j-sulliman.github.io/2021/04/26/Part-2-Meraki-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html) | Visualising Meraki APIs with Grafana.
+3.1 | DCNM & EVPN VXLAN | [DCNM and VXLAN BGP and EVPN Lab with Nexus 9000v](https://j-sulliman.github.io/2021/04/26/Part-3a-DCNM-Lab-Build-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html) | DCNM, N9000v, EVPN and VXLAN Lab deployment
+3.2 | DCNM & EVPN VXLAN | Work In Progress | Visualising DCNM APIs with Grafana.
+
 ##### Lab Overview
 ![alt text](https://github.com/j-sulliman/j-sulliman.github.io/blob/master/Overview_1.png?raw=true)
 
@@ -121,7 +128,7 @@ We'll begin working with controller APIs, making requests, parsing responses, in
 
 In the meantime - checkout DevNet if you haven't already. We'll re-use a lot of the code and examples shared in the [DevNet Learning Tracks](https://developer.cisco.com/startnow/) and the sandbox environments.
 
-Continue to [Part 2 [meraki] : building a multidomain dashboard with cisco apis and grafana](https://j-sulliman.github.io/2021/04/26/Part-2-Meraki-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html) 
+Continue to [Part 2 [meraki] : building a multidomain dashboard with cisco apis and grafana](https://j-sulliman.github.io/2021/04/26/Part-2-Meraki-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html)
 
 1. [x] This post - Introduction and Initial Setup
 1. [ ] Next - Cisco Meraki Dashboard

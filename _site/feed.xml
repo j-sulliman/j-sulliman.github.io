@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-05-05T16:33:05+12:00</updated><id>/feed.xml</id><title type="html">Jamie Sullivan’s Blog</title><subtitle>Personal Blog for Networking, Datacenter and automation / programmability.  All content is my own and does not represent the views of my employer.</subtitle><entry><title type="html">Part 3a [dcnm lab] : building a multidomain dashboard with cisco apis and grafana</title><link href="/2021/05/05/Part-3a-DCNM-Lab-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html" rel="alternate" type="text/html" title="Part 3a [dcnm lab] : building a multidomain dashboard with cisco apis and grafana" /><published>2021-05-05T08:00:34+12:00</published><updated>2021-05-05T08:00:34+12:00</updated><id>/2021/05/05/Part%203a%20%5BDCNM%20-%20Lab%5D%20:%20Building%20a%20Multidomain%20Dashboard%20with%20Cisco%20APIs%20and%20Grafana</id><content type="html" xml:base="/2021/05/05/Part-3a-DCNM-Lab-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html">&lt;h1 id=&quot;part-3a-dcnm-and-vxlan-bgp-and-evpn-lab-with-nexus-9000v&quot;&gt;Part (3a) DCNM and VXLAN BGP and EVPN Lab with Nexus 9000v&lt;/h1&gt;
-&lt;p&gt;In this update we outline of the virtual lab topology used as the sandbox to explore APIs and Visualisations with Grafana and DCNM.  If you already have a DCNM environment available, you can skip this page and continue to Part 3b.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-05-05T22:05:37+12:00</updated><id>/feed.xml</id><title type="html">Jamie Sullivan’s Blog</title><subtitle>Personal Blog for Networking, Datacenter and automation / programmability.  All content is my own and does not represent the views of my employer.</subtitle><entry><title type="html">Part 3.1 [dcnm lab] : building a multidomain dashboard with cisco apis and grafana</title><link href="/2021/05/05/Part-3.1-DCNM-Lab-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html" rel="alternate" type="text/html" title="Part 3.1 [dcnm lab] : building a multidomain dashboard with cisco apis and grafana" /><published>2021-05-05T08:00:34+12:00</published><updated>2021-05-05T08:00:34+12:00</updated><id>/2021/05/05/Part%203.1%20%5BDCNM%20-%20Lab%5D%20:%20Building%20a%20Multidomain%20Dashboard%20with%20Cisco%20APIs%20and%20Grafana</id><content type="html" xml:base="/2021/05/05/Part-3.1-DCNM-Lab-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html">&lt;h1 id=&quot;part-3a-dcnm-and-vxlan-bgp-and-evpn-lab-with-nexus-9000v&quot;&gt;Part (3a) DCNM and VXLAN BGP and EVPN Lab with Nexus 9000v&lt;/h1&gt;
+&lt;p&gt;In this update we outline of the virtual lab topology used as the sandbox to explore APIs and Visualisations with Grafana and DCNM.  If you already have a DCNM environment available, you can skip this page and continue to Part 3.2.&lt;/p&gt;
 
 &lt;table&gt;
   &lt;thead&gt;
@@ -24,13 +24,13 @@
       &lt;td&gt;Visualising Meraki APIs with Grafana.&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td&gt;3a&lt;/td&gt;
+      &lt;td&gt;3.1&lt;/td&gt;
       &lt;td&gt;DCNM &amp;amp; EVPN VXLAN&lt;/td&gt;
       &lt;td&gt;&lt;a href=&quot;https://j-sulliman.github.io/2021/04/26/Part-3a-DCNM-Lab-Build-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html&quot;&gt;DCNM and VXLAN BGP and EVPN Lab with Nexus 9000v&lt;/a&gt;&lt;/td&gt;
       &lt;td&gt;DCNM, N9000v, EVPN and VXLAN Lab deployment&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td&gt;3b&lt;/td&gt;
+      &lt;td&gt;3.2&lt;/td&gt;
       &lt;td&gt;DCNM &amp;amp; EVPN VXLAN&lt;/td&gt;
       &lt;td&gt;Work In Progress&lt;/td&gt;
       &lt;td&gt;Visualising DCNM APIs with Grafana.&lt;/td&gt;
@@ -288,7 +288,7 @@ Interface      State
 Ethernet1/3    Up  
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h4 id=&quot;designated-forwaders&quot;&gt;Designated Forwaders&lt;/h4&gt;
+&lt;h5 id=&quot;designated-forwaders&quot;&gt;Designated Forwaders&lt;/h5&gt;
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dc1-bdlf-001# show nve multisite fabric-links
 Interface      State
 ---------      -----
@@ -322,8 +322,45 @@ ESI: 0300.0000.00fd.e900.0309
 ----------------------------------------
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;This ends the overview of DCNM Virtual Lab setup.  We’ll look into DCNM APIs and Dashboards in the next update.&lt;/p&gt;</content><author><name>Jamie Sullivan</name></author><summary type="html">Part (3a) DCNM and VXLAN BGP and EVPN Lab with Nexus 9000v In this update we outline of the virtual lab topology used as the sandbox to explore APIs and Visualisations with Grafana and DCNM. If you already have a DCNM environment available, you can skip this page and continue to Part 3b.</summary></entry><entry><title type="html">Part 1 [intro] : building a multidomain dashboard with cisco apis and grafana</title><link href="/2021/04/27/Part-1-Intro-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html" rel="alternate" type="text/html" title="Part 1 [intro] : building a multidomain dashboard with cisco apis and grafana" /><published>2021-04-27T08:00:34+12:00</published><updated>2021-04-27T08:00:34+12:00</updated><id>/2021/04/27/Part%201%20%5BIntro%5D%20:%20Building%20a%20Multidomain%20Dashboard%20with%20Cisco%20APIs%20and%20Grafana</id><content type="html" xml:base="/2021/04/27/Part-1-Intro-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html">&lt;h1 id=&quot;introduction---network-and-infra-monitoring-with-grafana-django-and-python&quot;&gt;Introduction - Network and Infra Monitoring with Grafana, Django and Python&lt;/h1&gt;
+&lt;p&gt;This ends the overview of DCNM Virtual Lab setup.  We’ll look into DCNM APIs and Dashboards in the next update.&lt;/p&gt;</content><author><name>Jamie Sullivan</name></author><summary type="html">Part (3a) DCNM and VXLAN BGP and EVPN Lab with Nexus 9000v In this update we outline of the virtual lab topology used as the sandbox to explore APIs and Visualisations with Grafana and DCNM. If you already have a DCNM environment available, you can skip this page and continue to Part 3.2.</summary></entry><entry><title type="html">Part 1 [intro] : building a multidomain dashboard with cisco apis and grafana</title><link href="/2021/04/27/Part-1-Intro-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html" rel="alternate" type="text/html" title="Part 1 [intro] : building a multidomain dashboard with cisco apis and grafana" /><published>2021-04-27T08:00:34+12:00</published><updated>2021-04-27T08:00:34+12:00</updated><id>/2021/04/27/Part%201%20%5BIntro%5D%20:%20Building%20a%20Multidomain%20Dashboard%20with%20Cisco%20APIs%20and%20Grafana</id><content type="html" xml:base="/2021/04/27/Part-1-Intro-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html">&lt;h1 id=&quot;introduction---network-and-infra-monitoring-with-grafana-django-and-python&quot;&gt;Introduction - Network and Infra Monitoring with Grafana, Django and Python&lt;/h1&gt;
 &lt;p&gt;In this series, we use REST APIs, Python, Django Webframework, PostgresSQL and Grafana to demonstrate building a cross-domain visualisations Dashboard for Cisco network and Infrastructure domains using REST APIs.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Section&lt;/th&gt;
+      &lt;th&gt;Architecture&lt;/th&gt;
+      &lt;th&gt;Link&lt;/th&gt;
+      &lt;th&gt;Topic&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;1.0&lt;/td&gt;
+      &lt;td&gt;Introduction&lt;/td&gt;
+      &lt;td&gt;&lt;a href=&quot;https://j-sulliman.github.io/2021/04/26/Part-1-Intro-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html&quot;&gt;building a multidomain dashboard with cisco apis and grafana&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Solution Overview&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;2.0&lt;/td&gt;
+      &lt;td&gt;Meraki&lt;/td&gt;
+      &lt;td&gt;&lt;a href=&quot;https://j-sulliman.github.io/2021/04/26/Part-2-Meraki-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html&quot;&gt;Building a Meraki Dashboard with Grafana, Django and Python&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Visualising Meraki APIs with Grafana.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;3.1&lt;/td&gt;
+      &lt;td&gt;DCNM &amp;amp; EVPN VXLAN&lt;/td&gt;
+      &lt;td&gt;&lt;a href=&quot;https://j-sulliman.github.io/2021/04/26/Part-3a-DCNM-Lab-Build-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html&quot;&gt;DCNM and VXLAN BGP and EVPN Lab with Nexus 9000v&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;DCNM, N9000v, EVPN and VXLAN Lab deployment&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;3.2&lt;/td&gt;
+      &lt;td&gt;DCNM &amp;amp; EVPN VXLAN&lt;/td&gt;
+      &lt;td&gt;Work In Progress&lt;/td&gt;
+      &lt;td&gt;Visualising DCNM APIs with Grafana.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
 
 &lt;h5 id=&quot;lab-overview&quot;&gt;Lab Overview&lt;/h5&gt;
 &lt;p&gt;&lt;img src=&quot;https://github.com/j-sulliman/j-sulliman.github.io/blob/master/Overview_1.png?raw=true&quot; alt=&quot;alt text&quot; /&gt;&lt;/p&gt;
@@ -455,17 +492,42 @@ From the returned JSON / Python Dictionary, use the Django database abstraction 
 &lt;/ol&gt;</content><author><name>Jamie Sullivan</name></author><summary type="html">Introduction - Network and Infra Monitoring with Grafana, Django and Python In this series, we use REST APIs, Python, Django Webframework, PostgresSQL and Grafana to demonstrate building a cross-domain visualisations Dashboard for Cisco network and Infrastructure domains using REST APIs.</summary></entry><entry><title type="html">Part 2 [meraki] : building a multidomain dashboard with cisco apis and grafana</title><link href="/2021/04/27/Part-2-Meraki-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html" rel="alternate" type="text/html" title="Part 2 [meraki] : building a multidomain dashboard with cisco apis and grafana" /><published>2021-04-27T08:00:34+12:00</published><updated>2021-04-27T08:00:34+12:00</updated><id>/2021/04/27/Part%202%20%5BMeraki%5D%20:%20Building%20a%20Multidomain%20Dashboard%20with%20Cisco%20APIs%20and%20Grafana</id><content type="html" xml:base="/2021/04/27/Part-2-Meraki-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html">&lt;h1 id=&quot;building-a-meraki-dashboard-with-grafana-django-and-python&quot;&gt;Building a Meraki Dashboard with Grafana, Django and Python&lt;/h1&gt;
 &lt;p&gt;We continue from our overview and initial setup discussed in part (1), by exploring Meraki’s APIs, adding functionality and models to our django install and visualising the captured data with Grafana.&lt;/p&gt;
 
-&lt;ol class=&quot;task-list&quot;&gt;
-  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Previous post - Introduction and Initial Setup&lt;/li&gt;
-  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;This Post - Cisco Meraki Dashboard
-    &lt;ol class=&quot;task-list&quot;&gt;
-      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;API Calls with Python Requests&lt;/li&gt;
-      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Commiting to databases&lt;/li&gt;
-      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Visualisation Database Tables with Grafana&lt;/li&gt;
-    &lt;/ol&gt;
-  &lt;/li&gt;
-  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Next Post - Cisco DCNM and EVPN Dashboard&lt;/li&gt;
-&lt;/ol&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Section&lt;/th&gt;
+      &lt;th&gt;Architecture&lt;/th&gt;
+      &lt;th&gt;Link&lt;/th&gt;
+      &lt;th&gt;Topic&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;1.0&lt;/td&gt;
+      &lt;td&gt;Introduction&lt;/td&gt;
+      &lt;td&gt;&lt;a href=&quot;https://j-sulliman.github.io/2021/04/26/Part-1-Intro-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html&quot;&gt;building a multidomain dashboard with cisco apis and grafana&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Solution Overview&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;2.0&lt;/td&gt;
+      &lt;td&gt;Meraki&lt;/td&gt;
+      &lt;td&gt;&lt;a href=&quot;https://j-sulliman.github.io/2021/04/26/Part-2-Meraki-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html&quot;&gt;Building a Meraki Dashboard with Grafana, Django and Python&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Visualising Meraki APIs with Grafana.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;3.1&lt;/td&gt;
+      &lt;td&gt;DCNM &amp;amp; EVPN VXLAN&lt;/td&gt;
+      &lt;td&gt;&lt;a href=&quot;https://j-sulliman.github.io/2021/04/26/Part-3a-DCNM-Lab-Build-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html&quot;&gt;DCNM and VXLAN BGP and EVPN Lab with Nexus 9000v&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;DCNM, N9000v, EVPN and VXLAN Lab deployment&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;3.2&lt;/td&gt;
+      &lt;td&gt;DCNM &amp;amp; EVPN VXLAN&lt;/td&gt;
+      &lt;td&gt;Work In Progress&lt;/td&gt;
+      &lt;td&gt;Visualising DCNM APIs with Grafana.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
 
 &lt;h5 id=&quot;part-2--cisco-meraki-apis-and-visualisations-with-grafana-green-components&quot;&gt;Part 2:  Cisco Meraki APIs and Visualisations with Grafana (green components)&lt;/h5&gt;
 &lt;p&gt;&lt;img src=&quot;https://github.com/j-sulliman/j-sulliman.github.io/blob/master/Meraki_Solution_overview.png?raw=true&quot; alt=&quot;alt text&quot; /&gt;&lt;/p&gt;
