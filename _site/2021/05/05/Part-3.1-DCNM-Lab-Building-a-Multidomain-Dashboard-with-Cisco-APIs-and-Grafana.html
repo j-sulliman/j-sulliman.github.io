@@ -8,8 +8,8 @@
 <meta property="og:title" content="Part 3.1 [dcnm lab] : building a multidomain dashboard with cisco apis and grafana" />
 <meta name="author" content="Jamie Sullivan" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Part (3a) DCNM and VXLAN BGP and EVPN Lab with Nexus 9000v In this update we outline of the virtual lab topology used as the sandbox to explore APIs and Visualisations with Grafana and DCNM. If you already have a DCNM environment available, you can skip this page and continue to Part 3.2." />
-<meta property="og:description" content="Part (3a) DCNM and VXLAN BGP and EVPN Lab with Nexus 9000v In this update we outline of the virtual lab topology used as the sandbox to explore APIs and Visualisations with Grafana and DCNM. If you already have a DCNM environment available, you can skip this page and continue to Part 3.2." />
+<meta name="description" content="Part (3.1) DCNM and VXLAN BGP and EVPN Lab with Nexus 9000v In this update we outline of the virtual lab topology used as the sandbox to explore APIs and Visualisations with Grafana and DCNM. If you already have a DCNM environment available, you can skip this page and continue to Part 3.2." />
+<meta property="og:description" content="Part (3.1) DCNM and VXLAN BGP and EVPN Lab with Nexus 9000v In this update we outline of the virtual lab topology used as the sandbox to explore APIs and Visualisations with Grafana and DCNM. If you already have a DCNM environment available, you can skip this page and continue to Part 3.2." />
 <link rel="canonical" href="/2021/05/05/Part-3.1-DCNM-Lab-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html" />
 <meta property="og:url" content="/2021/05/05/Part-3.1-DCNM-Lab-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html" />
 <meta property="og:site_name" content="Jamie Sullivan’s Blog" />
@@ -18,9 +18,9 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Part 3.1 [dcnm lab] : building a multidomain dashboard with cisco apis and grafana" />
 <script type="application/ld+json">
-{"@type":"BlogPosting","headline":"Part 3.1 [dcnm lab] : building a multidomain dashboard with cisco apis and grafana","dateModified":"2021-05-05T08:00:34+12:00","datePublished":"2021-05-05T08:00:34+12:00","url":"/2021/05/05/Part-3.1-DCNM-Lab-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html","mainEntityOfPage":{"@type":"WebPage","@id":"/2021/05/05/Part-3.1-DCNM-Lab-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html"},"author":{"@type":"Person","name":"Jamie Sullivan"},"description":"Part (3a) DCNM and VXLAN BGP and EVPN Lab with Nexus 9000v In this update we outline of the virtual lab topology used as the sandbox to explore APIs and Visualisations with Grafana and DCNM. If you already have a DCNM environment available, you can skip this page and continue to Part 3.2.","@context":"https://schema.org"}</script>
+{"datePublished":"2021-05-05T08:00:34+12:00","mainEntityOfPage":{"@type":"WebPage","@id":"/2021/05/05/Part-3.1-DCNM-Lab-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html"},"url":"/2021/05/05/Part-3.1-DCNM-Lab-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html","author":{"@type":"Person","name":"Jamie Sullivan"},"@type":"BlogPosting","description":"Part (3.1) DCNM and VXLAN BGP and EVPN Lab with Nexus 9000v In this update we outline of the virtual lab topology used as the sandbox to explore APIs and Visualisations with Grafana and DCNM. If you already have a DCNM environment available, you can skip this page and continue to Part 3.2.","headline":"Part 3.1 [dcnm lab] : building a multidomain dashboard with cisco apis and grafana","dateModified":"2021-05-05T08:00:34+12:00","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
-<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Jamie Sullivan's Blog" /></head>
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Jamie Sullivan&apos;s Blog" /></head>
 <body><header class="site-header" role="banner">
 
   <div class="wrapper"><a class="site-title" rel="author" href="/">Jamie Sullivan&#39;s Blog</a><nav class="site-nav">
@@ -48,7 +48,7 @@
   </header>
 
   <div class="post-content e-content" itemprop="articleBody">
-    <h1 id="part-3a-dcnm-and-vxlan-bgp-and-evpn-lab-with-nexus-9000v">Part (3a) DCNM and VXLAN BGP and EVPN Lab with Nexus 9000v</h1>
+    <h1 id="part-31-dcnm-and-vxlan-bgp-and-evpn-lab-with-nexus-9000v">Part (3.1) DCNM and VXLAN BGP and EVPN Lab with Nexus 9000v</h1>
 <p>In this update we outline of the virtual lab topology used as the sandbox to explore APIs and Visualisations with Grafana and DCNM.  If you already have a DCNM environment available, you can skip this page and continue to Part 3.2.</p>
 
 <table>
@@ -195,7 +195,7 @@ copy run st
 <p>From the <em>Control</em> menu, select <em>Fabric Builder</em>, <em>Create Fabric</em>, name the fabric and provide a BGP ASN
 <img src="https://raw.githubusercontent.com/j-sulliman/j-sulliman.github.io/master/images/dcnm_1.png" alt="alt text" /></p>
 
-<p>As we are using N9000v’s for our lab,  Under advanced <strong>“Greenfield Cleanup”</strong> – select <strong>“enable”</strong></p>
+<p>We’re using N9000v’s for our lab,  Under advanced <strong>“Greenfield Cleanup”</strong> – select <strong>“enable”</strong></p>
 
 <p>From the configuration guide:
 <em>“Greenfield Cleanup Option – Enable the switch cleanup option for switches imported into DCNM with Preserve-Config=No, without a switch reload. This option is typically recommended only for the fabric environments with Cisco Nexus 9000v Switches to improve on the switch clean up time.</em></p>
