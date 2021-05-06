@@ -3,7 +3,9 @@ layout: post
 author: Jamie Sullivan
 date:  2021-04-27 08:00:34 +1200
 ---
-# Building a Meraki Dashboard with Grafana, Django and Python
+# 2.0 Building a Meraki Dashboard with Grafana, Django and Python
+
+## 2.1 Introduction
 We continue from our overview and initial setup discussed in part (1), by exploring Meraki's APIs, adding functionality and models to our django install and visualising the captured data with Grafana.
 
 | Section | Architecture | Link | Topic
@@ -12,20 +14,22 @@ We continue from our overview and initial setup discussed in part (1), by explor
 2 | Meraki | [Building a Meraki Dashboard with Grafana, Django and Python](https://j-sulliman.github.io/2021/04/26/Part-2-Meraki-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html) | Visualising Meraki APIs with Grafana.
 3.1 | DCNM & EVPN VXLAN | [DCNM VXLAN BGP and EVPN Lab with Nexus 9000v](https://j-sulliman.github.io/2021/05/04/Part-3.1-DCNM-Lab-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html) | DCNM, N9000v, EVPN and VXLAN Lab deployment
 3.2 | DCNM & EVPN VXLAN | [Building a DCNM Dashboard with Grafana, Django and Python](https://j-sulliman.github.io/2021/05/04/Part-3.2-DCNM-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html) | Visualising DCNM APIs with Grafana.
+4.0 | SDWAN and vManage | Coming soon | Visualising vManage APIs with Grafana.
 
-##### Part 2:  Cisco Meraki APIs and Visualisations with Grafana (green components)
+## 2.2 Solution Overview - Cisco Meraki APIs and Visualisations with Grafana (green components)
 ![alt text](https://github.com/j-sulliman/j-sulliman.github.io/blob/master/Meraki_Solution_overview.png?raw=true)
 
 
-**Resources**
+## 2.3 Resources
 * [Meraki Learning Track on DevNet](https://developer.cisco.com/startnow/#meraki-v0)
 * [Postgres & Django Interop](https://docs.djangoproject.com/en/3.2/ref/databases/#postgresql-notes)
 
-#### Enable the Meraki API
+## 2.4 Implementation
+### 2.4.1 Enable the Meraki API
 From Dashboard, enable the API, under organisation settings as shown below, create and note down the API key from your profile
 ![alt text](https://github.com/j-sulliman/j-sulliman.github.io/blob/master/Enable_meraki_api.png?raw=true)
 
-#### Create the Meraki App (Directory Structure) in django
+###  2.4.2 Create the Meraki App (Directory Structure) in django
 ```python
 zsh-shell grafana-cisco-demo % source venv/bin/activate
 (venv) zsh-shell grafana-cisco-demo % cd cisco_grafana
@@ -53,7 +57,7 @@ INSTALLED_APPS = [
 ]
 ```
 
-#### Create Python API Requests functions to retrieve Meraki Orgs
+### 2.4.3 Create Python API Requests functions to retrieve Meraki Orgs
 ```python
 
 import requests
@@ -130,7 +134,7 @@ Operations to perform:
 
 You can validate the table's been created with PgAdmin
 
-#### Write Organisations API call output to database
+### 2.4.4 Write Organisations API call output to database
 Add below to the meraki_api.py file - see comments for explanation.
 
 ```python
@@ -162,11 +166,11 @@ def meraki_orgs_to_db(data):
 # Call function and pass in our organisation data from api response
 meraki_orgs_to_db(org_resp)
 ```
-### Retrieve meraki networks
+### 2.4.5 Retrieve meraki networks
 
 Now that we have the meraki organisation data in the postgres database, we need to (a) Define a new model in meraki/models.py to hold network information, (b) iterate over each org entry in the database and send a REST API query to find configured networks:
 
-#### (a) Define a new model in meraki/models.py to hold network information
+#### 2.4.5.1 (a) Define a new model in meraki/models.py to hold network information
 
 ```python
 class MerakiNetworks(models.Model):
@@ -186,7 +190,7 @@ Migrations for 'meraki':
     - Create model MerakiNetworks
 (venv) zsh-shell cisco_grafana % python manage.py migrate meraki
 ```
-#### (b) Iterate over each org entry in the database and send a REST API query to find configured networks
+#### 2.4.5.2 (b) Iterate over each org entry in the database and send a REST API query to find configured networks
 ```python
 from meraki.models import Organizations, MerakiNetworks # Edit this line to include MerakiNetworks model
 
@@ -209,12 +213,12 @@ Validate the networks have been written to the database with PgAdmin
 ![alt text](https://github.com/j-sulliman/j-sulliman.github.io/blob/master/Meraki_PgAdmin.png?raw=true)
 
 
-### Retrieve Meraki Devices
+### 2.4.6 Retrieve Meraki Devices
 We retrieved our network IDs in the previous step and can now use that network ID to run an API query for devices using the DN or syntax **/networks/{networkId}/devices**.
 
 We can use the [Meraki API Documentation](https://developer.cisco.com/meraki/api-v1/#!get-network-devices), to create our model in meraki/models.py
 
-#### MerakiDevices Model
+### 2.4.7 MerakiDevices Model
 ```python
 class MerakiDevices(models.Model):
     serial = models.CharField(max_length=200, primary_key=True)
@@ -283,9 +287,9 @@ meraki_devices_to_db()
 ```
 Verify devices have been retrieved and written to database with PgAdmin.
 
-### Grafana Visualisations
+# 2.5 Grafana Visualisations
 
-#### Installation
+## 2.5.1 Installation
 Installation of Grafana is straightforward - you can find guides for Linux, macOS, Windows and containers
 here [Grafana Installation](https://grafana.com/docs/grafana/latest/installation/)
 

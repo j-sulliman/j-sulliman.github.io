@@ -92,6 +92,12 @@
       <td><a href="https://j-sulliman.github.io/2021/05/04/Part-3.2-DCNM-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html">Building a DCNM Dashboard with Grafana, Django and Python</a></td>
       <td>Visualising DCNM APIs with Grafana.</td>
     </tr>
+    <tr>
+      <td>4.0</td>
+      <td>SDWAN and vManage</td>
+      <td>Coming soon</td>
+      <td>Visualising vManage APIs with Grafana.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -709,6 +715,12 @@
     <span class="k">except</span><span class="p">:</span>
         <span class="k">print</span><span class="p">(</span><span class="s">'Unable to query devices on DCNM {}'</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">dcnm</span><span class="p">))</span>
 </code></pre></div></div>
+
+<p>Run the functions:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">get_dcnm_network_switch</span><span class="p">(</span><span class="s">'/inventory/switches'</span><span class="p">)</span>
+<span class="n">get_dcnm_network_device</span><span class="p">(</span><span class="s">'/control/fabrics'</span><span class="p">)</span>
+</code></pre></div></div>
+
 <p>As we did in the meraki tutorial, add the following to dcnm_api.py so that it knows where to find our django settings and model files:</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">os</span>
@@ -756,7 +768,9 @@
 
 <h2 id="327-wrap-up">3.2.7 Wrap Up</h2>
 
-<p>[ xxxxx ]</p>
+<p>That’s it for this week’s update on using DCNM APIs to build dashboards using grafana.  Thank you for reading through. We’ve scratched the surface of what’s possible, but hopefully demonstrated how Cisco APIs and opensource software such as grafana can be used to build your own cross-domain dashboards.</p>
+
+<p>I’ll update this site’s content as we cover remaining architectures.</p>
 
   </div><a class="u-url" href="/2021/05/05/Part-3.2-DCNM-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html" hidden></a>
 </article>

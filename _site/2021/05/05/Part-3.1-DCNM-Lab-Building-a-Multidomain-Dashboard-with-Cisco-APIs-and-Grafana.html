@@ -85,6 +85,12 @@
       <td><a href="https://j-sulliman.github.io/2021/05/04/Part-3.2-DCNM-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html">Building a DCNM Dashboard with Grafana, Django and Python</a></td>
       <td>Visualising DCNM APIs with Grafana.</td>
     </tr>
+    <tr>
+      <td>4.0</td>
+      <td>SDWAN and vManage</td>
+      <td>Coming soon</td>
+      <td>Visualising vManage APIs with Grafana.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -167,9 +173,9 @@
   </tbody>
 </table>
 
-<p><strong>Note:</strong> If CPU, Disk or memory for DCNM is under-provisioned, you’ll be redirected to <em>https://[DCNM-IP]:2443/resourceerror.html</em>.  Shutdown the DCNM virtual-machine and assign the minimum virtual machine requirements as above.</p>
+<p><strong>Note:</strong> DCNM minimum requirements are exactly that, <em>requirements</em> If CPU, Disk or memory for DCNM is under-provisioned, you’ll be redirected to <em>https://[DCNM-IP]:2443/resourceerror.html</em>.  Shutdown the DCNM virtual-machine and assign the minimum virtual machine requirements as above.</p>
 
-<h2 id="314-pre-requisites-and-guidelines">3.1.4 Pre-requisites and Guidelines</h2>
+<h2 id="314-considerations">3.1.4 Considerations</h2>
 <p>Note the following pre-requisites from the MSD configuration guide:</p>
 
 <ul>
@@ -191,7 +197,7 @@ hostname [dc2-bdlf-001]
 boot nxos bootflash:///nxos.9.3.7.bin
 copy run st
 </code></pre></div></div>
-<p><strong>Note</strong> – With a DHCP assigned address on Mgmt0, you might encounter -  <em>“Error during configuration read or intent”</em> error when Saving and Deploying configuration.  Statically assigned IP addresses to Mgmt0 resolved in my case.</p>
+<p><strong>Note</strong> – With a DHCP assigned address on Mgmt0, you might encounter -  <em>“Error during configuration read or intent”</em> error when Saving and Deploying configuration.  Statically assigned IP addresses to Mgmt0 should resolve.</p>
 
 <h2 id="316-site-1-auckland-fabric-deployment-and-the-easy_fabric-template">3.1.6 Site 1 “Auckland Fabric” Deployment and the Easy_Fabric template</h2>
 <p>From the <em>Control</em> menu, select <em>Fabric Builder</em>, <em>Create Fabric</em>, name the fabric and provide a BGP ASN
@@ -242,10 +248,11 @@ copy run st
 <p><img src="https://raw.githubusercontent.com/j-sulliman/j-sulliman.github.io/master/images/dcnm_msd_3.png" alt="three" /></p>
 
 <h4 id="3182-fabric-members-and-operational-state">3.1.8.2 Fabric Members and Operational State</h4>
-<p><img src="https://github.com/j-sulliman/j-sulliman.github.io/blob/master/images/DCNM_Tab_view.png?raw=true" alt="four" /></p>
+<p>Click the tabular view to see a summarised table of all switches in the MSD Fabric:
+<img src="https://github.com/j-sulliman/j-sulliman.github.io/blob/master/images/DCNM_Tab_view.png?raw=true" alt="four" /></p>
 
 <h2 id="319-verification">3.1.9 Verification</h2>
-
+<p>The design guide outlines verification commands for VTEPs, fabric and DCI links and the EVPN control-plane and VXLAN data plane:</p>
 <h3 id="3191-features">3.1.9.1 Features</h3>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dc1-leaf-001# show feature | grep enabled | exclude "not-run"
 bgp                    1          enabled
