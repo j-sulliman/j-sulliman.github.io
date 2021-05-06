@@ -8,10 +8,10 @@ We continue from our overview and initial setup discussed in part (1), by explor
 
 | Section | Architecture | Link | Topic
 ------------ | ------------ | ------------- | -------------
-1.0 | Introduction | [building a multidomain dashboard with cisco apis and grafana](https://j-sulliman.github.io/2021/04/26/Part-1-Intro-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html) | Solution Overview
-2.0 | Meraki | [Building a Meraki Dashboard with Grafana, Django and Python](https://j-sulliman.github.io/2021/04/26/Part-2-Meraki-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html) | Visualising Meraki APIs with Grafana.
-3.1 | DCNM & EVPN VXLAN | [DCNM and VXLAN BGP and EVPN Lab with Nexus 9000v](https://j-sulliman.github.io/2021/04/26/Part-3a-DCNM-Lab-Build-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html) | DCNM, N9000v, EVPN and VXLAN Lab deployment
-3.2 | DCNM & EVPN VXLAN | Work In Progress | Visualising DCNM APIs with Grafana.
+1 | Introduction | [building a multidomain dashboard with cisco apis and grafana](https://j-sulliman.github.io/2021/04/26/Part-1-Intro-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html) | Solution Overview
+2 | Meraki | [Building a Meraki Dashboard with Grafana, Django and Python](https://j-sulliman.github.io/2021/04/26/Part-2-Meraki-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html) | Visualising Meraki APIs with Grafana.
+3.1 | DCNM & EVPN VXLAN | [DCNM VXLAN BGP and EVPN Lab with Nexus 9000v](https://j-sulliman.github.io/2021/05/04/Part-3.1-DCNM-Lab-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html) | DCNM, N9000v, EVPN and VXLAN Lab deployment
+3.2 | DCNM & EVPN VXLAN | [Building a DCNM Dashboard with Grafana, Django and Python](https://j-sulliman.github.io/2021/05/04/Part-3.2-DCNM-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html) | Visualising DCNM APIs with Grafana.
 
 ##### Part 2:  Cisco Meraki APIs and Visualisations with Grafana (green components)
 ![alt text](https://github.com/j-sulliman/j-sulliman.github.io/blob/master/Meraki_Solution_overview.png?raw=true)

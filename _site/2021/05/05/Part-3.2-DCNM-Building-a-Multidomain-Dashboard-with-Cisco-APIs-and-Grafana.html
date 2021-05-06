@@ -8,8 +8,8 @@
 <meta property="og:title" content="Part 3.2 [dcnm] : building a multidomain dashboard with cisco apis and grafana" />
 <meta name="author" content="Jamie Sullivan" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Part (3.2) DCNM and VXLAN BGP and EVPN Lab with Nexus 9000v In this update we outline of the virtual lab topology used as the sandbox to explore APIs and Visualisations with Grafana and DCNM. If you already have a DCNM environment available, you can skip this page and continue to Part 3.2." />
-<meta property="og:description" content="Part (3.2) DCNM and VXLAN BGP and EVPN Lab with Nexus 9000v In this update we outline of the virtual lab topology used as the sandbox to explore APIs and Visualisations with Grafana and DCNM. If you already have a DCNM environment available, you can skip this page and continue to Part 3.2." />
+<meta name="description" content="Part (3.2) DCNM and VXLAN BGP and EVPN Lab with Nexus 9000v" />
+<meta property="og:description" content="Part (3.2) DCNM and VXLAN BGP and EVPN Lab with Nexus 9000v" />
 <link rel="canonical" href="/2021/05/05/Part-3.2-DCNM-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html" />
 <meta property="og:url" content="/2021/05/05/Part-3.2-DCNM-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html" />
 <meta property="og:site_name" content="Jamie Sullivan’s Blog" />
@@ -18,7 +18,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Part 3.2 [dcnm] : building a multidomain dashboard with cisco apis and grafana" />
 <script type="application/ld+json">
-{"datePublished":"2021-05-05T08:00:34+12:00","mainEntityOfPage":{"@type":"WebPage","@id":"/2021/05/05/Part-3.2-DCNM-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html"},"url":"/2021/05/05/Part-3.2-DCNM-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html","author":{"@type":"Person","name":"Jamie Sullivan"},"@type":"BlogPosting","description":"Part (3.2) DCNM and VXLAN BGP and EVPN Lab with Nexus 9000v In this update we outline of the virtual lab topology used as the sandbox to explore APIs and Visualisations with Grafana and DCNM. If you already have a DCNM environment available, you can skip this page and continue to Part 3.2.","headline":"Part 3.2 [dcnm] : building a multidomain dashboard with cisco apis and grafana","dateModified":"2021-05-05T08:00:34+12:00","@context":"https://schema.org"}</script>
+{"datePublished":"2021-05-05T08:00:34+12:00","mainEntityOfPage":{"@type":"WebPage","@id":"/2021/05/05/Part-3.2-DCNM-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html"},"url":"/2021/05/05/Part-3.2-DCNM-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html","author":{"@type":"Person","name":"Jamie Sullivan"},"@type":"BlogPosting","description":"Part (3.2) DCNM and VXLAN BGP and EVPN Lab with Nexus 9000v","headline":"Part 3.2 [dcnm] : building a multidomain dashboard with cisco apis and grafana","dateModified":"2021-05-05T08:00:34+12:00","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Jamie Sullivan&apos;s Blog" /></head>
 <body><header class="site-header" role="banner">
@@ -49,7 +49,14 @@
 
   <div class="post-content e-content" itemprop="articleBody">
     <h1 id="part-32-dcnm-and-vxlan-bgp-and-evpn-lab-with-nexus-9000v">Part (3.2) DCNM and VXLAN BGP and EVPN Lab with Nexus 9000v</h1>
-<p>In this update we outline of the virtual lab topology used as the sandbox to explore APIs and Visualisations with Grafana and DCNM.  If you already have a DCNM environment available, you can skip this page and continue to Part 3.2.</p>
+
+<h2 id="321-overview">3.2.1 Overview</h2>
+<p>If you’ve completed section <a href="https://j-sulliman.github.io/2021/05/04/Part-3.1-DCNM-Lab-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html">3.1 DCNM VXLAN BGP and EVPN Lab</a>, you’ll now have a DCNM and N9000v EVPN and VXLAN Virtual Sandbox to test our APIs and visualisations with Python, Django and Grafana.</p>
+
+<p>We stepped through an overview of a Grafana Dashboard last week, this week, we’ll be focussing on DCNM as shown in green:
+<img src="https://github.com/j-sulliman/j-sulliman.github.io/blob/master/images/Grafana_overview_DCNM.png?raw=true" alt="Solution Overview" /></p>
+
+<p>Links to other articles in this series are outlined below.</p>
 
 <table>
   <thead>
@@ -76,19 +83,27 @@
     <tr>
       <td>3.1</td>
       <td>DCNM &amp; EVPN VXLAN</td>
-      <td><a href="https://j-sulliman.github.io/2021/04/26/Part-3a-DCNM-Lab-Build-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html">DCNM and VXLAN BGP and EVPN Lab with Nexus 9000v</a></td>
+      <td><a href="https://j-sulliman.github.io/2021/05/04/Part-3.1-DCNM-Lab-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html">DCNM VXLAN BGP and EVPN Lab with Nexus 9000v</a></td>
       <td>DCNM, N9000v, EVPN and VXLAN Lab deployment</td>
     </tr>
     <tr>
       <td>3.2</td>
       <td>DCNM &amp; EVPN VXLAN</td>
-      <td>Work In Progress</td>
+      <td><a href="https://j-sulliman.github.io/2021/05/04/Part-3.2-DCNM-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html">Building a DCNM Dashboard with Grafana, Django and Python</a></td>
       <td>Visualising DCNM APIs with Grafana.</td>
     </tr>
   </tbody>
 </table>
 
-<h4 id="dcnm-vxlan-bgp-and-evpn-resources">DCNM VXLAN BGP and EVPN Resources</h4>
+<p>By the end of this article we’ll have:</p>
+<ul>
+  <li>Gained familiarity with DCNM APIs and python requests</li>
+  <li>Experimented with API endpoints outlined in the API reference and the output of queries</li>
+  <li>Defined our Django Model classes and written output to our PostgresSQL database</li>
+  <li>Experimented with visualisations of the database with grafana</li>
+</ul>
+
+<h2 id="322-resources">3.2.2 Resources</h2>
 <ul>
   <li><a href="https://developer.cisco.com/docs/data-center-network-manager/11-5-1/">DCNM REST API Reference Guide</a></li>
   <li><a href="https://www.cisco.com/c/en/us/td/docs/dcn/dcnm/1151/configuration/lanfabric/cisco-dcnm-lanfabric-configuration-guide-1151/managing-greenfield-vxlan-fabric.html">Easy Provisioning of VXLAN BGP EVPN Fabrics</a></li>
@@ -97,7 +112,9 @@
   <li><a href="https://www.cisco.com/c/en/us/td/docs/dcn/dcnm/1151/configuration/lanfabric/cisco-dcnm-lanfabric-configuration-guide-1151/border-provisioning-multisite.html">Cisco Communities - Data Center</a></li>
 </ul>
 
-<h4 id="create-the-dcnm-app-directory-structure-in-django">Create the DCNM App (Directory Structure) in django</h4>
+<h2 id="323-django-setup">3.2.3 Django Setup</h2>
+
+<h3 id="3231-create-the-dcnm-app-directory-structure-in-django">3.2.3.1 Create the DCNM App (Directory Structure) in django</h3>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">$</span> <span class="n">python</span> <span class="n">manage</span><span class="p">.</span><span class="n">py</span> <span class="n">startapp</span> <span class="n">dcnm</span>
 <span class="err">$</span> <span class="n">ls</span> <span class="n">dcnm</span><span class="o">/</span>
 <span class="n">admin</span><span class="p">.</span><span class="n">py</span>  <span class="n">apps</span><span class="p">.</span><span class="n">py</span>  <span class="n">__init__</span><span class="p">.</span><span class="n">py</span>  <span class="n">migrations</span>  <span class="n">models</span><span class="p">.</span><span class="n">py</span>  <span class="n">tests</span><span class="p">.</span><span class="n">py</span>  <span class="n">views</span><span class="p">.</span><span class="n">py</span>
@@ -117,8 +134,9 @@
     <span class="s">'dcnm'</span><span class="p">,</span> <span class="c1"># Add this
 </span><span class="p">]</span>
 </code></pre></div></div>
+<h2 id="324-python-dcnm-requests-functions">3.2.4 Python DCNM Requests functions</h2>
 
-<h4 id="dcnm-api-requests-functions">DCNM API Requests functions</h4>
+<h3 id="3241-dcnm-api-requests-functions">3.2.4.1 DCNM API Requests functions</h3>
 <p>The <em>dcnm_http_get()</em> function in turn calls <em>get_auth_token()</em> which:</p>
 <ul>
   <li>Sends an HTTP Post Request to <em>https://[dcnm-mgmt]/rest/logon</em> with a user name and password</li>
@@ -498,6 +516,8 @@
 </code></pre></div></div>
 <p>We’ve retrieved a lot of information from the above API calls and dictionary keys, including software versions, models, hostnames, uptime, BGP ASN, Fabric IP, VRF VLAN ranges that we can begin working with.</p>
 
+<h2 id="325--django-model-database-table-definition">3.2.5  Django Model (Database Table) Definition</h2>
+
 <p>Create our models for DCNM devices in <em>dcnm/models.py</em> and define columns/entries for the dictionary keys of interest:</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Create your models here.
@@ -591,11 +611,12 @@
   <span class="n">Apply</span> <span class="nb">all</span> <span class="n">migrations</span><span class="p">:</span> <span class="n">dcnm</span>
 </code></pre></div></div>
 
+<h3 id="3251-writing-output-to-database-with-djangos-database-api">3.2.5.1 Writing output to Database with Djangos Database API</h3>
 <p>When satisfied with above API calls:</p>
 <ul>
   <li>Import our new dcnm_network_device and dcnm_network_switch models into dcnm_api.py</li>
   <li>Iterate over each item in our list of output</li>
-  <li>Map the keys of interest in the JSON dictionary output to our models fields</li>
+  <li>Map the keys of interest in the JSON dictionary output to our model’s fields</li>
   <li>Commit the entry to the database with <em>device_entry.save()</em></li>
 </ul>
 
@@ -702,10 +723,10 @@
 <span class="kn">import</span> <span class="nn">django</span>
 <span class="n">django</span><span class="p">.</span><span class="n">setup</span><span class="p">()</span>
 </code></pre></div></div>
-<p>You can use PgAdmin to verify devices have been retrieved and written to the database
+<p>Use PgAdmin to verify devices have been retrieved and written to the database
 <img src="https://github.com/j-sulliman/j-sulliman.github.io/blob/master/images/DCNM_PGAdmin.png?raw=true" alt="pgAdmin" /></p>
 
-<h3 id="grafana-visualisations">Grafana Visualisations</h3>
+<h2 id="326-grafana-visualisations">3.2.6 Grafana Visualisations</h2>
 
 <h4 id="installation">Installation</h4>
 <p>Refer to Tutuorial (2) Meraki for Grafana installation and setup instructions</p>
@@ -732,6 +753,10 @@
 
 <p>If you’ve managed to follow this tutorial successfully, your DCNM panel should now look like below:
 <img src="https://github.com/j-sulliman/j-sulliman.github.io/blob/master/images/DCNM_Dashboard.png?raw=true" alt="alt text" /></p>
+
+<h2 id="327-wrap-up">3.2.7 Wrap Up</h2>
+
+<p>[ xxxxx ]</p>
 
   </div><a class="u-url" href="/2021/05/05/Part-3.2-DCNM-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html" hidden></a>
 </article>
