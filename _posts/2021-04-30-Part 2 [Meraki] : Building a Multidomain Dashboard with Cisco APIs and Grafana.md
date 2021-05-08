@@ -134,7 +134,7 @@ Operations to perform:
 
 You can validate the table's been created with PgAdmin
 
-### 2.4.4 Write Organisations API call output to database
+### 2.4.4 Write output to database
 Add below to the meraki_api.py file - see comments for explanation.
 
 ```python
