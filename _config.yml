@@ -29,7 +29,7 @@ github_username:  j-sulliman
 linkedin_username: jamie-sullivan-71575421
 
 # Build settings
-theme: jekyll-theme-midnight
+theme: jekyll-theme-hacker
 plugins:
   - jekyll-feed
 
