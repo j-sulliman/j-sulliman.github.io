@@ -1,4 +1,1388 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-05-13T23:35:36+12:00</updated><id>/feed.xml</id><title type="html">Jamie Sullivan’s Blog</title><subtitle>Personal Blog for Networking, Datacenter and automation / programmability.  All content is my own and does not represent the views of my employer.</subtitle><entry><title type="html">Part 3.1 [dcnm lab] : building a multidomain dashboard with cisco apis and grafana</title><link href="/2021/05/05/Part-3.1-DCNM-Lab-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html" rel="alternate" type="text/html" title="Part 3.1 [dcnm lab] : building a multidomain dashboard with cisco apis and grafana" /><published>2021-05-05T08:00:34+12:00</published><updated>2021-05-05T08:00:34+12:00</updated><id>/2021/05/05/Part%203.1%20%5BDCNM%20-%20Lab%5D%20:%20Building%20a%20Multidomain%20Dashboard%20with%20Cisco%20APIs%20and%20Grafana</id><content type="html" xml:base="/2021/05/05/Part-3.1-DCNM-Lab-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html">&lt;h1 id=&quot;part-31-dcnm-and-vxlan-bgp-and-evpn-lab-with-nexus-9000v-overview&quot;&gt;Part (3.1) DCNM and VXLAN BGP and EVPN Lab with Nexus 9000v Overview&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-05-18T13:13:59+12:00</updated><id>/feed.xml</id><title type="html">Jamie Sullivan’s Blog</title><subtitle>Personal Blog for Networking, Datacenter and automation / programmability.  All content is my own and does not represent the views of my employer.</subtitle><entry><title type="html">Part 4.2 [sdwan] : cisco sdwan vmanage api visualisations with grafana</title><link href="/2021/05/15/Part-4.2-SDWAN-Cisco-SDWAN-vManage-API-Visualisations-with-Grafana.html" rel="alternate" type="text/html" title="Part 4.2 [sdwan] : cisco sdwan vmanage api visualisations with grafana" /><published>2021-05-15T08:00:34+12:00</published><updated>2021-05-15T08:00:34+12:00</updated><id>/2021/05/15/Part%204.2%20%5BSDWAN%5D%20:%20Cisco%20SDWAN%20-%20vManage%20API%20Visualisations%20with%20Grafana</id><content type="html" xml:base="/2021/05/15/Part-4.2-SDWAN-Cisco-SDWAN-vManage-API-Visualisations-with-Grafana.html">&lt;h2 id=&quot;article-index&quot;&gt;Article Index&lt;/h2&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Section&lt;/th&gt;
+      &lt;th&gt;Architecture&lt;/th&gt;
+      &lt;th&gt;Link&lt;/th&gt;
+      &lt;th&gt;Topic&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;Introduction&lt;/td&gt;
+      &lt;td&gt;&lt;a href=&quot;https://j-sulliman.github.io/2021/04/26/Part-1-Intro-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html&quot;&gt;building a multidomain dashboard with cisco apis and grafana&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Solution Overview&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;Meraki&lt;/td&gt;
+      &lt;td&gt;&lt;a href=&quot;https://j-sulliman.github.io/2021/04/26/Part-2-Meraki-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html&quot;&gt;Building a Meraki Dashboard with Grafana, Django and Python&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Visualising Meraki APIs with Grafana.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;3.1&lt;/td&gt;
+      &lt;td&gt;DCNM &amp;amp; EVPN VXLAN&lt;/td&gt;
+      &lt;td&gt;&lt;a href=&quot;https://j-sulliman.github.io/2021/05/04/Part-3.1-DCNM-Lab-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html&quot;&gt;DCNM VXLAN BGP and EVPN Lab with Nexus 9000v&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;DCNM, N9000v, EVPN and VXLAN Lab deployment&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;3.2&lt;/td&gt;
+      &lt;td&gt;DCNM &amp;amp; EVPN VXLAN&lt;/td&gt;
+      &lt;td&gt;&lt;a href=&quot;https://j-sulliman.github.io/2021/05/04/Part-3.2-DCNM-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html&quot;&gt;Building a DCNM Dashboard with Grafana, Django and Python&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Visualising DCNM APIs with Grafana.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;4.1&lt;/td&gt;
+      &lt;td&gt;SDWAN&lt;/td&gt;
+      &lt;td&gt;&lt;a href=&quot;https://j-sulliman.github.io/2021/05/13/Part-4.1-SDWAN-Cisco-SDWAN-Lab-Build.html&quot;&gt;Cisco SDWAN Virtual Lab Build&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Cisco SDWAN Virtual Lab deployment&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;4.2&lt;/td&gt;
+      &lt;td&gt;SDWAN&lt;/td&gt;
+      &lt;td&gt;In Progress&lt;/td&gt;
+      &lt;td&gt;Visualising vManage APIs with Grafana&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;421-overview&quot;&gt;4.2.1 Overview&lt;/h2&gt;
+
+&lt;p&gt;In parts two and three we covered creating Meraki and DCNM EVPN and VXLAN dashboards.   Last update (4.1), &lt;a href=&quot;https://j-sulliman.github.io/2021/05/13/Part-4.1-SDWAN-Cisco-SDWAN-Lab-Build.html&quot;&gt;Building an SDWAN Virtual Lab&lt;/a&gt;, we created an SD-WAN virtual sandbox to to test our API calls and dashboards against.&lt;/p&gt;
+
+&lt;p&gt;This update we cover much the same process as previous updates but for SD-WAN and vManage:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Running API calls against vManage NMS with Python&lt;/li&gt;
+  &lt;li&gt;Setting up django and database tables&lt;/li&gt;
+  &lt;li&gt;Ingesting the output of our vManage API call data into our Database using Django’s database API&lt;/li&gt;
+  &lt;li&gt;Building our SD-WAN dashboard and visualisations with Grafana&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;422-resources&quot;&gt;4.2.2 Resources&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://developer.cisco.com/docs/sdwan/#!introduction&quot;&gt;vManage API Reference&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://developer.cisco.com/sdwan/&quot;&gt;SD-WAN learning tracks on DevNet&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;423-django-setup&quot;&gt;4.2.3 Django Setup&lt;/h2&gt;
+&lt;p&gt;As in previous updates, we’ll need to:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Create our SD-WAN app in Django&lt;/li&gt;
+  &lt;li&gt;Create our model / table definitions to store the data from our API calls&lt;/li&gt;
+  &lt;li&gt;Map and save the data from our API calls to our database with the Django database API&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;4231-create-the-sd-wan-app-in-django&quot;&gt;4.2.3.1 Create the SD-WAN App in django&lt;/h3&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;venv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;python&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;manage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;py&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;startapp&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sdwan&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;If you’ve followed along with the previous meraki and DCNM articles, after running above, our directory structure should now look like this:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;├── apps
+│   ├── dcnm_api.py
+│   └── meraki_api.py
+├── cisco_grafana
+│   ├── settings.py
+│   ├── urls.py
+├── db.sqlite3
+├── dcnm
+├── manage.py
+├── meraki
+└── sdwan
+    ├── __init__.py
+    ├── admin.py
+    ├── apps.py
+    ├── migrations
+    │   └── __init__.py
+    ├── models.py
+    ├── tests.py
+    └── views.py
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Add the grafana app to cisco-grafana/settings.py:&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# Application definition
+&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;INSTALLED_APPS&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&apos;django.contrib.admin&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&apos;django.contrib.auth&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&apos;django.contrib.contenttypes&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&apos;django.contrib.sessions&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&apos;django.contrib.messages&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&apos;django.contrib.staticfiles&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&apos;meraki&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# Added in previous article
+&lt;/span&gt;    &lt;span class=&quot;s&quot;&gt;&apos;dcnm&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# Added in previous article
+&lt;/span&gt;    &lt;span class=&quot;s&quot;&gt;&apos;sdwan&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# &amp;lt;- Add this
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h2 id=&quot;424-making-api-calls-to-vmanage-with-python-requests&quot;&gt;4.2.4 Making API calls to vManage with Python Requests&lt;/h2&gt;
+
+&lt;p&gt;There’s three steps to make an API call to vManage:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Retrieve the XFSR (cross site forgery prevention token)&lt;/li&gt;
+  &lt;li&gt;Get the session id&lt;/li&gt;
+  &lt;li&gt;Make API requests passing in the token and session IDs&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;A detailed explanation as well as the sample code I’ve used can be found in the &lt;a href=&quot;https://developer.cisco.com/docs/sdwan/#!authentication/how-to-authenticate&quot;&gt;vManage API Reference&lt;/a&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;create-the-session-id-function-in-apps--sdwan_apipy&quot;&gt;Create the session ID function in &lt;strong&gt;apps &amp;gt; sdwan_api.py&lt;/strong&gt;:&lt;/h5&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;get_jsessionid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vmanage_host&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vmanage_port&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;username&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;api&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;/j_security_check&quot;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;base_url&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;https://{}:{}&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vmanage_host&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vmanage_port&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;url&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;base_url&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;api&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;payload&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;j_username&apos;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;username&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;j_password&apos;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+        &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;requests&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;payload&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;verify&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;cookies&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;headers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Set-Cookie&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;jsessionid&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cookies&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;jsessionid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;except&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;No valid JSESSION ID returned&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;nb&quot;&gt;exit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h5 id=&quot;call-the-function-with-your-vmanage-ip-username-and-password-as-inputs&quot;&gt;Call the function with your vmanage IP, username and password as inputs&lt;/h5&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;session_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;get_jsessionid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vmanage_host&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;192.168.200.42&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;vmanage_port&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;443&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;username&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;admin&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;Cisco123!&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;session_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h5 id=&quot;when-sdwanpy-is-run-we-should-see-the-session-id-as-below&quot;&gt;When &lt;strong&gt;sdwan.py&lt;/strong&gt; is run, we should see the session ID as below:&lt;/h5&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;venv&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;% python sdwan_api.py
+&lt;span class=&quot;nv&quot;&gt;JSESSIONID&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;irE4-XUiUb3Z4bKyvNdO1I-J6fQqKX6y13cB9nXL.876a93d5-15e9-4d85-ae1c-6ecfed042886
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h5 id=&quot;create-the-function-to-retreive-the-xfsr-token&quot;&gt;Create the function to retreive the XFSR token:&lt;/h5&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;get_token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vmanage_host&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vmanage_port&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;jsessionid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;headers&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;Cookie&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;jsessionid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;base_url&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;https://{}:{}&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vmanage_host&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vmanage_port&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;api&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;/dataservice/client/token&quot;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;url&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;base_url&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;api&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;requests&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;headers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;headers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;verify&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;status_code&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h5 id=&quot;call-the-get_token-function-with-host-port-and-the-session_id-as-inputs&quot;&gt;Call the &lt;strong&gt;get_token()&lt;/strong&gt; function with host, port and the session_id as inputs.&lt;/h5&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;token&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;get_token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vmanage_host&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;192.168.200.42&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;vmanage_port&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;443&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;jsessionid&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;session_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Token: {}&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h5 id=&quot;and-verify-that-weve-retrieved-the-token&quot;&gt;And verify that we’ve retrieved the token:&lt;/h5&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;venv&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;% python sdwan_api.py
+&lt;span class=&quot;nv&quot;&gt;JSESSIONID&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;z9l9e7e2_XNA3OtFtcN5vziq0BwAReFNQB_l0aqy.876a93d5-15e9-4d85-ae1c-6ecfed042886
+Token: 06B2E640C58DB66335A94CF381E447BAEB6534972587362EF47BB3E1FF5023E8EA605FB09D57A288134FEFDE1B44BD717755
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h5 id=&quot;create-the-function-below--it-passes-in-the-token-and-session-id-into-request-headers-and-queries-the-api-endpoint---see-inline-comments-for-explanation&quot;&gt;Create the function below.  It passes in the token and session ID into request headers and queries the API endpoint - see inline comments for explanation:&lt;/h5&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;vmanage_get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;jsessionid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vmanage_host&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;192.168.200.42&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;vmanage_port&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;443&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;querystring&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;/devices&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;# Pass our token and session-id to header used in requests query
+&lt;/span&gt;    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;token&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;header&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;Content-Type&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;application/json&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;Cookie&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;jsessionid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;s&quot;&gt;&apos;X-XSRF-TOKEN&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;header&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;Content-Type&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;application/json&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;Cookie&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;jsessionid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;# The vmanage API service
+&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;base_url&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;https://{}:{}/dataservice&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vmanage_host&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vmanage_port&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;url&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;base_url&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;querystring&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;# Pass the token and session ID to request headers
+&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;requests&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;headers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;header&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;verify&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;# Check that the request was successful
+&lt;/span&gt;    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;status_code&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;items&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;data&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;except&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;KeyError&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;Data key does not exist&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;items&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;except&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;TypeError&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;Type Error&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;status_code&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;API Call Failed - received status code {}&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;status_code&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;items&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;API Call Failed - received status code {}&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;status_code&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;items&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h5 id=&quot;call-the-above-function---well-start-with-the-device-api-endpoint-&quot;&gt;Call the above function - we’ll start with the &lt;strong&gt;/device&lt;/strong&gt; API endpoint :&lt;/h5&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;devices&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vmanage_get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;session_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vmanage_host&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;192.168.200.42&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                        &lt;span class=&quot;n&quot;&gt;vmanage_port&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;443&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                        &lt;span class=&quot;n&quot;&gt;querystring&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;/device&apos;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h5 id=&quot;when-run-youll-receive-a-list-of-sd-wan-devices&quot;&gt;When run, you’ll receive a list of SD-WAN devices:&lt;/h5&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;&apos;bfdSessions&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;4&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&apos;bfdSessionsUp&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&apos;board-serial&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;F38EC420&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&apos;certificate-validity&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;Valid&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&apos;connectedVManages&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;&quot;1.1.1.1&quot;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&apos;controlConnections&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;2&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&apos;device-groups&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;&quot;No groups&quot;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&apos;device-model&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;vedge-cloud&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&apos;device-os&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;next&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&apos;device-type&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;vedge&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&apos;deviceId&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;2.2.2.4&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&apos;domain-id&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;1&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&apos;host-name&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;wgn-vedge-2&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&apos;isDeviceGeoData&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&apos;lastupdated&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1621218293544&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&apos;latitude&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;37.666684&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&apos;layoutLevel&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&apos;linux_cpu_count&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;1&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&apos;local-system-ip&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;2.2.2.4&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&apos;longitude&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;-122.777023&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&apos;max-controllers&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;0&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&apos;model_sku&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;None&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&apos;ompPeers&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;1&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&apos;personality&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;vedge&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&apos;platform&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;x86_64&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&apos;reachability&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;reachable&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&apos;site-id&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;2&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&apos;state&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;green&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&apos;state_description&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;All daemons up&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&apos;status&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;normal&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&apos;statusOrder&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&apos;system-ip&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;2.2.2.4&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&apos;testbed_mode&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&apos;timezone&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;Pacific/Auckland&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&apos;total_cpu_count&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;2&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&apos;uptime-date&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1621218060000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&apos;uuid&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;12069106-eee8-08dc-4e99-83abc52e9e64&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&apos;validity&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;valid&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&apos;version&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;20.3.3&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h3 id=&quot;425-django-database-api--model-definition&quot;&gt;4.2.5 Django Database API / Model Definition&lt;/h3&gt;
+&lt;p&gt;Create the following database table entry in the the django models definitions -  &lt;strong&gt;sdwan &amp;gt; models.py&lt;/strong&gt; - this will store devices retrieved from our API call to the postgres database:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;django.db&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;models&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;django.utils&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;timezone&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Create your models here.
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;sdwan_devices&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;models&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;deviceId&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;models&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CharField&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;max_length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;system_ip&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;models&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CharField&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;max_length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;host_name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;models&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CharField&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;max_length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;reachability&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;models&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CharField&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;max_length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;status&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;models&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CharField&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;max_length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;personality&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;models&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CharField&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;max_length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;device_type&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;models&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CharField&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;max_length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;lastupdated&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;models&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CharField&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;max_length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;domain_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;models&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CharField&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;max_length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;board_serial&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;models&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CharField&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;primary_key&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;max_length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;certificate_validity&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;models&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CharField&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;max_length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;site_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;models&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CharField&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;max_length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;latitude&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;models&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CharField&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;max_length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;longitude&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;models&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CharField&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;max_length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;uptime_date&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;models&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BigIntegerField&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;validity&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;models&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CharField&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;max_length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;state&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;models&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CharField&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;max_length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;state_description&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;models&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CharField&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;max_length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;local_system_ip&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;models&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CharField&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;max_length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;version&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;models&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CharField&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;max_length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;last_updated&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;models&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DateTimeField&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;timezone&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;now&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__str__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;board_serial&lt;/span&gt;
+
+
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;sdwan_deviceCounters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;models&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;crashCount&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;models&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IntegerField&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;expectedControlConnections&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;models&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IntegerField&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;number_vsmart_control_connections&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;models&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IntegerField&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;rebootCount&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;models&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IntegerField&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;systemIp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;models&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CharField&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;max_length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;bfdSessionsUp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;models&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IntegerField&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;bfdSessionsDown&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;models&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IntegerField&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;ompPeersDown&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;models&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IntegerField&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;ompPeersUp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;models&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IntegerField&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;last_updated&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;models&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DateTimeField&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;timezone&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;now&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__str__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;systemIp&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Commit the model to postgres with the django makemigrations and migrate scripts:&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;venv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;python&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;manage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;py&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;makemigrations&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sdwan&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Migrations&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;sdwan&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;sdwan&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;migrations&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0001&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_initial&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;py&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Create&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sdwan_devices&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;venv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;python&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;manage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;py&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;migrate&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sdwan&lt;/span&gt;       
+&lt;span class=&quot;n&quot;&gt;Operations&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;perform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;Apply&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;all&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;migrations&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sdwan&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;426-writing-vmanage-api-calls-to-database&quot;&gt;4.2.6 Writing vManage API Calls to Database&lt;/h3&gt;
+&lt;p&gt;Import the models into our &lt;strong&gt;sdwan_api.py&lt;/strong&gt; script.  Using the function below we’ll map the output of our devices API query into the sdwan_devices table using django’s database API.  The vedges have different attributes returned than vmanage and vsmart:&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# Add the import statements torward the top of the file but below django.setup()
+&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sdwan.models&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sdwan_devices&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sdwan_deviceCounters&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;devices_to_db&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;devices&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;device&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;devices&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;device&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;device-type&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;vmanage&apos;&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;or&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;device&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;device-type&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;vsmart&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;sdwan_device&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sdwan_devices&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;deviceId&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;device&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;deviceId&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;system_ip&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;device&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;system-ip&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;host_name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;device&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;host-name&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;reachability&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;device&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;reachability&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;status&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;device&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;status&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;personality&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;device&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;personality&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;device_type&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;device&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;device-type&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;lastupdated&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;device&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;lastupdated&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;domain_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;device&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;domain-id&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;board_serial&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;device&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;board-serial&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;certificate_validity&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;device&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;certificate-validity&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;site_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;device&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;site-id&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;latitude&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;device&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;latitude&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;longitude&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;device&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;longitude&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;uptime_date&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;device&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;uptime-date&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;validity&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;device&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;validity&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;state&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;device&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;state&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;state_description&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;device&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;state_description&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;local_system_ip&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;device&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;local-system-ip&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;version&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;device&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;version&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;sdwan_device&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;save&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;device&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;device-type&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;vedge&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;sdwan_device&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sdwan_devices&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;deviceId&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;device&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;deviceId&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;system_ip&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;device&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;system-ip&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;host_name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;device&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;host-name&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;reachability&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;device&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;reachability&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;status&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;device&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;status&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;personality&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;device&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;personality&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;device_type&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;device&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;device-type&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;lastupdated&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;device&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;lastupdated&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;domain_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;device&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;domain-id&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;board_serial&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;device&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;board-serial&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;certificate_validity&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;device&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;certificate-validity&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;site_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;device&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;site-id&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;latitude&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;device&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;latitude&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;longitude&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;device&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;longitude&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;uptime_date&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;device&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;uptime-date&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;validity&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;device&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;validity&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;state&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;device&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;state&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;state_description&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;device&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;state_description&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;local_system_ip&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;device&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;local-system-ip&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;version&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;device&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;version&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;sdwan_device&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;save&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Call the function and pass in the list of devices:&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;devices_to_db&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;devices&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Verify that the devices have been written to our postgresdb with PgAdmin:
+&lt;img src=&quot;https://github.com/j-sulliman/j-sulliman.github.io/blob/master/images/vmanage_pgadmin.png?raw=true&quot; alt=&quot;vManage PgAdmin&quot; /&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;create-a-similar-function-this-time-mapping-the-output-of-the-api-call-to-devicecounters-to-the-models-filepostgres-database--note-again---you-view-the-parametersexpected-output-of-the-api-call-in-the-vmanage-api-reference&quot;&gt;Create a similar function, this time mapping the output of the API call to &lt;strong&gt;/device/counters&lt;/strong&gt; to the models file/postgres Database.  Note: Again - you view the parameters/expected output of the API call in the &lt;a href=&quot;https://developer.cisco.com/docs/sdwan/#!reference-device-state-and-statistics&quot;&gt;vManage API Reference&lt;/a&gt;&lt;/h5&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;device_counter_to_db&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;device_counters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;counter&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;device_counters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;counter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;bfdSessionsUp&apos;&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;counter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;device_counter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sdwan_deviceCounters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;crashCount&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;counter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;crashCount&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;expectedControlConnections&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;counter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;expectedControlConnections&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;number_vsmart_control_connections&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;counter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;number-vsmart-control-connections&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;rebootCount&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;counter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;rebootCount&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;systemIp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;counter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;system-ip&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;bfdSessionsUp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;counter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;bfdSessionsUp&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;bfdSessionsDown&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;counter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;bfdSessionsDown&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;ompPeersDown&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;counter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;ompPeersDown&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;ompPeersUp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;counter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;ompPeersUp&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;device_counter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;save&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h5 id=&quot;call-the-functions&quot;&gt;Call the functions:&lt;/h5&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;device_counters&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vmanage_get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;session_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vmanage_host&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;192.168.200.42&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                        &lt;span class=&quot;n&quot;&gt;vmanage_port&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;443&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                        &lt;span class=&quot;n&quot;&gt;querystring&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;/device/counters&apos;&lt;/span&gt;
+                        &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;device_counter_to_db&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;device_counters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h5 id=&quot;and-validate-that-device-counters-been-saved-to-the-database-you-could-use-pgadmin-as-before-or-code-similar-to-below-to-validate-from-python&quot;&gt;And validate that device counters been saved to the database. You could use PgAdmin as before, or code similar to below to validate from python:&lt;/h5&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sdwan_deviceCounters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;objects&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;all&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;-------------&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bfdSessionsUp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;427-grafana-visualisations&quot;&gt;4.2.7 Grafana Visualisations&lt;/h3&gt;
+
+&lt;h4 id=&quot;installation&quot;&gt;Installation&lt;/h4&gt;
+&lt;p&gt;Refer to Tutuorial (2) Meraki for Grafana installation and setup instructions&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Create a new dashboard and add a new panel&lt;/li&gt;
+  &lt;li&gt;Configure &lt;strong&gt;query options&lt;/strong&gt; as below.  Note - if you don’t configure &lt;strong&gt;“aggregate: count”&lt;/strong&gt; as shown, you’ll most likely receive an error.&lt;/li&gt;
+  &lt;li&gt;Select PieChartv2 from the right, optionally change the PieChart type to &lt;strong&gt;donut&lt;/strong&gt;, add the labels name, value and percent and give the chart a title.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Your preview pane should now look like below - click save and apply
+&lt;img src=&quot;https://github.com/j-sulliman/j-sulliman.github.io/blob/master/images/SDWAN_device_type.png?raw=true&quot; alt=&quot;Grafana Device Type&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Repeat the same for any other values of interest (e.g. software version, reachability, status).&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Return to the dashboard and add another panel, again select the &lt;strong&gt;sdwan_sdwan_devices&lt;/strong&gt; table.&lt;/li&gt;
+  &lt;li&gt;From the right hand pane, select &lt;strong&gt;table&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;In the &lt;strong&gt;query options&lt;/strong&gt;, select “format as: table”&lt;/li&gt;
+  &lt;li&gt;Add columns of interest to the table&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://github.com/j-sulliman/j-sulliman.github.io/blob/master/images/SD-WAN_Table.png?raw=true&quot; alt=&quot;SD-WAN Table&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Return to the dashboard and add another panel, select the &lt;strong&gt;sdwan_sdwan_devicecounters&lt;/strong&gt; table.&lt;/li&gt;
+  &lt;li&gt;From the right hand pane, select &lt;strong&gt;time series&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;In the from options, Time Column = &lt;strong&gt;last_updated&lt;/strong&gt;, metric column =  &lt;strong&gt;systemIp&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Select Column &lt;strong&gt;bfdSessionsUp&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://github.com/j-sulliman/j-sulliman.github.io/blob/master/images/BFD_sessions.png?raw=true&quot; alt=&quot;alt text&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Repeat for other counters of interest (for example OMP sessions).&lt;/p&gt;
+
+&lt;p&gt;If you’ve followed along successfully your SD-WAN Grafana Dashboard will look similar to below:
+&lt;img src=&quot;https://github.com/j-sulliman/j-sulliman.github.io/blob/master/images/SD-WAN_Dash.png?raw=true&quot; alt=&quot;SD-WAN Dashboard&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;If you’ve through to the end, thank you for reading through.&lt;/p&gt;
+
+&lt;p&gt;I’ll update this page with the next architecture soon.&lt;/p&gt;
+
+&lt;p&gt;Jamie&lt;/p&gt;</content><author><name>Jamie Sullivan</name></author><summary type="html">Article Index</summary></entry><entry><title type="html">Part 4.1 [sdwan] : cisco sdwan lab build</title><link href="/2021/05/14/Part-4.1-SDWAN-Cisco-SDWAN-Lab-Build.html" rel="alternate" type="text/html" title="Part 4.1 [sdwan] : cisco sdwan lab build" /><published>2021-05-14T08:00:00+12:00</published><updated>2021-05-14T08:00:00+12:00</updated><id>/2021/05/14/Part%204.1%20%5BSDWAN%5D%20:%20Cisco%20SDWAN%20Lab%20Build</id><content type="html" xml:base="/2021/05/14/Part-4.1-SDWAN-Cisco-SDWAN-Lab-Build.html">&lt;h1 id=&quot;part-4-cisco-sdwan-virtual-lab-deployment&quot;&gt;Part (4) Cisco SDWAN Virtual Lab Deployment&lt;/h1&gt;
+
+&lt;p&gt;We’ve covered creating a Meraki and DCNM dashboard using APIs and Grafana in previous updates.  In this update we continue building out our Grafana dashboard with a focus on SDWAN and vManage APIs.&lt;/p&gt;
+
+&lt;p&gt;We’ll cover SD-WAN in two parts:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;(1) Documenting the SDWAN Sandbox Lab virtual deployment&lt;/li&gt;
+  &lt;li&gt;(2) Using vManage APIs and building upon our Grafana dashboard to aggregate our visualisations across domains.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If you have your own SD-WAN environment or would rather use the &lt;a href=&quot;https://developer.cisco.com/docs/sandbox/#!networking/networking-sandbox-highlights&quot;&gt;DevNet Sandbox&lt;/a&gt; you can skip this article and jump straight to update (4.2) SDWAN APIs and Grafana… (once it’s finished!).&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Section&lt;/th&gt;
+      &lt;th&gt;Architecture&lt;/th&gt;
+      &lt;th&gt;Link&lt;/th&gt;
+      &lt;th&gt;Topic&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;Introduction&lt;/td&gt;
+      &lt;td&gt;&lt;a href=&quot;https://j-sulliman.github.io/2021/04/26/Part-1-Intro-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html&quot;&gt;building a multidomain dashboard with cisco apis and grafana&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Solution Overview&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;Meraki&lt;/td&gt;
+      &lt;td&gt;&lt;a href=&quot;https://j-sulliman.github.io/2021/04/26/Part-2-Meraki-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html&quot;&gt;Building a Meraki Dashboard with Grafana, Django and Python&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Visualising Meraki APIs with Grafana.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;3.1&lt;/td&gt;
+      &lt;td&gt;DCNM &amp;amp; EVPN VXLAN&lt;/td&gt;
+      &lt;td&gt;&lt;a href=&quot;https://j-sulliman.github.io/2021/05/04/Part-3.1-DCNM-Lab-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html&quot;&gt;DCNM VXLAN BGP and EVPN Lab with Nexus 9000v&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;DCNM, N9000v, EVPN and VXLAN Lab deployment&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;3.2&lt;/td&gt;
+      &lt;td&gt;DCNM &amp;amp; EVPN VXLAN&lt;/td&gt;
+      &lt;td&gt;&lt;a href=&quot;https://j-sulliman.github.io/2021/05/04/Part-3.2-DCNM-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html&quot;&gt;Building a DCNM Dashboard with Grafana, Django and Python&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Visualising DCNM APIs with Grafana.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;4.1&lt;/td&gt;
+      &lt;td&gt;SDWAN&lt;/td&gt;
+      &lt;td&gt;&lt;a href=&quot;https://j-sulliman.github.io/2021/05/13/Part-4.1-SDWAN-Cisco-SDWAN-Lab-Build.html&quot;&gt;Cisco SDWAN Virtual Lab Build&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Cisco SDWAN Virtual Lab deployment&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;4.2&lt;/td&gt;
+      &lt;td&gt;SDWAN&lt;/td&gt;
+      &lt;td&gt;In Progress&lt;/td&gt;
+      &lt;td&gt;Visualising vManage APIs with Grafana&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;resources&quot;&gt;Resources&lt;/h2&gt;
+
+&lt;p&gt;There’s several detailed guides and resources available that were invaluable, the first three particulary so, at least in terms of building an SDWAN Lab:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;LTRRST-2734: 4 Hours to Build Your Own SDWAN Lab &lt;a href=&quot;https://www.ciscolive.com/c/dam/r/ciscolive/emea/docs/2020/pdf/LTRRST-2734-LG.pdf&quot;&gt;Cisco Live On Demand Library&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Doanh Luong’s excellent and detailed guide &lt;a href=&quot;https://kimdoanh89.github.io/doanhluong.me/sd-wan/SD-WAN-setup/#14-viptela-cli-modes&quot;&gt;here&lt;/a&gt;. One of my primary sources, thanks for the great write up Doanh.&lt;/li&gt;
+  &lt;li&gt;For Plug and Play, license management &lt;a href=&quot;https://codingpackets.com/blog/cisco-sdwan-self-hosted-lab-part-1/&quot;&gt;codingpackets&lt;/a&gt; is another good resource.&lt;/li&gt;
+  &lt;li&gt;SD-WAN and Cloud Networking on &lt;a href=&quot;https://community.cisco.com/t5/sd-wan-and-cloud-networking/bd-p/discussions-sd-wan&quot;&gt;Cisco Communities&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Cisco &lt;a href=&quot;https://digital-learning.cisco.com&quot;&gt;Digital Learning&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;SD-WAN Sandboxes and Learning tracks on &lt;a href=&quot;https://developer.cisco.com/sdwan/&quot;&gt;DevNet&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;SD-WAN Design &lt;a href=&quot;https://www.cisco.com/c/en/us/td/docs/solutions/CVD/SDWAN/cisco-sdwan-design-guide.html&quot;&gt;Guide&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;SD-WAN Deployment &lt;a href=&quot;https://www.cisco.com/c/dam/en/us/td/docs/solutions/CVD/SDWAN/SD-WAN-End-to-End-Deployment-Guide.pdf&quot;&gt;Guide&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;SDWAN Troubleshooting &lt;a href=&quot;https://www.cisco.com/c/en/us/support/docs/routers/sd-wan/214509-troubleshoot-control-connections.html#anc13&quot;&gt;Guide&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;10-overview&quot;&gt;1.0 Overview&lt;/h2&gt;
+
+&lt;p&gt;Below summarises the devices found in each functional zone and also the key components of the virtual lab:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Control-plane&lt;/strong&gt;: vSmart - establishes OMP sessions between itself and edge devices, facilitates fabric discovery&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Management-plane&lt;/strong&gt;: vManage - provisioning, configuration templating, visibility for day-1 and day-2 ops, REST API interface for programming and automation. vBond orchestrates the discovery of vSmart and vManage devices for WAN edge devices&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Data-plane&lt;/strong&gt;: 6 x vEdge and cEdge devices in Auckland, Hamilton, Wellington, Christchurch&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Transport&lt;/strong&gt;: Direct Internet and MPLS WAN&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;physical-topology&quot;&gt;Physical Topology&lt;/h5&gt;
+&lt;p&gt;&lt;img src=&quot;https://github.com/j-sulliman/j-sulliman.github.io/blob/master/images/Physical_Design_2.png?raw=true&quot; alt=&quot;Physical Topology&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Let’s step through creating the topology in a virtual environment.&lt;/p&gt;
+
+&lt;h2 id=&quot;12-lab-components&quot;&gt;1.2 Lab components&lt;/h2&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Appliance&lt;/th&gt;
+      &lt;th&gt;Image name&lt;/th&gt;
+      &lt;th&gt;Version&lt;/th&gt;
+      &lt;th&gt;Memory&lt;/th&gt;
+      &lt;th&gt;CPU&lt;/th&gt;
+      &lt;th&gt;Disk&lt;/th&gt;
+      &lt;th&gt;Qty&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;vManage&lt;/td&gt;
+      &lt;td&gt;viptela-vmanage-20.3.3.1-genericx86-64.qcow2&lt;/td&gt;
+      &lt;td&gt;20.3.3.1&lt;/td&gt;
+      &lt;td&gt;32768MB&lt;/td&gt;
+      &lt;td&gt;1vCPUs&lt;/td&gt;
+      &lt;td&gt;30G&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;vSmart&lt;/td&gt;
+      &lt;td&gt;viptela-smart-20.3.3-genericx86-64.qcow2&lt;/td&gt;
+      &lt;td&gt;20.3.3&lt;/td&gt;
+      &lt;td&gt;4096MB&lt;/td&gt;
+      &lt;td&gt;1vCPUs&lt;/td&gt;
+      &lt;td&gt;-&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;vBond&lt;/td&gt;
+      &lt;td&gt;viptela-edge-20.3.3-genericx86-64.qcow2&lt;/td&gt;
+      &lt;td&gt;20.3.3&lt;/td&gt;
+      &lt;td&gt;2048MB&lt;/td&gt;
+      &lt;td&gt;2vCPUs&lt;/td&gt;
+      &lt;td&gt;-&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;vEdge&lt;/td&gt;
+      &lt;td&gt;viptela-edge-20.3.3-genericx86-64.qcow2&lt;/td&gt;
+      &lt;td&gt;20.3.3&lt;/td&gt;
+      &lt;td&gt;2048MB&lt;/td&gt;
+      &lt;td&gt;1vCPUs&lt;/td&gt;
+      &lt;td&gt;-&lt;/td&gt;
+      &lt;td&gt;6&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;csr1000v&lt;/td&gt;
+      &lt;td&gt;csr1000v-universalk9.17.03.03-serial.qcow2&lt;/td&gt;
+      &lt;td&gt;17.03.03&lt;/td&gt;
+      &lt;td&gt;3072MB&lt;/td&gt;
+      &lt;td&gt;1vCPUs&lt;/td&gt;
+      &lt;td&gt;-&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Ubuntu Desktop&lt;/td&gt;
+      &lt;td&gt;Ubuntu 20.10 (64bit).vmdk&lt;/td&gt;
+      &lt;td&gt;20.10&lt;/td&gt;
+      &lt;td&gt;1024MB&lt;/td&gt;
+      &lt;td&gt;1vCPUs&lt;/td&gt;
+      &lt;td&gt;-&lt;/td&gt;
+      &lt;td&gt;3&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;13-addressing&quot;&gt;1.3 Addressing&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;VPN 0 Transport VPN&lt;/strong&gt;: WAN transport and control plane traffic.  Contains all interfaces except Management.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;VPN 512 Management VPN&lt;/strong&gt;: Carries out of band management traffic and interfaces&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Subnet&lt;/th&gt;
+      &lt;th&gt;Mask&lt;/th&gt;
+      &lt;th&gt;Purpose&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;[192.168.200.0]&lt;/td&gt;
+      &lt;td&gt;255.255.255.0&lt;/td&gt;
+      &lt;td&gt;VPN 512 Mgmt OOB&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;10.254.254.0&lt;/td&gt;
+      &lt;td&gt;255.255.255.0&lt;/td&gt;
+      &lt;td&gt;VPN 0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;10.254.253.0&lt;/td&gt;
+      &lt;td&gt;255.255.255.0&lt;/td&gt;
+      &lt;td&gt;VPN 512 Mgmt In-Band&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;10.100.0.0&lt;/td&gt;
+      &lt;td&gt;255.255.0.0&lt;/td&gt;
+      &lt;td&gt;Direct Internet&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;10.200.0.0&lt;/td&gt;
+      &lt;td&gt;255.255.0.0&lt;/td&gt;
+      &lt;td&gt;WAN&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;14-interfaces&quot;&gt;1.4 Interfaces&lt;/h2&gt;
+
+&lt;h3 id=&quot;141-control-and-management-networks&quot;&gt;1.4.1 Control and Management Networks&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Hostname&lt;/th&gt;
+      &lt;th&gt;Interface&lt;/th&gt;
+      &lt;th&gt;Address&lt;/th&gt;
+      &lt;th&gt;Network&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;vmanage&lt;/td&gt;
+      &lt;td&gt;eth0&lt;/td&gt;
+      &lt;td&gt;192.168.200.42&lt;/td&gt;
+      &lt;td&gt;mgmt-oob&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;vmanage&lt;/td&gt;
+      &lt;td&gt;eth1&lt;/td&gt;
+      &lt;td&gt;10.254.253.1&lt;/td&gt;
+      &lt;td&gt;vpn 512&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;vmanage&lt;/td&gt;
+      &lt;td&gt;eth2&lt;/td&gt;
+      &lt;td&gt;10.254.254.1&lt;/td&gt;
+      &lt;td&gt;vpn 0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;vbond&lt;/td&gt;
+      &lt;td&gt;eth0&lt;/td&gt;
+      &lt;td&gt;10.254.253.3&lt;/td&gt;
+      &lt;td&gt;vpn 512&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;vbond&lt;/td&gt;
+      &lt;td&gt;eth1&lt;/td&gt;
+      &lt;td&gt;10.254.254.3&lt;/td&gt;
+      &lt;td&gt;vpn 0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;vsmart&lt;/td&gt;
+      &lt;td&gt;eth2&lt;/td&gt;
+      &lt;td&gt;10.254.254.2&lt;/td&gt;
+      &lt;td&gt;vpn 0&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;142-tranport-networks&quot;&gt;1.4.2 Tranport Networks&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Hostname&lt;/th&gt;
+      &lt;th&gt;Interface&lt;/th&gt;
+      &lt;th&gt;Address&lt;/th&gt;
+      &lt;th&gt;Network&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;border-router&lt;/td&gt;
+      &lt;td&gt;eth1&lt;/td&gt;
+      &lt;td&gt;10.254.254.254&lt;/td&gt;
+      &lt;td&gt;vpn 512&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;border-router&lt;/td&gt;
+      &lt;td&gt;eth2&lt;/td&gt;
+      &lt;td&gt;10.100.0.1&lt;/td&gt;
+      &lt;td&gt;DIA&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;border-router&lt;/td&gt;
+      &lt;td&gt;eth2&lt;/td&gt;
+      &lt;td&gt;10.200.0.1&lt;/td&gt;
+      &lt;td&gt;WAN&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;143-edge-and-branch-networks&quot;&gt;1.4.3 Edge and Branch Networks&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Hostname&lt;/th&gt;
+      &lt;th&gt;Interface&lt;/th&gt;
+      &lt;th&gt;Address&lt;/th&gt;
+      &lt;th&gt;Network&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;akl-vedge-1&lt;/td&gt;
+      &lt;td&gt;g0/0&lt;/td&gt;
+      &lt;td&gt;10.100.0.10&lt;/td&gt;
+      &lt;td&gt;DIA&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;akl-vedge-1&lt;/td&gt;
+      &lt;td&gt;g0/1&lt;/td&gt;
+      &lt;td&gt;10.200.0.10&lt;/td&gt;
+      &lt;td&gt;WAN&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;akl-vedge-2&lt;/td&gt;
+      &lt;td&gt;g0/0&lt;/td&gt;
+      &lt;td&gt;10.100.0.11&lt;/td&gt;
+      &lt;td&gt;DIA&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;akl-vedge-2&lt;/td&gt;
+      &lt;td&gt;g0/1&lt;/td&gt;
+      &lt;td&gt;10.200.0.11&lt;/td&gt;
+      &lt;td&gt;WAN&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;wgn-vedge-1&lt;/td&gt;
+      &lt;td&gt;g0/0&lt;/td&gt;
+      &lt;td&gt;10.200.0.20&lt;/td&gt;
+      &lt;td&gt;DIA&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;wgn-vedge-1&lt;/td&gt;
+      &lt;td&gt;g0/1&lt;/td&gt;
+      &lt;td&gt;10.100.0.20&lt;/td&gt;
+      &lt;td&gt;WAN&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;wgn-vedge-2&lt;/td&gt;
+      &lt;td&gt;g0/1&lt;/td&gt;
+      &lt;td&gt;10.100.0.21&lt;/td&gt;
+      &lt;td&gt;DIA&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;wgn-vedge-2&lt;/td&gt;
+      &lt;td&gt;g0/0&lt;/td&gt;
+      &lt;td&gt;10.200.0.21&lt;/td&gt;
+      &lt;td&gt;WAN&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;hml-vedge-1&lt;/td&gt;
+      &lt;td&gt;g0/0&lt;/td&gt;
+      &lt;td&gt;10.100.0.30&lt;/td&gt;
+      &lt;td&gt;DIA&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;hml-vedge-1&lt;/td&gt;
+      &lt;td&gt;g0/1&lt;/td&gt;
+      &lt;td&gt;10.200.0.30&lt;/td&gt;
+      &lt;td&gt;WAN&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;chc-vedge-1&lt;/td&gt;
+      &lt;td&gt;g0/0&lt;/td&gt;
+      &lt;td&gt;10.100.0.40&lt;/td&gt;
+      &lt;td&gt;DIA&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;chc-vedge-1&lt;/td&gt;
+      &lt;td&gt;g0/1&lt;/td&gt;
+      &lt;td&gt;10.200.0.40&lt;/td&gt;
+      &lt;td&gt;WAN&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;15-device-configurations&quot;&gt;1.5 Device Configurations&lt;/h2&gt;
+
+&lt;h3 id=&quot;151-provisioning-and-controller-profile&quot;&gt;1.5.1 Provisioning and Controller Profile&lt;/h3&gt;
+&lt;p&gt;In the Plug and Play Connect portal on software.cisco.com:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Configure the controller profile as shown:&lt;/li&gt;
+  &lt;li&gt;Add software devices&lt;/li&gt;
+  &lt;li&gt;Download the vedge provisioning file that we’ll upload to vManage and use to authenticate vedge devices&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;controller-profile&quot;&gt;Controller Profile&lt;/h5&gt;
+&lt;p&gt;&lt;img src=&quot;https://github.com/j-sulliman/j-sulliman.github.io/blob/master/images/Plug_Play_Controller_profile.png?raw=true&quot; alt=&quot;Controller Profile&quot; /&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;download-the-provisioning-file&quot;&gt;Download the Provisioning File&lt;/h5&gt;
+&lt;p&gt;&lt;img src=&quot;https://github.com/j-sulliman/j-sulliman.github.io/blob/master/images/Provisioning_FIle.png?raw=true&quot; alt=&quot;Provisioning File&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;161-vmanage&quot;&gt;1.6.1 vManage&lt;/h3&gt;
+
+&lt;p&gt;As per 1.4.1, eth2 maps to VPN 0 which is used for control traffic, eth0 is used for “out of band” lab management and eth1 for management inband, both map to VPN 512 for management&lt;/p&gt;
+
+&lt;h4 id=&quot;system&quot;&gt;System&lt;/h4&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vmanage# show running-config system
+system
+ host-name             vmanage
+ system-ip             1.1.1.1
+ site-id               1000
+ admin-tech-on-failure
+ sp-organization-name  nz-se-lab
+ organization-name     nz-se-lab
+ clock timezone Pacific/Auckland
+ vbond 10.254.254.3
+ !
+ ntp
+  server nz.pool.ntp.org
+   version 4
+  exit
+ !
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;control---vpn-0&quot;&gt;Control - vpn 0&lt;/h4&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vmanage# sh run vpn 0
+vpn 0
+ interface eth2
+  ip address 10.254.254.1/24
+  tunnel-interface
+   allow-service dhcp
+   allow-service dns
+   allow-service icmp
+   no allow-service sshd
+   no allow-service netconf
+   no allow-service ntp
+   no allow-service stun
+   allow-service https
+  !
+  no shutdown
+ !
+ ip route 0.0.0.0/0 10.254.254.254
+!
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;management---vpn-512&quot;&gt;Management - vpn 512&lt;/h4&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vmanage# show running-config vpn 512
+vpn 512
+ interface eth0
+  ip dhcp-client
+  no shutdown
+ !
+ interface eth1
+  ip address 10.254.253.1/24
+  no shutdown
+ !
+ ip route 192.168.0.0/16 192.168.200.1 &amp;lt;- Route all home network subnets to firewall
+!
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Verify that an address has been assigned to eth0 and that it’s reachable through a browser.  In my case https://192.168.200.42.&lt;/p&gt;
+
+&lt;h4 id=&quot;initial-configuration-settings&quot;&gt;Initial Configuration Settings&lt;/h4&gt;
+
+&lt;p&gt;From &lt;strong&gt;Administration &amp;gt; Settings&lt;/strong&gt;, enter the organization name (must much plug and play controller profile) and vbond VPN0 IP address
+&lt;img src=&quot;https://github.com/j-sulliman/j-sulliman.github.io/blob/master/images/Administration.Settings.png?raw=true&quot; alt=&quot;Configuration Settings&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The vbond address needs to be configued under &lt;strong&gt;both&lt;/strong&gt; the cli and gui as above for successful vedge registration.&lt;/p&gt;
+
+&lt;h5 id=&quot;generate-the-keys-for-certificates&quot;&gt;Generate the keys for certificates&lt;/h5&gt;
+
+&lt;p&gt;Enter &lt;strong&gt;vshell&lt;/strong&gt; mode on vmanage and run the following:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;openssl genrsa -out SDWAN.key 2048
+openssl req -x509 -new -nodes -key SDWAN.key -sha256 -days 2000 \
+        -subj &quot;/C=NZ/ST=NZ/L=NZ/O=nz-se-lab/CN=SD-WAN&quot; \
+        -out SDWAN.pem
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Use &lt;strong&gt;cat SDWAN.pem&lt;/strong&gt;, to copy the certificate to Administration &amp;gt; Settings &amp;gt; Controll &amp;gt; Enterprise Root Certificate
+&lt;img src=&quot;https://github.com/j-sulliman/j-sulliman.github.io/blob/master/images/Enterprise_Root_certificate.png?raw=true&quot; alt=&quot;Enterprise Root Cert&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Browse to &lt;strong&gt;https://vmanage-ip-address/dataservice/system/device/sync/rootcertchain&lt;/strong&gt;, this will resync the vmanage database via an API call.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;openssl x509 -req -in vManage.csr -CA SDWAN.pem -CAkey SDWAN.key -CAcreateserial -out vManage.crt -days 2000 -sha256
+cat vManage.crt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Under Configuration &amp;gt; Certificates &amp;gt; Controllers, select vManage and “Generate CSR”, copy the CSR content.
+&lt;img src=&quot;https://github.com/j-sulliman/j-sulliman.github.io/blob/master/images/Generate_CSR.png?raw=true&quot; alt=&quot;Generate CSR&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In the vshell on vmanage use VIM to paste the CSR content into vManage.csr and save.&lt;/p&gt;
+
+&lt;p&gt;Sign the CSR as below:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;openssl x509 -req -in vManage.csr -CA SDWAN.pem -CAkey SDWAN.key -CAcreateserial -out vManage.crt -days 2000 -sha256
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Use &lt;strong&gt;cat&lt;/strong&gt; to copy vManage.crt content, and install through Configuration &amp;gt; Certificates &amp;gt; Controllers and select vManage.&lt;/p&gt;
+
+&lt;p&gt;Paste vManage.crt content and “install” as below.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://github.com/j-sulliman/j-sulliman.github.io/blob/master/images/Install_vManage_cert.png?raw=true&quot; alt=&quot;Install Cert&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;162-vbond&quot;&gt;1.6.2 vBond&lt;/h3&gt;
+
+&lt;h4 id=&quot;system-1&quot;&gt;system&lt;/h4&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vbond# show running-config system
+system
+ host-name               vbond
+ system-ip               1.1.1.3
+ site-id                 1000
+ admin-tech-on-failure
+ no route-consistency-check
+ organization-name       nz-se-lab
+ clock timezone Pacific/Auckland
+ vbond 10.254.254.3 local vbond-only
+ !
+  ntp
+   server nz.pool.ntp.org
+    version 4
+   exit
+  !
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;The vbond [10.254.254.3] &lt;strong&gt;local&lt;/strong&gt; command designates that the device functions as a vbond vs vedge.&lt;/p&gt;
+
+&lt;h4 id=&quot;control---vpn-0-1&quot;&gt;Control - VPN 0&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt; - you will probably need to disable the “tunnel-interface” to add the vbond controller to vManage&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vbond# show running-config vpn 0
+vpn 0
+ interface ge0/1
+  ip address 10.254.254.3/24
+  tunnel-interface
+   encapsulation ipsec
+   no allow-service bgp
+   allow-service dhcp
+   allow-service dns
+   allow-service icmp
+   no allow-service sshd
+   no allow-service netconf
+   no allow-service ntp
+   no allow-service ospf
+   no allow-service stun
+   allow-service https
+  !
+  no shutdown
+ !
+ ip route 0.0.0.0/0 10.254.254.254
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;management---vpn-512-1&quot;&gt;Management - VPN 512&lt;/h4&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vbond# show running-config vpn 512
+vpn 512
+ interface eth0
+  ip address 172.16.1.3/24
+  ipv6 dhcp-client
+  no shutdown
+ !
+!
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;vbond-certificate-install&quot;&gt;vBond Certificate Install&lt;/h4&gt;
+&lt;p&gt;Either use &lt;strong&gt;cat&lt;/strong&gt; and to copy the contents of &lt;strong&gt;SDWAN.pem&lt;/strong&gt; and &lt;strong&gt;SDWAN.key&lt;/strong&gt; from vmanage in vshell mode to vbond using &lt;strong&gt;vim&lt;/strong&gt;, or use SCP to copy the .pem and .key files from vmanage to vbond.&lt;/p&gt;
+
+&lt;p&gt;In vManage add vBond under Configuration &amp;gt; Controllers &amp;gt; Add Controller.  Use the VPN 0 (Control interface) IP address 10.254.254.3.
+&lt;img src=&quot;https://github.com/j-sulliman/j-sulliman.github.io/blob/master/images/Add_vBond.png?raw=true&quot; alt=&quot;Add vBond&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Under Configuration &amp;gt; Certificates &amp;gt; Controllers &amp;gt; vBond, click the three dots … and “View CSR”&lt;/p&gt;
+
+&lt;p&gt;In vshell mode, use VIM to paste the contents into vBond.csr&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;openssl x509 -req -in vBond.csr -CA SDWAN.pem -CAkey SDWAN.key -CAcreateserial -out vBond.crt -days 2000 -sha256
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Copy the content of vBond.crt (&lt;strong&gt;cat vBond.crt&lt;/strong&gt;) and paste to &lt;strong&gt;Configuration &amp;gt; Certificates &amp;gt; Controllers &amp;gt; Select vBond&lt;/strong&gt; and “Install Certificate”:
+&lt;img src=&quot;https://github.com/j-sulliman/j-sulliman.github.io/blob/master/images/vbond_cert.png?raw=true&quot; alt=&quot;vBond Cert&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;163-vsmart&quot;&gt;1.6.3 vSmart&lt;/h3&gt;
+
+&lt;h4 id=&quot;system-2&quot;&gt;system&lt;/h4&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vsmart# show running-config system
+system
+ host-name             vsmart
+ system-ip             1.1.1.2
+ site-id               1000
+ admin-tech-on-failure
+ organization-name     nz-se-lab
+ clock timezone Pacific/Auckland
+ vbond 10.254.254.3
+ !
+ ntp
+  server nz.pool.ntp.org
+   version 4
+  exit
+ !
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;vpn-0&quot;&gt;VPN 0&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt; - you will probably need to disable the “tunnel-interface” to add the vsmart controller to vManage&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vsmart# show running-config vpn 0
+vpn 0
+ interface eth1
+  ip address 10.254.254.2/24
+  tunnel-interface
+   allow-service dhcp
+   allow-service dns
+   allow-service icmp
+   no allow-service sshd
+   no allow-service netconf
+   no allow-service ntp
+   no allow-service stun
+  !
+  no shutdown
+ !
+ ip route 0.0.0.0/0 10.254.254.254
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;vpn-512&quot;&gt;VPN 512&lt;/h4&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vsmart# show running-config vpn 512
+vpn 512
+ interface eth0
+  ip address 172.16.1.2/24
+  no shutdown
+ !
+!
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;vsmart-certificate-install&quot;&gt;vSmart Certificate Install&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Use &lt;strong&gt;cat&lt;/strong&gt; and to copy the contents of &lt;strong&gt;SDWAN.pem&lt;/strong&gt; and &lt;strong&gt;SDWAN.key&lt;/strong&gt; from vmanage in vshell mode to vSmart using &lt;strong&gt;vim&lt;/strong&gt;, or use SCP to copy the .pem and .key files from vmanage to vsmart.&lt;/li&gt;
+  &lt;li&gt;In vManage add vSmart under Configuration &amp;gt; Controllers &amp;gt; Add Controller.  Use the VPN 0 (Control interface) IP address 10.254.254.2.&lt;/li&gt;
+  &lt;li&gt;Under Configuration &amp;gt; Certificates &amp;gt; Controllers &amp;gt; vSmart, click the three dots … and “View CSR”&lt;/li&gt;
+  &lt;li&gt;In vshell mode, use VIM to paste the contents into vSmart.csr&lt;/li&gt;
+  &lt;li&gt;
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;openssl x509 -req -in vSmart.csr -CA SDWAN.pem -CAkey SDWAN.key -CAcreateserial -out vSmart.crt -days 2000 -sha256
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Copy the contents of vSmart.crt (&lt;strong&gt;cat vSmart.crt&lt;/strong&gt;) and paste to &lt;strong&gt;Configuration &amp;gt; Certificates &amp;gt; Controllers &amp;gt; Select vSmart&lt;/strong&gt; and “Install Certificate”:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;164-vedge&quot;&gt;1.6.4 vEdge&lt;/h3&gt;
+
+&lt;h4 id=&quot;certificates&quot;&gt;Certificates&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;In vshell mode on vManage, copy SDWAN.pem to vEdge
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vmanage:~$ cat SDWAN.pem
+-----BEGIN CERTIFICATE-----
+   *********************
+-----END CERTIFICATE-----
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Paste the cert contents into the vedge in vshell mode &lt;strong&gt;vim SDWAN.pem&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Install the root certificate
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;request root-cert-chain install /home/admin/SDWAN.pem
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Verify certificate has been Installed
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;akl-vedge-1# show certificate root-ca-cert | more
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number:
+            18:da:d1:9e:26:7d:e8:bb:4a:21:58:cd:cc:6b:3b:4a
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Upload the WAN Edge List generated in section 1.5.1 to vManage - Configuration &amp;gt; Devices
+&lt;img src=&quot;https://github.com/j-sulliman/j-sulliman.github.io/blob/master/images/WAN%20Edge%20List.png?raw=true&quot; alt=&quot;WAN Edge List&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;Select a vedge cloud device and &lt;strong&gt;Generate Bootstrap&lt;/strong&gt;, note the UUID and OTP for the next step
+&lt;img src=&quot;https://github.com/j-sulliman/j-sulliman.github.io/blob/master/images/Generate_Bootstrap.png?raw=true&quot; alt=&quot;Generate Bootstrap&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;Return to the vedge device, exit from vshell mode and register with the UUID and OTP shown above
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;akl-vedge-1# request vedge-cloud activate chassis-number **************** token ***************
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;system-3&quot;&gt;System&lt;/h4&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;akl-vedge-1# show running-config system
+system
+ host-name               akl-vedge-1
+ system-ip               2.2.2.1
+ site-id                 1
+ admin-tech-on-failure
+ no route-consistency-check
+ organization-name       nz-se-lab
+ clock timezone Pacific/Auckland
+ vbond 10.254.254.3
+ !
+ ntp
+  server nz.pool.ntp.org
+   version 4
+  exit
+ !
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;control-vpn-0&quot;&gt;Control VPN 0&lt;/h4&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; vpn 0
+ interface ge0/0
+  ip address 10.100.0.10/16
+  tunnel-interface
+   encapsulation ipsec
+   no allow-service bgp
+   allow-service dhcp
+   allow-service dns
+   allow-service icmp
+   no allow-service sshd
+   no allow-service netconf
+   no allow-service ntp
+   no allow-service ospf
+   no allow-service stun
+   allow-service https
+  !
+  no shutdown
+ !
+ interface ge0/1
+  ip address 10.200.0.10/24
+  no shutdown
+ !
+ ip route 0.0.0.0/0 10.100.0.1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;17-verification&quot;&gt;1.7 Verification&lt;/h2&gt;
+
+&lt;p&gt;From the vManage GUI, all devices are green and “up”:
+&lt;img src=&quot;https://github.com/j-sulliman/j-sulliman.github.io/blob/master/images/vManage.png?raw=true&quot; alt=&quot;vManage&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;WAN edge status is “reachable”:
+&lt;img src=&quot;https://github.com/j-sulliman/j-sulliman.github.io/blob/master/images/WAN_Edge_status.png?raw=true&quot; alt=&quot;WAN Edge Status&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Clock and timezone is synchronised:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vmanage# show ntp associations
+
+                                                           LAST             
+IDX  ASSOCID  STATUS  CONF  REACHABILITY  AUTH  CONDITION  EVENT     COUNT  
+----------------------------------------------------------------------------
+1    40044    961a    yes   yes           none  sys.peer   sys_peer  1      
+
+vmanage# show clock
+Mon May 10 17:09:49 NZST 2021
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Certificate is installed, organisation name is correct, vbond connection up, WAN interfaces up:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vmanage# show control local-properties
+personality                       vmanage
+sp-organization-name              nz-se-lab
+organization-name                 nz-se-lab
+root-ca-chain-status              Installed
+
+certificate-status                Installed
+certificate-validity              Valid
+certificate-not-valid-before      May 09 21:46:52 2021 GMT
+certificate-not-valid-after       Oct 30 21:46:52 2026 GMT
+
+dns-name                          10.254.254.3
+site-id                           1000
+domain-id                         0
+protocol                          dtls
+tls-port                          23456
+system-ip                         1.1.1.1
+number-vbond-peers                1
+
+INDEX   IP                                      PORT
+-----------------------------------------------------
+0       10.254.254.3                            12346  
+
+number-active-wan-interfaces      2
+
+                                PUBLIC          PUBLIC PRIVATE         PRIVATE                                 PRIVATE                               LAST
+INSTANCE             INTERFACE  IPv4            PORT   IPv4            IPv6                                    PORT    VS/VM  COLOR            STATE CONNECTION
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+0        eth2       10.254.254.1    12346  10.254.254.1    ::                                      12346     1/0   default           up     0:00:00:04
+1        eth2       10.254.254.1    12446  10.254.254.1    ::                                      12446     0/0   default           up     0:00:00:04
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;From vBond - validate control connectivity to vmanage, vsmart and vedges:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vbond# show orchestrator connections
+                                                                                     PEER                      PEER                                                                            
+         PEER     PEER     PEER             SITE        DOMAIN      PEER             PRIVATE  PEER             PUBLIC                                   ORGANIZATION                           
+INSTANCE TYPE     PROTOCOL SYSTEM IP        ID          ID          PRIVATE IP       PORT     PUBLIC IP        PORT    REMOTE COLOR     STATE           NAME                    UPTIME         
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+0        vedge    dtls     2.2.2.1          1           1           10.100.0.10      12366    10.100.0.10      12366   default          up              nz-se-lab               0:04:18:39     
+0        vedge    dtls     2.2.2.2          1           1           10.100.0.11      12346    10.100.0.11      12346   default          up              nz-se-lab               0:04:18:37     
+0        vedge    dtls     2.2.2.3          2           1           10.100.0.20      12366    10.100.0.20      12366   default          up              nz-se-lab               0:04:18:36     
+0        vedge    dtls     2.2.2.4          2           1           10.100.0.21      12366    10.100.0.21      12366   default          up              nz-se-lab               0:04:18:35     
+0        vedge    dtls     2.2.2.5          3           1           10.100.0.30      12346    10.100.0.30      12346   default          up              nz-se-lab               0:00:01:28     
+0        vedge    dtls     2.2.2.6          4           1           10.100.0.40      12346    10.100.0.40      12346   default          up              nz-se-lab               0:00:00:06     
+0        vsmart   dtls     1.1.1.2          1000        1           10.254.254.2     12346    10.254.254.2     12346   default          up              nz-se-lab               0:06:40:17     
+0        vsmart   dtls     1.1.1.2          1000        1           10.254.254.2     12446    10.254.254.2     12446   default          up              nz-se-lab               0:06:40:16     
+0        vmanage  dtls     1.1.1.1          1000        0           10.254.254.1     12346    10.254.254.1     12346   default          up              nz-se-lab               0:06:49:14     
+0        vmanage  dtls     1.1.1.1          1000        0           10.254.254.1     12446    10.254.254.1     12446   default          up              nz-se-lab               0:06:49:31
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h5 id=&quot;verify-connectivity&quot;&gt;Verify Connectivity&lt;/h5&gt;
+&lt;p&gt;vbond to Border Gateway:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vbond# ping 10.254.254.254 vpn 0 count 3
+Ping in VPN 0
+PING 10.254.254.254 (10.254.254.254) 56(84) bytes of data.
+64 bytes from 10.254.254.254: icmp_seq=1 ttl=255 time=107 ms
+64 bytes from 10.254.254.254: icmp_seq=2 ttl=255 time=25.6 ms
+64 bytes from 10.254.254.254: icmp_seq=3 ttl=255 time=64.8 ms
+
+--- 10.254.254.254 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2002ms
+rtt min/avg/max/mdev = 25.620/65.906/107.215/33.319 ms
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;vbond to vManage:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vbond# ping 10.254.254.1 vpn 0 count 3  
+Ping in VPN 0
+PING 10.254.254.1 (10.254.254.1) 56(84) bytes of data.
+64 bytes from 10.254.254.1: icmp_seq=1 ttl=64 time=12.3 ms
+64 bytes from 10.254.254.1: icmp_seq=2 ttl=64 time=14.3 ms
+64 bytes from 10.254.254.1: icmp_seq=3 ttl=64 time=15.2 ms
+
+--- 10.254.254.1 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2002ms
+rtt min/avg/max/mdev = 12.355/14.005/15.291/1.229 ms
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;vbond to vsmart:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vbond# ping 10.254.254.2 vpn 0 count 3
+Ping in VPN 0
+PING 10.254.254.2 (10.254.254.2) 56(84) bytes of data.
+64 bytes from 10.254.254.2: icmp_seq=1 ttl=64 time=20.1 ms
+64 bytes from 10.254.254.2: icmp_seq=2 ttl=64 time=12.2 ms
+64 bytes from 10.254.254.2: icmp_seq=3 ttl=64 time=19.4 ms
+
+--- 10.254.254.2 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2002ms
+rtt min/avg/max/mdev = 12.206/17.282/20.199/3.602 ms
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;vbond to akl-vedge-1:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vbond# ping 10.100.0.10 vpn 0 count 3
+Ping in VPN 0
+PING 10.100.0.10 (10.100.0.10) 56(84) bytes of data.
+64 bytes from 10.100.0.10: icmp_seq=1 ttl=63 time=16.2 ms
+64 bytes from 10.100.0.10: icmp_seq=2 ttl=63 time=16.2 ms
+64 bytes from 10.100.0.10: icmp_seq=3 ttl=63 time=14.2 ms
+
+--- 10.100.0.10 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2002ms
+rtt min/avg/max/mdev = 14.211/15.556/16.240/0.962 ms
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;vbond to wgn-vedge-1:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vbond# ping 10.100.0.20 vpn 0 count 3
+Ping in VPN 0
+PING 10.100.0.20 (10.100.0.20) 56(84) bytes of data.
+64 bytes from 10.100.0.20: icmp_seq=1 ttl=63 time=2.27 ms
+64 bytes from 10.100.0.20: icmp_seq=2 ttl=63 time=13.4 ms
+64 bytes from 10.100.0.20: icmp_seq=3 ttl=63 time=12.2 ms
+
+--- 10.100.0.20 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2002ms
+rtt min/avg/max/mdev = 2.275/9.319/13.435/5.006 ms
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;vbond to vbond to hml-vedge-1:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vbond# ping 10.100.0.30 vpn 0 count 3
+Ping in VPN 0
+PING 10.100.0.30 (10.100.0.30) 56(84) bytes of data.
+64 bytes from 10.100.0.30: icmp_seq=1 ttl=63 time=19.2 ms
+64 bytes from 10.100.0.30: icmp_seq=2 ttl=63 time=18.2 ms
+64 bytes from 10.100.0.30: icmp_seq=3 ttl=63 time=18.3 ms
+
+--- 10.100.0.30 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2002ms
+rtt min/avg/max/mdev = 18.238/18.606/19.234/0.472 ms
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;vbond to chc-vedge-1:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vbond# ping 10.100.0.40 vpn 0 count 3
+Ping in VPN 0
+PING 10.100.0.40 (10.100.0.40) 56(84) bytes of data.
+64 bytes from 10.100.0.40: icmp_seq=1 ttl=63 time=20.2 ms
+64 bytes from 10.100.0.40: icmp_seq=2 ttl=63 time=19.3 ms
+64 bytes from 10.100.0.40: icmp_seq=3 ttl=63 time=19.3 ms
+
+--- 10.100.0.40 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2002ms
+rtt min/avg/max/mdev = 19.318/19.631/20.219/0.416 ms
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Connectivity successful, validate control connections between vedge and vbond&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vedge-6# show control connections
+                                                                                       PEER                                          PEER                                          CONTROLLER
+PEER    PEER PEER            SITE       DOMAIN PEER                                    PRIV  PEER                                    PUB                                           GROUP      
+TYPE    PROT SYSTEM IP       ID         ID     PRIVATE IP                              PORT  PUBLIC IP                               PORT  LOCAL COLOR     PROXY STATE UPTIME      ID         
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+vsmart  dtls 1.1.1.2         1000       1      10.254.254.2                            12346 10.254.254.2                            12346 default         No    up     0:00:21:04  0           
+vbond   dtls 0.0.0.0         0          0      10.254.254.3                            12346 10.254.254.3                            12346 default         -     up     0:00:21:04  0           
+vmanage dtls 1.1.1.1         1000       0      10.254.254.1                            12346 10.254.254.1                            12346 default         No    up     0:00:21:04  0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h2 id=&quot;lessons-learned&quot;&gt;Lessons Learned&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Watch for ommitted or extra characters when copying certificates between devices - this caught me out a few times&lt;/li&gt;
+  &lt;li&gt;You may need to disable encapsulation on the interface for devices to register with vmanage and re-enable once registered. You may need to toggle on/off depending on the order of operations&lt;/li&gt;
+  &lt;li&gt;Set the timezone / clock on all devices and ensure they’re in sync&lt;/li&gt;
+  &lt;li&gt;Organization name is important and must match between Plug and Play / Smart License portal and vmanage&lt;/li&gt;
+  &lt;li&gt;Ensure the vBond IP address matches the controller address defined in the plug and play portal, otherwise vEdges won’t register&lt;/li&gt;
+  &lt;li&gt;Use “show control conections-history detail” if and when troubleshooting bring up of devices and pay close attention to any error codes, cross reference any error codes with the troubleshooting guide linked above.&lt;/li&gt;
+  &lt;li&gt;Reminder - management interfaces in VPN 512, control/transport in VPN 0.  This caught me out as below.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;an-example&quot;&gt;An Example&lt;/h5&gt;
+
+&lt;p&gt;An error I encountered was “VM_TMO” and from “show control connections-history detail”:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &quot;state               connect [Local Err: ERR_(D)TLS_CONN_FAIL] [Remote Err: NO_ERROR]&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Regular pings were completing but rapid pings weren’t:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  vedge-1# ping 10.254.254.1 vpn 0
+  Ping in VPN 0
+  PING 10.254.254.1 (10.254.254.1) 56(84) bytes of data.
+  64 bytes from 10.254.254.1: icmp_seq=2 ttl=63 time=1.08 ms
+  64 bytes from 10.254.254.1: icmp_seq=4 ttl=63 time=0.885 ms
+  64 bytes from 10.254.254.1: icmp_seq=5 ttl=63 time=1.30 ms
+
+  vedge-1# ping 10.254.254.1 vpn 0 count 1000 rapid
+  Ping in VPN 0
+  !.!....!.!..!.!.!.!..!.!^C
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;I’d put my management interface and route in the wrong vpn (0)  - Moving the management interface and static route from vpn 0 to vpn 512 resolved.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  --- 10.254.254.1 statistics ---
+  24 packets transmitted, 10 received, 59% packet loss
+  vedge-1# ping 10.254.254.3 vpn 0 count 1000 rapid
+  Ping in VPN 0
+  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!^C
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;The &lt;a href=&quot;https://www.cisco.com/c/en/us/support/docs/routers/sd-wan/214509-troubleshoot-control-connections.html#anc11&quot;&gt;Troubleshooting Guide&lt;/a&gt; describes each of these error codes and steps to resolve.&lt;/p&gt;
+
+&lt;h2 id=&quot;wrap-up&quot;&gt;Wrap Up&lt;/h2&gt;
+&lt;p&gt;Like anything, practice and repetition and familiarity with order of operations will help a lot.  It took me a couple of hours to get my first vEdges registered with vManage and about 30 minutes to register the remaining.&lt;/p&gt;
+
+&lt;p&gt;This wraps up the SDWAN lab deployment, we’ll cover vManage APIs and Visualisations with Grafana in the next update.&lt;/p&gt;</content><author><name>Jamie Sullivan</name></author><summary type="html">Part (4) Cisco SDWAN Virtual Lab Deployment</summary></entry><entry><title type="html">Part 3.1 [dcnm lab] : building a multidomain dashboard with cisco apis and grafana</title><link href="/2021/05/05/Part-3.1-DCNM-Lab-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html" rel="alternate" type="text/html" title="Part 3.1 [dcnm lab] : building a multidomain dashboard with cisco apis and grafana" /><published>2021-05-05T08:00:34+12:00</published><updated>2021-05-05T08:00:34+12:00</updated><id>/2021/05/05/Part%203.1%20%5BDCNM%20-%20Lab%5D%20:%20Building%20a%20Multidomain%20Dashboard%20with%20Cisco%20APIs%20and%20Grafana</id><content type="html" xml:base="/2021/05/05/Part-3.1-DCNM-Lab-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html">&lt;h1 id=&quot;part-31-dcnm-and-vxlan-bgp-and-evpn-lab-with-nexus-9000v-overview&quot;&gt;Part (3.1) DCNM and VXLAN BGP and EVPN Lab with Nexus 9000v Overview&lt;/h1&gt;
 &lt;p&gt;In this update we outline the virtual lab topology used as the sandbox to explore APIs and Visualisations with Grafana and DCNM.  If you already have a DCNM environment available, you can skip this page and continue to Part 3.2.&lt;/p&gt;
 
 &lt;table&gt;
@@ -36,10 +1420,16 @@
       &lt;td&gt;Visualising DCNM APIs with Grafana.&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td&gt;4.0&lt;/td&gt;
-      &lt;td&gt;SDWAN and vManage&lt;/td&gt;
-      &lt;td&gt;Coming soon&lt;/td&gt;
-      &lt;td&gt;Visualising vManage APIs with Grafana.&lt;/td&gt;
+      &lt;td&gt;4.1&lt;/td&gt;
+      &lt;td&gt;SDWAN&lt;/td&gt;
+      &lt;td&gt;&lt;a href=&quot;https://j-sulliman.github.io/2021/05/13/Part-4.1-SDWAN-Cisco-SDWAN-Lab-Build.html&quot;&gt;Cisco SDWAN Virtual Lab Build&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Cisco SDWAN Virtual Lab deployment&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;4.2&lt;/td&gt;
+      &lt;td&gt;SDWAN&lt;/td&gt;
+      &lt;td&gt;In Progress&lt;/td&gt;
+      &lt;td&gt;Visualising vManage APIs with Grafana&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
@@ -377,10 +1767,16 @@ ESI: 0300.0000.00fd.e900.0309
       &lt;td&gt;Visualising DCNM APIs with Grafana.&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td&gt;4.0&lt;/td&gt;
-      &lt;td&gt;SDWAN and vManage&lt;/td&gt;
-      &lt;td&gt;Coming soon&lt;/td&gt;
-      &lt;td&gt;Visualising vManage APIs with Grafana.&lt;/td&gt;
+      &lt;td&gt;4.1&lt;/td&gt;
+      &lt;td&gt;SDWAN&lt;/td&gt;
+      &lt;td&gt;&lt;a href=&quot;https://j-sulliman.github.io/2021/05/13/Part-4.1-SDWAN-Cisco-SDWAN-Lab-Build.html&quot;&gt;Cisco SDWAN Virtual Lab Build&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Cisco SDWAN Virtual Lab deployment&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;4.2&lt;/td&gt;
+      &lt;td&gt;SDWAN&lt;/td&gt;
+      &lt;td&gt;In Progress&lt;/td&gt;
+      &lt;td&gt;Visualising vManage APIs with Grafana&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
@@ -1094,10 +2490,16 @@ ESI: 0300.0000.00fd.e900.0309
       &lt;td&gt;Visualising DCNM APIs with Grafana.&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td&gt;4.0&lt;/td&gt;
-      &lt;td&gt;SDWAN and vManage&lt;/td&gt;
-      &lt;td&gt;Coming soon&lt;/td&gt;
-      &lt;td&gt;Visualising vManage APIs with Grafana.&lt;/td&gt;
+      &lt;td&gt;4.1&lt;/td&gt;
+      &lt;td&gt;SDWAN&lt;/td&gt;
+      &lt;td&gt;&lt;a href=&quot;https://j-sulliman.github.io/2021/05/13/Part-4.1-SDWAN-Cisco-SDWAN-Lab-Build.html&quot;&gt;Cisco SDWAN Virtual Lab Build&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Cisco SDWAN Virtual Lab deployment&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;4.2&lt;/td&gt;
+      &lt;td&gt;SDWAN&lt;/td&gt;
+      &lt;td&gt;In Progress&lt;/td&gt;
+      &lt;td&gt;Visualising vManage APIs with Grafana&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
@@ -1258,10 +2660,16 @@ From the returned JSON / Python Dictionary, use the Django database abstraction 
       &lt;td&gt;Visualising DCNM APIs with Grafana.&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td&gt;4.0&lt;/td&gt;
-      &lt;td&gt;SDWAN and vManage&lt;/td&gt;
-      &lt;td&gt;Coming soon&lt;/td&gt;
-      &lt;td&gt;Visualising vManage APIs with Grafana.&lt;/td&gt;
+      &lt;td&gt;4.1&lt;/td&gt;
+      &lt;td&gt;SDWAN&lt;/td&gt;
+      &lt;td&gt;&lt;a href=&quot;https://j-sulliman.github.io/2021/05/13/Part-4.1-SDWAN-Cisco-SDWAN-Lab-Build.html&quot;&gt;Cisco SDWAN Virtual Lab Build&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Cisco SDWAN Virtual Lab deployment&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;4.2&lt;/td&gt;
+      &lt;td&gt;SDWAN&lt;/td&gt;
+      &lt;td&gt;In Progress&lt;/td&gt;
+      &lt;td&gt;Visualising vManage APIs with Grafana&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
