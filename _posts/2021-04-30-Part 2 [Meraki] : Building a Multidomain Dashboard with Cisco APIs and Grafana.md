@@ -1,7 +1,7 @@
 ---
 layout: post
 author: Jamie Sullivan
-date:  2021-04-27 08:00:34 +1200
+date:  2021-04-26 08:00:34 +1200
 ---
 # 2.0 Building a Meraki Dashboard with Grafana, Django and Python
 
