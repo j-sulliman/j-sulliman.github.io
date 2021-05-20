@@ -23,7 +23,7 @@ title: Jamie Sullivan's Blog
 description: >- # this means to ignore newlines until "baseurl:"
   Personal Blog for Networking, Datacenter and automation / programmability.  All content is my own and does not represent the views of my employer.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://j-sulliman.github.io/" # the base hostname & protocol for your site, e.g. http://example.com
 #twitter_username: jekyllrb
 github_username:  j-sulliman
 linkedin_username: jamie-sullivan-71575421
