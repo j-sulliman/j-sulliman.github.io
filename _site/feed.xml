@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-05-20T15:23:07+12:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jamie Sullivan’s Blog</title><subtitle>Personal Blog for Networking, Datacenter and automation / programmability.  All content is my own and does not represent the views of my employer.</subtitle><entry><title type="html">Part 4.2 [sdwan] : cisco sdwan vmanage api visualisations with grafana</title><link href="http://localhost:4000/2021/05/18/Part-4.2-SDWAN-Cisco-SDWAN-vManage-API-Visualisations-with-Grafana.html" rel="alternate" type="text/html" title="Part 4.2 [sdwan] : cisco sdwan vmanage api visualisations with grafana" /><published>2021-05-18T08:00:34+12:00</published><updated>2021-05-18T08:00:34+12:00</updated><id>http://localhost:4000/2021/05/18/Part%204.2%20%5BSDWAN%5D%20:%20Cisco%20SDWAN%20-%20vManage%20API%20Visualisations%20with%20Grafana</id><content type="html" xml:base="http://localhost:4000/2021/05/18/Part-4.2-SDWAN-Cisco-SDWAN-vManage-API-Visualisations-with-Grafana.html">&lt;h2 id=&quot;article-index&quot;&gt;Article Index&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-05-20T15:27:16+12:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jamie Sullivan’s Blog</title><subtitle>Personal Blog for Networking, Datacenter and automation / programmability.  All content is my own and does not represent the views of my employer.</subtitle><entry><title type="html">Part 4.2 [sdwan] : cisco sdwan vmanage api visualisations with grafana</title><link href="http://localhost:4000/2021/05/18/Part-4.2-SDWAN-Cisco-SDWAN-vManage-API-Visualisations-with-Grafana.html" rel="alternate" type="text/html" title="Part 4.2 [sdwan] : cisco sdwan vmanage api visualisations with grafana" /><published>2021-05-18T08:00:34+12:00</published><updated>2021-05-18T08:00:34+12:00</updated><id>http://localhost:4000/2021/05/18/Part%204.2%20%5BSDWAN%5D%20:%20Cisco%20SDWAN%20-%20vManage%20API%20Visualisations%20with%20Grafana</id><content type="html" xml:base="http://localhost:4000/2021/05/18/Part-4.2-SDWAN-Cisco-SDWAN-vManage-API-Visualisations-with-Grafana.html">&lt;h2 id=&quot;article-index&quot;&gt;Article Index&lt;/h2&gt;
 
 &lt;table&gt;
   &lt;thead&gt;
@@ -82,7 +82,7 @@
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;venv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;python&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;manage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;py&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;startapp&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sdwan&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;If you’ve followed along with the previous meraki and DCNM articles, after running above, our directory structure should now look like this:&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;├── apps
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;├── apps
 │   ├── dcnm_api.py
 │   └── meraki_api.py
 ├── cisco_grafana
@@ -865,7 +865,7 @@ Token: 06B2E640C58DB66335A94CF381E447BAEB6534972587362EF47BB3E1FF5023E8EA605FB09
 &lt;p&gt;As per 1.4.1, eth2 maps to VPN 0 which is used for control traffic, eth0 is used for “out of band” lab management and eth1 for management inband, both map to VPN 512 for management&lt;/p&gt;
 
 &lt;h4 id=&quot;system&quot;&gt;System&lt;/h4&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vmanage# show running-config system
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vmanage# show running-config system
 system
  host-name             vmanage
  system-ip             1.1.1.1
@@ -884,7 +884,7 @@ system
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h4 id=&quot;control---vpn-0&quot;&gt;Control - vpn 0&lt;/h4&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vmanage# sh run vpn 0
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vmanage# sh run vpn 0
 vpn 0
  interface eth2
   ip address 10.254.254.1/24
@@ -906,7 +906,7 @@ vpn 0
 
 &lt;h4 id=&quot;management---vpn-512&quot;&gt;Management - vpn 512&lt;/h4&gt;
 
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vmanage# show running-config vpn 512
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vmanage# show running-config vpn 512
 vpn 512
  interface eth0
   ip dhcp-client
@@ -932,7 +932,7 @@ vpn 512
 &lt;h5 id=&quot;generate-the-keys-for-certificates&quot;&gt;Generate the keys for certificates&lt;/h5&gt;
 
 &lt;p&gt;Enter &lt;strong&gt;vshell&lt;/strong&gt; mode on vmanage and run the following:&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;openssl genrsa -out SDWAN.key 2048
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;openssl genrsa -out SDWAN.key 2048
 openssl req -x509 -new -nodes -key SDWAN.key -sha256 -days 2000 \
         -subj &quot;/C=NZ/ST=NZ/L=NZ/O=nz-se-lab/CN=SD-WAN&quot; \
         -out SDWAN.pem
@@ -942,7 +942,7 @@ openssl req -x509 -new -nodes -key SDWAN.key -sha256 -days 2000 \
 
 &lt;p&gt;Browse to &lt;strong&gt;https://vmanage-ip-address/dataservice/system/device/sync/rootcertchain&lt;/strong&gt;, this will resync the vmanage database via an API call.&lt;/p&gt;
 
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;openssl x509 -req -in vManage.csr -CA SDWAN.pem -CAkey SDWAN.key -CAcreateserial -out vManage.crt -days 2000 -sha256
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;openssl x509 -req -in vManage.csr -CA SDWAN.pem -CAkey SDWAN.key -CAcreateserial -out vManage.crt -days 2000 -sha256
 cat vManage.crt
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
@@ -952,7 +952,7 @@ cat vManage.crt
 &lt;p&gt;In the vshell on vmanage use VIM to paste the CSR content into vManage.csr and save.&lt;/p&gt;
 
 &lt;p&gt;Sign the CSR as below:&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;openssl x509 -req -in vManage.csr -CA SDWAN.pem -CAkey SDWAN.key -CAcreateserial -out vManage.crt -days 2000 -sha256
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;openssl x509 -req -in vManage.csr -CA SDWAN.pem -CAkey SDWAN.key -CAcreateserial -out vManage.crt -days 2000 -sha256
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;Use &lt;strong&gt;cat&lt;/strong&gt; to copy vManage.crt content, and install through Configuration &amp;gt; Certificates &amp;gt; Controllers and select vManage.&lt;/p&gt;
 
@@ -963,7 +963,7 @@ cat vManage.crt
 &lt;h3 id=&quot;162-vbond&quot;&gt;1.6.2 vBond&lt;/h3&gt;
 
 &lt;h4 id=&quot;system-1&quot;&gt;system&lt;/h4&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vbond# show running-config system
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vbond# show running-config system
 system
  host-name               vbond
  system-ip               1.1.1.3
@@ -984,7 +984,7 @@ system
 
 &lt;h4 id=&quot;control---vpn-0-1&quot;&gt;Control - VPN 0&lt;/h4&gt;
 &lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt; - you will probably need to disable the “tunnel-interface” to add the vbond controller to vManage&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vbond# show running-config vpn 0
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vbond# show running-config vpn 0
 vpn 0
  interface ge0/1
   ip address 10.254.254.3/24
@@ -1007,7 +1007,7 @@ vpn 0
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h4 id=&quot;management---vpn-512-1&quot;&gt;Management - VPN 512&lt;/h4&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vbond# show running-config vpn 512
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vbond# show running-config vpn 512
 vpn 512
  interface eth0
   ip address 172.16.1.3/24
@@ -1027,7 +1027,7 @@ vpn 512
 
 &lt;p&gt;In vshell mode, use VIM to paste the contents into vBond.csr&lt;/p&gt;
 
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;openssl x509 -req -in vBond.csr -CA SDWAN.pem -CAkey SDWAN.key -CAcreateserial -out vBond.crt -days 2000 -sha256
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;openssl x509 -req -in vBond.csr -CA SDWAN.pem -CAkey SDWAN.key -CAcreateserial -out vBond.crt -days 2000 -sha256
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;Copy the content of vBond.crt (&lt;strong&gt;cat vBond.crt&lt;/strong&gt;) and paste to &lt;strong&gt;Configuration &amp;gt; Certificates &amp;gt; Controllers &amp;gt; Select vBond&lt;/strong&gt; and “Install Certificate”:
 &lt;img src=&quot;https://github.com/j-sulliman/j-sulliman.github.io/blob/master/images/vbond_cert.png?raw=true&quot; alt=&quot;vBond Cert&quot; /&gt;&lt;/p&gt;
@@ -1035,7 +1035,7 @@ vpn 512
 &lt;h3 id=&quot;163-vsmart&quot;&gt;1.6.3 vSmart&lt;/h3&gt;
 
 &lt;h4 id=&quot;system-2&quot;&gt;system&lt;/h4&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vsmart# show running-config system
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vsmart# show running-config system
 system
  host-name             vsmart
  system-ip             1.1.1.2
@@ -1054,7 +1054,7 @@ system
 
 &lt;h4 id=&quot;vpn-0&quot;&gt;VPN 0&lt;/h4&gt;
 &lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt; - you will probably need to disable the “tunnel-interface” to add the vsmart controller to vManage&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vsmart# show running-config vpn 0
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vsmart# show running-config vpn 0
 vpn 0
  interface eth1
   ip address 10.254.254.2/24
@@ -1073,7 +1073,7 @@ vpn 0
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h4 id=&quot;vpn-512&quot;&gt;VPN 512&lt;/h4&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vsmart# show running-config vpn 512
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vsmart# show running-config vpn 512
 vpn 512
  interface eth0
   ip address 172.16.1.2/24
@@ -1090,7 +1090,7 @@ vpn 512
   &lt;li&gt;Under Configuration &amp;gt; Certificates &amp;gt; Controllers &amp;gt; vSmart, click the three dots … and “View CSR”&lt;/li&gt;
   &lt;li&gt;In vshell mode, use VIM to paste the contents into vSmart.csr&lt;/li&gt;
   &lt;li&gt;
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;openssl x509 -req -in vSmart.csr -CA SDWAN.pem -CAkey SDWAN.key -CAcreateserial -out vSmart.crt -days 2000 -sha256
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;openssl x509 -req -in vSmart.csr -CA SDWAN.pem -CAkey SDWAN.key -CAcreateserial -out vSmart.crt -days 2000 -sha256
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
   &lt;li&gt;Copy the contents of vSmart.crt (&lt;strong&gt;cat vSmart.crt&lt;/strong&gt;) and paste to &lt;strong&gt;Configuration &amp;gt; Certificates &amp;gt; Controllers &amp;gt; Select vSmart&lt;/strong&gt; and “Install Certificate”:&lt;/li&gt;
@@ -1101,7 +1101,7 @@ vpn 512
 &lt;h4 id=&quot;certificates&quot;&gt;Certificates&lt;/h4&gt;
 &lt;ul&gt;
   &lt;li&gt;In vshell mode on vManage, copy SDWAN.pem to vEdge
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vmanage:~$ cat SDWAN.pem
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vmanage:~$ cat SDWAN.pem
 -----BEGIN CERTIFICATE-----
    *********************
 -----END CERTIFICATE-----
@@ -1109,11 +1109,11 @@ vpn 512
   &lt;/li&gt;
   &lt;li&gt;Paste the cert contents into the vedge in vshell mode &lt;strong&gt;vim SDWAN.pem&lt;/strong&gt;&lt;/li&gt;
   &lt;li&gt;Install the root certificate
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;request root-cert-chain install /home/admin/SDWAN.pem
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;request root-cert-chain install /home/admin/SDWAN.pem
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
   &lt;li&gt;Verify certificate has been Installed
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;akl-vedge-1# show certificate root-ca-cert | more
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;akl-vedge-1# show certificate root-ca-cert | more
 Certificate:
     Data:
         Version: 3 (0x2)
@@ -1126,13 +1126,13 @@ Certificate:
   &lt;li&gt;Select a vedge cloud device and &lt;strong&gt;Generate Bootstrap&lt;/strong&gt;, note the UUID and OTP for the next step
 &lt;img src=&quot;https://github.com/j-sulliman/j-sulliman.github.io/blob/master/images/Generate_Bootstrap.png?raw=true&quot; alt=&quot;Generate Bootstrap&quot; /&gt;&lt;/li&gt;
   &lt;li&gt;Return to the vedge device, exit from vshell mode and register with the UUID and OTP shown above
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;akl-vedge-1# request vedge-cloud activate chassis-number **************** token ***************
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;akl-vedge-1# request vedge-cloud activate chassis-number **************** token ***************
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h4 id=&quot;system-3&quot;&gt;System&lt;/h4&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;akl-vedge-1# show running-config system
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;akl-vedge-1# show running-config system
 system
  host-name               akl-vedge-1
  system-ip               2.2.2.1
@@ -1152,7 +1152,7 @@ system
 
 &lt;h4 id=&quot;control-vpn-0&quot;&gt;Control VPN 0&lt;/h4&gt;
 
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; vpn 0
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; vpn 0
  interface ge0/0
   ip address 10.100.0.10/16
   tunnel-interface
@@ -1186,7 +1186,7 @@ system
 &lt;img src=&quot;https://github.com/j-sulliman/j-sulliman.github.io/blob/master/images/WAN_Edge_status.png?raw=true&quot; alt=&quot;WAN Edge Status&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Clock and timezone is synchronised:&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vmanage# show ntp associations
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vmanage# show ntp associations
 
                                                            LAST             
 IDX  ASSOCID  STATUS  CONF  REACHABILITY  AUTH  CONDITION  EVENT     COUNT  
@@ -1198,7 +1198,7 @@ Mon May 10 17:09:49 NZST 2021
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Certificate is installed, organisation name is correct, vbond connection up, WAN interfaces up:&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vmanage# show control local-properties
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vmanage# show control local-properties
 personality                       vmanage
 sp-organization-name              nz-se-lab
 organization-name                 nz-se-lab
@@ -1230,7 +1230,7 @@ INSTANCE             INTERFACE  IPv4            PORT   IPv4            IPv6     
 1        eth2       10.254.254.1    12446  10.254.254.1    ::                                      12446     0/0   default           up     0:00:00:04
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;From vBond - validate control connectivity to vmanage, vsmart and vedges:&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vbond# show orchestrator connections
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vbond# show orchestrator connections
                                                                                      PEER                      PEER                                                                            
          PEER     PEER     PEER             SITE        DOMAIN      PEER             PRIVATE  PEER             PUBLIC                                   ORGANIZATION                           
 INSTANCE TYPE     PROTOCOL SYSTEM IP        ID          ID          PRIVATE IP       PORT     PUBLIC IP        PORT    REMOTE COLOR     STATE           NAME                    UPTIME         
@@ -1248,7 +1248,7 @@ INSTANCE TYPE     PROTOCOL SYSTEM IP        ID          ID          PRIVATE IP  
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;h5 id=&quot;verify-connectivity&quot;&gt;Verify Connectivity&lt;/h5&gt;
 &lt;p&gt;vbond to Border Gateway:&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vbond# ping 10.254.254.254 vpn 0 count 3
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vbond# ping 10.254.254.254 vpn 0 count 3
 Ping in VPN 0
 PING 10.254.254.254 (10.254.254.254) 56(84) bytes of data.
 64 bytes from 10.254.254.254: icmp_seq=1 ttl=255 time=107 ms
@@ -1260,7 +1260,7 @@ PING 10.254.254.254 (10.254.254.254) 56(84) bytes of data.
 rtt min/avg/max/mdev = 25.620/65.906/107.215/33.319 ms
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;vbond to vManage:&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vbond# ping 10.254.254.1 vpn 0 count 3  
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vbond# ping 10.254.254.1 vpn 0 count 3  
 Ping in VPN 0
 PING 10.254.254.1 (10.254.254.1) 56(84) bytes of data.
 64 bytes from 10.254.254.1: icmp_seq=1 ttl=64 time=12.3 ms
@@ -1272,7 +1272,7 @@ PING 10.254.254.1 (10.254.254.1) 56(84) bytes of data.
 rtt min/avg/max/mdev = 12.355/14.005/15.291/1.229 ms
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;vbond to vsmart:&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vbond# ping 10.254.254.2 vpn 0 count 3
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vbond# ping 10.254.254.2 vpn 0 count 3
 Ping in VPN 0
 PING 10.254.254.2 (10.254.254.2) 56(84) bytes of data.
 64 bytes from 10.254.254.2: icmp_seq=1 ttl=64 time=20.1 ms
@@ -1284,7 +1284,7 @@ PING 10.254.254.2 (10.254.254.2) 56(84) bytes of data.
 rtt min/avg/max/mdev = 12.206/17.282/20.199/3.602 ms
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;vbond to akl-vedge-1:&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vbond# ping 10.100.0.10 vpn 0 count 3
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vbond# ping 10.100.0.10 vpn 0 count 3
 Ping in VPN 0
 PING 10.100.0.10 (10.100.0.10) 56(84) bytes of data.
 64 bytes from 10.100.0.10: icmp_seq=1 ttl=63 time=16.2 ms
@@ -1296,7 +1296,7 @@ PING 10.100.0.10 (10.100.0.10) 56(84) bytes of data.
 rtt min/avg/max/mdev = 14.211/15.556/16.240/0.962 ms
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;vbond to wgn-vedge-1:&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vbond# ping 10.100.0.20 vpn 0 count 3
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vbond# ping 10.100.0.20 vpn 0 count 3
 Ping in VPN 0
 PING 10.100.0.20 (10.100.0.20) 56(84) bytes of data.
 64 bytes from 10.100.0.20: icmp_seq=1 ttl=63 time=2.27 ms
@@ -1308,7 +1308,7 @@ PING 10.100.0.20 (10.100.0.20) 56(84) bytes of data.
 rtt min/avg/max/mdev = 2.275/9.319/13.435/5.006 ms
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;vbond to vbond to hml-vedge-1:&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vbond# ping 10.100.0.30 vpn 0 count 3
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vbond# ping 10.100.0.30 vpn 0 count 3
 Ping in VPN 0
 PING 10.100.0.30 (10.100.0.30) 56(84) bytes of data.
 64 bytes from 10.100.0.30: icmp_seq=1 ttl=63 time=19.2 ms
@@ -1320,7 +1320,7 @@ PING 10.100.0.30 (10.100.0.30) 56(84) bytes of data.
 rtt min/avg/max/mdev = 18.238/18.606/19.234/0.472 ms
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;vbond to chc-vedge-1:&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vbond# ping 10.100.0.40 vpn 0 count 3
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vbond# ping 10.100.0.40 vpn 0 count 3
 Ping in VPN 0
 PING 10.100.0.40 (10.100.0.40) 56(84) bytes of data.
 64 bytes from 10.100.0.40: icmp_seq=1 ttl=63 time=20.2 ms
@@ -1333,7 +1333,7 @@ rtt min/avg/max/mdev = 19.318/19.631/20.219/0.416 ms
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Connectivity successful, validate control connections between vedge and vbond&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vedge-6# show control connections
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vedge-6# show control connections
                                                                                        PEER                                          PEER                                          CONTROLLER
 PEER    PEER PEER            SITE       DOMAIN PEER                                    PRIV  PEER                                    PUB                                           GROUP      
 TYPE    PROT SYSTEM IP       ID         ID     PRIVATE IP                              PORT  PUBLIC IP                               PORT  LOCAL COLOR     PROXY STATE UPTIME      ID         
@@ -1356,12 +1356,12 @@ vmanage dtls 1.1.1.1         1000       0      10.254.254.1                     
 &lt;h5 id=&quot;an-example&quot;&gt;An Example&lt;/h5&gt;
 
 &lt;p&gt;An error I encountered was “VM_TMO” and from “show control connections-history detail”:&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &quot;state               connect [Local Err: ERR_(D)TLS_CONN_FAIL] [Remote Err: NO_ERROR]&quot;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &quot;state               connect [Local Err: ERR_(D)TLS_CONN_FAIL] [Remote Err: NO_ERROR]&quot;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Regular pings were completing but rapid pings weren’t:&lt;/p&gt;
 
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  vedge-1# ping 10.254.254.1 vpn 0
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  vedge-1# ping 10.254.254.1 vpn 0
   Ping in VPN 0
   PING 10.254.254.1 (10.254.254.1) 56(84) bytes of data.
   64 bytes from 10.254.254.1: icmp_seq=2 ttl=63 time=1.08 ms
@@ -1374,7 +1374,7 @@ vmanage dtls 1.1.1.1         1000       0      10.254.254.1                     
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;I’d put my management interface and route in the wrong vpn (0)  - Moving the management interface and static route from vpn 0 to vpn 512 resolved.&lt;/p&gt;
 
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  --- 10.254.254.1 statistics ---
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  --- 10.254.254.1 statistics ---
   24 packets transmitted, 10 received, 59% packet loss
   vedge-1# ping 10.254.254.3 vpn 0 count 1000 rapid
   Ping in VPN 0
@@ -1531,7 +1531,7 @@ vmanage dtls 1.1.1.1         1000       0      10.254.254.1                     
 &lt;h2 id=&quot;315-base-configuration&quot;&gt;3.1.5 Base Configuration&lt;/h2&gt;
 
 &lt;p&gt;Configure the hostname, management address and boot image for each device:&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;conf t
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;conf t
 interface mgmt 0
   ip address [192.168.200.229/24]
 !
@@ -1597,7 +1597,7 @@ copy run st
 &lt;h2 id=&quot;319-verification&quot;&gt;3.1.9 Verification&lt;/h2&gt;
 &lt;p&gt;The design guide outlines verification commands for VTEPs, fabric and DCI links and the EVPN control-plane and VXLAN data plane:&lt;/p&gt;
 &lt;h3 id=&quot;3191-features&quot;&gt;3.1.9.1 Features&lt;/h3&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dc1-leaf-001# show feature | grep enabled | exclude &quot;not-run&quot;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dc1-leaf-001# show feature | grep enabled | exclude &quot;not-run&quot;
 bgp                    1          enabled
 dhcp                   1          enabled
 hmm                    1          enabled
@@ -1615,7 +1615,7 @@ vnseg_vlan             1          enabled
 vpc                    1          enabled
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;h3 id=&quot;3192-nve-interface&quot;&gt;3.1.9.2 NVE interface&lt;/h3&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dc1-leaf-001# show nve interface nve 1 detail
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dc1-leaf-001# show nve interface nve 1 detail
 Interface: nve1, State: Up, encapsulation: VXLAN
  VPC Capability: VPC-VIP-Only [notified]
  Local Router MAC: 0c44.b700.1b08
@@ -1633,7 +1633,7 @@ Interface: nve1, State: Up, encapsulation: VXLAN
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h3 id=&quot;3193-vpc&quot;&gt;3.1.9.3 vPC&lt;/h3&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; dc1-leaf-001# show vpc brief
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; dc1-leaf-001# show vpc brief
  Legend:
                  (*) - local vPC is down, forwarding via vPC peer-link
 
@@ -1662,7 +1662,7 @@ Interface: nve1, State: Up, encapsulation: VXLAN
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h3 id=&quot;3194-bgp&quot;&gt;3.1.9.4 BGP&lt;/h3&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dc1-spine-002# show bgp l2vpn evpn summary vrf all
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dc1-spine-002# show bgp l2vpn evpn summary vrf all
 BGP summary information for VRF default, address family L2VPN EVPN
 BGP router identifier 10.2.0.4, local AS number 65001
 BGP table version is 13, L2VPN EVPN config peers 3, capable peers 3
@@ -1676,7 +1676,7 @@ Neighbor        V    AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State/PfxRcd
 10.2.0.5        4 65001    1696    1698       13    0    0 17:45:00 1
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;h3 id=&quot;3195-evpn-fabric-links&quot;&gt;3.1.9.5 EVPN Fabric links&lt;/h3&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dc1-bdlf-001# show nve multisite fabric-links
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dc1-bdlf-001# show nve multisite fabric-links
 Interface      State
 ---------      -----
 Ethernet1/1    Up   
@@ -1684,14 +1684,14 @@ Ethernet1/2    Up
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h3 id=&quot;3196-evpn-dci-links&quot;&gt;3.1.9.6 EVPN DCI Links&lt;/h3&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dc1-bdlf-001# show nve multisite dci-links
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dc1-bdlf-001# show nve multisite dci-links
 Interface      State
 ---------      -----
 Ethernet1/3    Up  
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h3 id=&quot;3197-designated-forwaders&quot;&gt;3.1.9.7 Designated Forwaders&lt;/h3&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dc1-bdlf-001# show nve multisite fabric-links
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dc1-bdlf-001# show nve multisite fabric-links
 Interface      State
 ---------      -----
 Ethernet1/1    Up   

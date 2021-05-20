@@ -4,7 +4,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>Part 3.1 [dcnm lab] : building a multidomain dashboard with cisco apis and grafana | Jamie Sullivan’s Blog</title>
-<meta name="generator" content="Jekyll v3.9.1" />
+<meta name="generator" content="Jekyll v4.0.1" />
 <meta property="og:title" content="Part 3.1 [dcnm lab] : building a multidomain dashboard with cisco apis and grafana" />
 <meta name="author" content="Jamie Sullivan" />
 <meta property="og:locale" content="en_US" />
@@ -18,7 +18,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Part 3.1 [dcnm lab] : building a multidomain dashboard with cisco apis and grafana" />
 <script type="application/ld+json">
-{"dateModified":"2021-05-05T08:00:34+12:00","datePublished":"2021-05-05T08:00:34+12:00","@type":"BlogPosting","headline":"Part 3.1 [dcnm lab] : building a multidomain dashboard with cisco apis and grafana","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2021/05/05/Part-3.1-DCNM-Lab-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html"},"url":"http://localhost:4000/2021/05/05/Part-3.1-DCNM-Lab-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html","author":{"@type":"Person","name":"Jamie Sullivan"},"description":"Part (3.1) DCNM and VXLAN BGP and EVPN Lab with Nexus 9000v Overview In this update we outline the virtual lab topology used as the sandbox to explore APIs and Visualisations with Grafana and DCNM. If you already have a DCNM environment available, you can skip this page and continue to Part 3.2.","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","headline":"Part 3.1 [dcnm lab] : building a multidomain dashboard with cisco apis and grafana","dateModified":"2021-05-05T08:00:34+12:00","datePublished":"2021-05-05T08:00:34+12:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2021/05/05/Part-3.1-DCNM-Lab-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html"},"author":{"@type":"Person","name":"Jamie Sullivan"},"url":"http://localhost:4000/2021/05/05/Part-3.1-DCNM-Lab-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html","description":"Part (3.1) DCNM and VXLAN BGP and EVPN Lab with Nexus 9000v Overview In this update we outline the virtual lab topology used as the sandbox to explore APIs and Visualisations with Grafana and DCNM. If you already have a DCNM environment available, you can skip this page and continue to Part 3.2.","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Jamie Sullivan's Blog" /></head>
 <body><header class="site-header" role="banner">
@@ -194,7 +194,7 @@
 <h2 id="315-base-configuration">3.1.5 Base Configuration</h2>
 
 <p>Configure the hostname, management address and boot image for each device:</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conf t
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conf t
 interface mgmt 0
   ip address [192.168.200.229/24]
 !
@@ -260,7 +260,7 @@ copy run st
 <h2 id="319-verification">3.1.9 Verification</h2>
 <p>The design guide outlines verification commands for VTEPs, fabric and DCI links and the EVPN control-plane and VXLAN data plane:</p>
 <h3 id="3191-features">3.1.9.1 Features</h3>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dc1-leaf-001# show feature | grep enabled | exclude "not-run"
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dc1-leaf-001# show feature | grep enabled | exclude "not-run"
 bgp                    1          enabled
 dhcp                   1          enabled
 hmm                    1          enabled
@@ -278,7 +278,7 @@ vnseg_vlan             1          enabled
 vpc                    1          enabled
 </code></pre></div></div>
 <h3 id="3192-nve-interface">3.1.9.2 NVE interface</h3>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dc1-leaf-001# show nve interface nve 1 detail
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dc1-leaf-001# show nve interface nve 1 detail
 Interface: nve1, State: Up, encapsulation: VXLAN
  VPC Capability: VPC-VIP-Only [notified]
  Local Router MAC: 0c44.b700.1b08
@@ -296,7 +296,7 @@ Interface: nve1, State: Up, encapsulation: VXLAN
 </code></pre></div></div>
 
 <h3 id="3193-vpc">3.1.9.3 vPC</h3>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> dc1-leaf-001# show vpc brief
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> dc1-leaf-001# show vpc brief
  Legend:
                  (*) - local vPC is down, forwarding via vPC peer-link
 
@@ -325,7 +325,7 @@ Interface: nve1, State: Up, encapsulation: VXLAN
 </code></pre></div></div>
 
 <h3 id="3194-bgp">3.1.9.4 BGP</h3>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dc1-spine-002# show bgp l2vpn evpn summary vrf all
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dc1-spine-002# show bgp l2vpn evpn summary vrf all
 BGP summary information for VRF default, address family L2VPN EVPN
 BGP router identifier 10.2.0.4, local AS number 65001
 BGP table version is 13, L2VPN EVPN config peers 3, capable peers 3
@@ -339,7 +339,7 @@ Neighbor        V    AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State/PfxRcd
 10.2.0.5        4 65001    1696    1698       13    0    0 17:45:00 1
 </code></pre></div></div>
 <h3 id="3195-evpn-fabric-links">3.1.9.5 EVPN Fabric links</h3>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dc1-bdlf-001# show nve multisite fabric-links
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dc1-bdlf-001# show nve multisite fabric-links
 Interface      State
 ---------      -----
 Ethernet1/1    Up   
@@ -347,14 +347,14 @@ Ethernet1/2    Up
 </code></pre></div></div>
 
 <h3 id="3196-evpn-dci-links">3.1.9.6 EVPN DCI Links</h3>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dc1-bdlf-001# show nve multisite dci-links
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dc1-bdlf-001# show nve multisite dci-links
 Interface      State
 ---------      -----
 Ethernet1/3    Up  
 </code></pre></div></div>
 
 <h3 id="3197-designated-forwaders">3.1.9.7 Designated Forwaders</h3>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dc1-bdlf-001# show nve multisite fabric-links
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dc1-bdlf-001# show nve multisite fabric-links
 Interface      State
 ---------      -----
 Ethernet1/1    Up   
