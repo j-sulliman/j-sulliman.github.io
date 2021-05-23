@@ -1,4 +1,457 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://j-sulliman.github.io//feed.xml" rel="self" type="application/atom+xml" /><link href="https://j-sulliman.github.io//" rel="alternate" type="text/html" /><updated>2021-05-20T18:14:19+12:00</updated><id>https://j-sulliman.github.io//feed.xml</id><title type="html">Jamie Sullivan’s Blog</title><subtitle>Personal Blog for Networking, Datacenter and automation / programmability.  All content is my own and does not represent the views of my employer.</subtitle><entry><title type="html">Part 4.2 [sdwan] : cisco sdwan vmanage api visualisations with grafana</title><link href="https://j-sulliman.github.io//2021/05/18/Part-4.2-SDWAN-Cisco-SDWAN-vManage-API-Visualisations-with-Grafana.html" rel="alternate" type="text/html" title="Part 4.2 [sdwan] : cisco sdwan vmanage api visualisations with grafana" /><published>2021-05-18T08:00:34+12:00</published><updated>2021-05-18T08:00:34+12:00</updated><id>https://j-sulliman.github.io//2021/05/18/Part%204.2%20%5BSDWAN%5D%20:%20Cisco%20SDWAN%20-%20vManage%20API%20Visualisations%20with%20Grafana</id><content type="html" xml:base="https://j-sulliman.github.io//2021/05/18/Part-4.2-SDWAN-Cisco-SDWAN-vManage-API-Visualisations-with-Grafana.html">&lt;h2 id=&quot;article-index&quot;&gt;Article Index&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://j-sulliman.github.io//feed.xml" rel="self" type="application/atom+xml" /><link href="https://j-sulliman.github.io//" rel="alternate" type="text/html" /><updated>2021-05-23T20:31:12+12:00</updated><id>https://j-sulliman.github.io//feed.xml</id><title type="html">Jamie Sullivan’s Blog</title><subtitle>Personal Blog for Networking, Datacenter and automation / programmability.  All content is my own and does not represent the views of my employer.</subtitle><entry><title type="html">Part 5.0 [openvuln api] : cisco psirt and security vulnerability dashboard with grafana</title><link href="https://j-sulliman.github.io//2021/05/21/Part-5.0-OpenVuln-API-Cisco-PSIRT-and-Security-Vulnerability-Dashboard-with-Grafana.html" rel="alternate" type="text/html" title="Part 5.0 [openvuln api] : cisco psirt and security vulnerability dashboard with grafana" /><published>2021-05-21T08:00:34+12:00</published><updated>2021-05-21T08:00:34+12:00</updated><id>https://j-sulliman.github.io//2021/05/21/Part%205.0%20%5BOpenVuln%20API%5D%20:%20Cisco%20PSIRT%20and%20Security%20Vulnerability%20Dashboard%20with%20Grafana</id><content type="html" xml:base="https://j-sulliman.github.io//2021/05/21/Part-5.0-OpenVuln-API-Cisco-PSIRT-and-Security-Vulnerability-Dashboard-with-Grafana.html">&lt;h1 id=&quot;51-introduction&quot;&gt;5.1 Introduction&lt;/h1&gt;
+
+&lt;p&gt;In part five of the series on cross domain visualisations and dashboards  with Grafana, we experiment with the OpenVuln API.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The Cisco Product Security Incident Response Team (PSIRT) openVuln API is a RESTful API that allows customers to obtain Cisco Security Vulnerability information in different machine-consumable formats. APIs are important for customers because they allow their technical staff and programmers to build tools that help them do their job more effectively (in this case, to keep up with security vulnerability information).&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;By the end of this article we’ll have created a dashboard that provides a single, aggregated view of:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Advisories by product family&lt;/li&gt;
+  &lt;li&gt;PSIRT severity rating and when they were released&lt;/li&gt;
+  &lt;li&gt;A detailed table with links to the PSIRT URL&lt;/li&gt;
+  &lt;li&gt;Created alerting and notifications when new PSIRTs are detected&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://github.com/j-sulliman/j-sulliman.github.io/blob/master/images/OpenVuln_Dash.png?raw=true&quot; alt=&quot;OpenVuln Dashboard&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;52-references&quot;&gt;5.2 References&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://developer.cisco.com/psirt/&quot;&gt;OpenVuln API on DevNet&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://developer.cisco.com/docs/psirt/&quot;&gt;API Reference Guide&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/CiscoPSIRT/openVulnAPI&quot;&gt;OpenVuln GitHub Repo&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://grafana.com/docs/grafana/latest/alerting/create-alerts/&quot;&gt;Grafana Alerts&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;53-generating-an-api-key-and-secret-from-the-api-console&quot;&gt;5.3 Generating an API Key and Secret from the API Console&lt;/h1&gt;
+
+&lt;p&gt;Following the &lt;strong&gt;Accessing the API&lt;/strong&gt; section of the API reference guide, register a new application and select the OpenVuln API.  Once registered, you’ll have an API key and secret that can be used to authenticate your requests:
+&lt;img src=&quot;https://github.com/j-sulliman/j-sulliman.github.io/blob/master/images/OpenVuln_App_and_Key.png?raw=true&quot; alt=&quot;API Console&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In the GitHub repository linked above, you’ll find code samples for curl, go, php, ruby, javascript.&lt;/p&gt;
+
+&lt;p&gt;There’s a python library available that can be installed via pip (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pip install openVulnQuery&lt;/code&gt;).&lt;/p&gt;
+
+&lt;p&gt;In my case I’ve used the native python requests package.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;h1 id=&quot;54-create-our-openvuln-app-in-django&quot;&gt;5.4 Create our OpenVuln App in Django&lt;/h1&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;venv&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; % python manage.py startapp openvuln
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Running the above will create the openvuln directory structure.&lt;/p&gt;
+
+&lt;p&gt;If you’ve followed along with previous articles, your cisco_grafana django directory will look similar to:&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+├── apps
+│   ├── dcnm_api.py
+│   ├── meraki_api.py
+│   └── sdwan_api.py
+├── cisco_grafana
+│   ├── __init__.py
+│   ├── asgi.py
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+├── db.sqlite3
+├── dcnm
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── migrations
+│   ├── models.py
+│   ├── tests.py
+│   └── views.py
+├── manage.py
+├── meraki
+│   ├── admin.py
+│   ├── apps.py
+│   ├── migrations
+│   ├── models.py
+│   ├── tests.py
+│   └── views.py
+├── openvuln
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── migrations
+│   │   └── __init__.py
+│   ├── models.py
+│   ├── tests.py
+│   └── views.py
+└── sdwan
+    ├── __init__.py
+    ├── admin.py
+    ├── apps.py
+    ├── migrations
+    ├── models.py
+    ├── tests.py
+    └── views.py
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Add the openvuln app to &lt;strong&gt;settings.py&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# Application definition
+&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;INSTALLED_APPS&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&apos;django.contrib.admin&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&apos;django.contrib.auth&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&apos;django.contrib.contenttypes&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&apos;django.contrib.sessions&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&apos;django.contrib.messages&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&apos;django.contrib.staticfiles&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&apos;meraki&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# Added in previous post
+&lt;/span&gt;    &lt;span class=&quot;s&quot;&gt;&apos;dcnm&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# Added in previous post
+&lt;/span&gt;    &lt;span class=&quot;s&quot;&gt;&apos;sdwan&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# Added in previous post
+&lt;/span&gt;    &lt;span class=&quot;s&quot;&gt;&apos;openvuln&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# &amp;lt;- Add this
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;hr /&gt;
+&lt;h1 id=&quot;55-python-requests-functions&quot;&gt;5.5 Python Requests Functions&lt;/h1&gt;
+&lt;p&gt;Create the  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Apps &amp;gt; openvuln_api.py&lt;/code&gt; file - this will store all our OpenVuln python functions.&lt;/p&gt;
+
+&lt;p&gt;Retrieving the access token:&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;get_oauth_token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;client_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;client_secret&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;request_token_url&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://cloudsso.cisco.com/as/token.oauth2&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Get OAuth2 token from api based on client id and secret.
+    :param client_id: Client id stored in config file.
+    :param client_secret: Client secret stored in config file.
+    :param request_token_url: the POST URL to request a token response
+    :return The valid access token to pass to api in header.
+    :raise requests exhibits anything other than a 200 response.
+    &quot;&quot;&quot;&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;requests&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;request_token_url&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;request_token_url&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;REQUEST_TOKEN_URL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;client_id&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;client_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;client_secret&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;client_secret&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;grant_type&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;client_credentials&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;access_token&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;token&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;get_oauth_token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;client_id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;&amp;lt;your-id&amp;gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                        &lt;span class=&quot;n&quot;&gt;client_secret&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;&amp;lt;your-secret&amp;gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Run the function and pass in your client ID and Secret:&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;venv&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; % python openvuln_api.py
+ENPFzXc7ja9IEmAF5GCLH9mnQO5z
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Retrieve the latest 100 vulnerabilities:&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;openvuln_http_get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;https://api.cisco.com/security/advisories/latest/100&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;CLIENT_ID&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&amp;lt;your-id&amp;gt;&quot;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;CLIENT_SECRET&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&amp;lt;your-token&amp;gt;&quot;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;API_URL&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;https://api.cisco.com/security/advisories&quot;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;token&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;get_oauth_token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;client_id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CLIENT_ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;client_secret&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CLIENT_SECRET&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# Get a Token
+&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;header&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;&apos;Authorization&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;Bearer {}&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;&apos;Accept&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;application/json&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;&apos;User-Agent&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;openvuln_api&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;url&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;url&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#Network Device endpoint
+&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;querystring&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;&apos;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;resp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;requests&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;headers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;header&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;verify&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# Make the Get Request
+&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;advisories&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;resp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# Capture data from the controller
+&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;advisories&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;resp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;status_code&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;psirts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;status&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;openvuln_http_get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;pp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pprint&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;psirts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Run the function and check the output:&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;venv&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; % python openvuln_api.py
+
+&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;advisories&apos;&lt;/span&gt;: &lt;span class=&quot;o&quot;&gt;[{&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;advisoryId&apos;&lt;/span&gt;: &lt;span class=&quot;s1&quot;&gt;&apos;cisco-sa-http-fp-bp-KfDdcQhc&apos;&lt;/span&gt;,
+                 &lt;span class=&quot;s1&quot;&gt;&apos;advisoryTitle&apos;&lt;/span&gt;: &lt;span class=&quot;s1&quot;&gt;&apos;Multiple Cisco Products Snort HTTP &apos;&lt;/span&gt;
+                                  &lt;span class=&quot;s1&quot;&gt;&apos;Detection Engine File Policy Bypass &apos;&lt;/span&gt;
+                                  &lt;span class=&quot;s1&quot;&gt;&apos;Vulnerabilities&apos;&lt;/span&gt;,
+                 &lt;span class=&quot;s1&quot;&gt;&apos;bugIDs&apos;&lt;/span&gt;: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;CSCvv70864&apos;&lt;/span&gt;,
+                            &lt;span class=&quot;s1&quot;&gt;&apos;CSCvw19272&apos;&lt;/span&gt;,
+                            &lt;span class=&quot;s1&quot;&gt;&apos;CSCvw26645&apos;&lt;/span&gt;,
+                            &lt;span class=&quot;s1&quot;&gt;&apos;CSCvw59055&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;,
+                 &lt;span class=&quot;s1&quot;&gt;&apos;cves&apos;&lt;/span&gt;: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;CVE-2021-1494&apos;&lt;/span&gt;, &lt;span class=&quot;s1&quot;&gt;&apos;CVE-2021-1495&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;,
+                 &lt;span class=&quot;s1&quot;&gt;&apos;cvrfUrl&apos;&lt;/span&gt;: &lt;span class=&quot;s1&quot;&gt;&apos;https://tools.cisco.com/security/center/contentxml/CiscoSecurityAdvisory/cisco-sa-http-fp-bp-KfDdcQhc/cvrf/cisco-sa-http-fp-bp-KfDdcQhc_cvrf.xml&apos;&lt;/span&gt;,
+                 &lt;span class=&quot;s1&quot;&gt;&apos;cvssBaseScore&apos;&lt;/span&gt;: &lt;span class=&quot;s1&quot;&gt;&apos;5.8&apos;&lt;/span&gt;,
+                 &lt;span class=&quot;s1&quot;&gt;&apos;cwe&apos;&lt;/span&gt;: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;CWE-693&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;,
+                 &lt;span class=&quot;s1&quot;&gt;&apos;firstPublished&apos;&lt;/span&gt;: &lt;span class=&quot;s1&quot;&gt;&apos;2021-04-28T16:00:00&apos;&lt;/span&gt;,
+                 &lt;span class=&quot;s1&quot;&gt;&apos;ipsSignatures&apos;&lt;/span&gt;: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;NA&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;,
+                 &lt;span class=&quot;s1&quot;&gt;&apos;lastUpdated&apos;&lt;/span&gt;: &lt;span class=&quot;s1&quot;&gt;&apos;2021-05-20T18:51:31&apos;&lt;/span&gt;,
+                 &lt;span class=&quot;s1&quot;&gt;&apos;productNames&apos;&lt;/span&gt;: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;Cisco Firepower Threat Defense Software &apos;&lt;/span&gt;,
+                                  &lt;span class=&quot;s1&quot;&gt;&apos;Cisco UTD SNORT IPS Engine Software &apos;&lt;/span&gt;,
+                                  &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;,
+                 &lt;span class=&quot;s1&quot;&gt;&apos;publicationUrl&apos;&lt;/span&gt;: &lt;span class=&quot;s1&quot;&gt;&apos;https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-http-fp-bp-KfDdcQhc&apos;&lt;/span&gt;,
+                 &lt;span class=&quot;s1&quot;&gt;&apos;sir&apos;&lt;/span&gt;: &lt;span class=&quot;s1&quot;&gt;&apos;Medium&apos;&lt;/span&gt;,
+                 &lt;span class=&quot;s1&quot;&gt;&apos;status&apos;&lt;/span&gt;: &lt;span class=&quot;s1&quot;&gt;&apos;Final&apos;&lt;/span&gt;,
+                 &lt;span class=&quot;s1&quot;&gt;&apos;summary&apos;&lt;/span&gt;: &lt;span class=&quot;s1&quot;&gt;&apos;&amp;lt;p&amp;gt;&amp;lt;span &apos;&lt;/span&gt;
+                            &lt;span class=&quot;s1&quot;&gt;&apos;id=&quot;ctl00_MainBodyContainer_DgFields_ctl03_lblField&quot;&amp;gt;Multiple &apos;&lt;/span&gt;
+                            &lt;span class=&quot;s1&quot;&gt;&apos;Cisco&amp;amp;nbsp;products are affected by &apos;&lt;/span&gt;
+                            &lt;span class=&quot;s1&quot;&gt;&apos;vulnerabilities in the Snort detection engine &apos;&lt;/span&gt;
+                            &lt;span class=&quot;s1&quot;&gt;&apos;that&amp;lt;/span&amp;gt; could allow an unauthenticated, &apos;&lt;/span&gt;
+                            &lt;span class=&quot;s1&quot;&gt;&apos;remote attacker to bypass a configured file &apos;&lt;/span&gt;
+                            &lt;span class=&quot;s1&quot;&gt;&apos;policy for HTTP.&amp;lt;/p&amp;gt;\r\n&apos;&lt;/span&gt;
+                            &lt;span class=&quot;s1&quot;&gt;&apos;&amp;lt;p&amp;gt;These vulnerabilities are due to incorrect &apos;&lt;/span&gt;
+                            &lt;span class=&quot;s1&quot;&gt;&apos;handling of specific HTTP header parameters. An &apos;&lt;/span&gt;
+                            &lt;span class=&quot;s1&quot;&gt;&apos;attacker could exploit these vulnerabilities by &apos;&lt;/span&gt;
+                            &lt;span class=&quot;s1&quot;&gt;&apos;sending crafted HTTP packets through an affected &apos;&lt;/span&gt;
+                            &lt;span class=&quot;s1&quot;&gt;&apos;device. A successful exploit could allow the &apos;&lt;/span&gt;
+                            &lt;span class=&quot;s1&quot;&gt;&apos;attacker to bypass a configured file policy for &apos;&lt;/span&gt;
+                            &lt;span class=&quot;s1&quot;&gt;&apos;HTTP packets and deliver a malicious &apos;&lt;/span&gt;
+                            &lt;span class=&quot;s1&quot;&gt;&apos;payload.&amp;lt;/p&amp;gt;\r\n&apos;&lt;/span&gt;
+                            &lt;span class=&quot;s1&quot;&gt;&apos;&amp;lt;p&amp;gt;Cisco&amp;amp;nbsp;has released software updates that &apos;&lt;/span&gt;
+                            &lt;span class=&quot;s1&quot;&gt;&apos;address these vulnerabilities. There are no &apos;&lt;/span&gt;
+                            &lt;span class=&quot;s1&quot;&gt;&apos;workarounds that address these &apos;&lt;/span&gt;
+                            &lt;span class=&quot;s1&quot;&gt;&apos;vulnerabilities.&amp;amp;nbsp;&amp;lt;/p&amp;gt;\r\n&apos;&lt;/span&gt;
+                            &lt;span class=&quot;s1&quot;&gt;&apos;&amp;lt;p&amp;gt;This advisory is available at the following &apos;&lt;/span&gt;
+                            &lt;span class=&quot;s1&quot;&gt;&apos;link:&amp;lt;br&amp;gt;&amp;lt;a &apos;&lt;/span&gt;
+                            &lt;span class=&quot;s1&quot;&gt;&apos;href=&quot;https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-http-fp-bp-KfDdcQhc&quot; &apos;&lt;/span&gt;
+                            &lt;span class=&quot;s1&quot;&gt;&apos;rel=&quot;nofollow&quot;&amp;gt;https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-http-fp-bp-KfDdcQhc&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;\r\n&apos;&lt;/span&gt;,
+                 &lt;span class=&quot;s1&quot;&gt;&apos;version&apos;&lt;/span&gt;: &lt;span class=&quot;s1&quot;&gt;&apos;1.1&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;,
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;56-django-models-file-and-database-definition&quot;&gt;5.6 Django Models file and Database Definition&lt;/h1&gt;
+&lt;p&gt;Edit our &lt;strong&gt;openvuln &amp;gt; models.py&lt;/strong&gt; file / database definition and create a model to store advisories:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;django.db&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;models&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;datetime&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;django.utils&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;timezone&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Create your models here.
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;openvuln_advisory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;models&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;advisoryId&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;models&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CharField&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;primary_key&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;max_length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;advisoryTitle&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;models&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TextField&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;max_length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;bugIDs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;models&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TextField&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;cves&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;models&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TextField&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;cvrfUrl&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;models&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TextField&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;cvssBaseScore&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;models&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FloatField&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;cwe&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;models&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CharField&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;max_length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;firstPublished&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;models&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DateTimeField&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;max_length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;ipsSignatures&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;models&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CharField&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;max_length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;lastUpdated&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;models&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DateTimeField&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;max_length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;productNames&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;models&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TextField&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;publicationUrl&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;models&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TextField&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;sir&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;models&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TextField&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;status&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;models&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CharField&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;max_length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;summary&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;models&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TextField&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;affected_devices&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;models&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CharField&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;max_length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;no&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;last_updated&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;models&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DateTimeField&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;timezone&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;now&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__str__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;advisoryId&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Commit the model to postgres sql:&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;venv&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; % python manage.py makemigrations openvuln
+
+Migrations &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;openvuln&apos;&lt;/span&gt;:
+  openvuln/migrations/0001_initial.py
+    - Create model openvuln_advisory
+&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;venv&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; % python manage.py migrate openvuln
+
+Operations to perform:
+  Apply all migrations: openvuln
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;57-writing-to-database&quot;&gt;5.7 Writing to Database&lt;/h1&gt;
+&lt;p&gt;Create the below function to write our advisory request output to database:&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# django imports
+# Add your own path to django install location here
+&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sys&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;sys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/Users/jamespsullivan/Documents/grafana-cisco-demo/cisco_grafana/&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;environ&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;DJANGO_SETTINGS_MODULE&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;cisco_grafana.settings&apos;&lt;/span&gt;
+
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;django&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;json&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pprint&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pp&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;django&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setup&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# django openvuln model import
+&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;openvuln.models&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;openvuln_advisory&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# function to map JSON form API to DB model file and save
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;advisories_to_db&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;advisories&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;advisory&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;advisories&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;advisories&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;# We want number values in this table column, convert NA to 0 value
+&lt;/span&gt;        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;advisory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;cvssBaseScore&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;NA&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;advisory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;cvssBaseScore&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;0&apos;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;advisory_update&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;openvuln_advisory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;advisoryId&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;advisory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;advisoryId&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;advisoryTitle&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;advisory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;advisoryTitle&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;bugIDs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;advisory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;bugIDs&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;cves&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;advisory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;cves&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;cvrfUrl&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;advisory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;cvrfUrl&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;cvssBaseScore&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;advisory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;cvssBaseScore&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]),&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;cwe&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;advisory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;cwe&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;firstPublished&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;advisory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;firstPublished&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;ipsSignatures&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;advisory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;ipsSignatures&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;lastUpdated&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;advisory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;lastUpdated&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;productNames&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;advisory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;productNames&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;publicationUrl&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;advisory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;publicationUrl&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;sir&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;advisory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;sir&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;status&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;advisory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;status&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;summary&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;advisory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;summary&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;advisory_update&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;save&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;advisories_to_db&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;psirts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Verify that the advisories have been saved to database - you can use something like below, or pgAdmin as in previous tutorials.&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;psirt&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;openvuln_advisory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;objects&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;all&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;psirt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;advisoryId&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;, &apos;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;psirt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;advisoryTitle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Output looks ok?&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cisco-sa-sdwan-vmanageinfdis-LKrFpbv, Cisco SD-WAN vManage Information Disclosure Vulnerability
+cisco-sa-snort-tfo-bypass-MmzZrtes, Multiple Cisco Products Snort TCP Fast Open File Policy Bypass Vulnerability
+cisco-sa-20190515-nxos-cli-bypass, Cisco NX-OS Software CLI Bypass to Internal Service Vulnerability
+cisco-sa-sb-wap-inject-Mp9FSdG, Cisco Small Business 100, 300, and 500 Series Wireless Access Points Command Injection Vulnerabilities
+cisco-sa-finesse-strd-xss-bUKqffFW, Cisco Finesse Cross-Site Scripting Vulnerabilities
+cisco-sa-dnasp-conn-cmdinj-HOj4YV5n, Cisco DNA Spaces Connector Command Injection Vulnerabilities
+cisco-sa-dnasp-conn-prvesc-q6T6BzW, Cisco DNA Spaces Connector Privilege Escalation Vulnerabilities
+cisco-sa-cml-cmd-inject-N4VYeQXB, Cisco Modeling Labs Web UI Command Injection Vulnerability
+cisco-sa-hyperflex-rce-TjjNrkpR, Cisco HyperFlex HX Command Injection Vulnerabilities
+cisco-sa-ucm-dos-OO4SRYEf, Cisco Hosted Collaboration Mediation Fulfillment Denial of Service Vulnerability
+cisco-sa-anyconnect-mac-priv-esc-VqST2nrT, MacOS Local Privilege Escalation Exploitable through Cisco AnyConnect Secure Mobility Client
+cisco-sa-openssl-2021-GHY28dJd, Multiple Vulnerabilities &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;OpenSSL Affecting Cisco Products: March 2021
+cisco-sa-waas-infdisc-Twb4EypK, Cisco Wide Area Application Services Software Information Disclosure Vulnerability
+cisco-sa-vmanage-xss-eN75jxtW, Cisco SD-WAN vManage API Stored Cross-Site Scripting Vulnerability
+cisco-sa-wsa-xss-mVjOWchB, Cisco Web Security Appliance Cross-Site Scripting Vulnerability
+cisco-sa-ise-priv-esc-fNZX8hHj, Cisco Identity Services Engine Privilege Escalation Vulnerability
+cisco-sa-ftd-ssl-decrypt-dos-DdyLuK6c, Cisco Firepower Threat Defense Software SSL Decryption Policy Denial of Service Vulnerability
+cisco-sa-sdwan-buffover-MWGucjtO, Cisco SD-WAN vEdge Software Buffer Overflow Vulnerabilities
+cisco-sa-sdwan-arbfile-7Qhd9mCn, Cisco SD-WAN Software Arbitrary File Corruption Vulnerability
+cisco-sa-amp-imm-dll-tu79hvkO, Cisco Advanced Malware Protection &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;Endpoints Windows Connector,  ClamAV &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;Windows, and Immunet DLL Hijacking Vulnerability
+cisco-sa-sdwan-dos-Ckn5cVqW, Cisco SD-WAN Software vDaemon Denial of Service Vulnerability
+cisco-sa-sb-wap-multi-ZAfKGXhF, Cisco Small Business 100, 300, and 500 Series Wireless Access Points Vulnerabilities
+cisco-sa-nfvis-cmdinj-DkFjqg2j, Cisco Enterprise NFV Infrastructure Software Command Injection Vulnerability
+cisco-sa-sd-wan-vmanage-4TbynnhZ, Cisco SD-WAN vManage Software Vulnerabilities
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Let’s add the following so we can categorise advisories by product family.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Note:   Initial intention here was to compare the software versions collected in our previous DCNM and SD-WAN articles to the &lt;strong&gt;Affected Releases&lt;/strong&gt; for each advisory.  Unfortunately, the API doesn’t seem to currently have a field that summarises impacted software versions.  Some of the “Product Names” column reference versions, but not all… Maybe a feature request to include this in the future?&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;psirt&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;openvuln_advisory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;objects&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;all&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;NX-OS&apos;&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;psirt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;productNames&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;psirt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;devicesImpacted&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;NX-OS&apos;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;psirt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;save&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;SD-WAN&apos;&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;psirt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;productNames&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;psirt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;devicesImpacted&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;SD-WAN&apos;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;psirt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;save&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;IOS&apos;&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;psirt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;productNames&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;psirt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;devicesImpacted&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;IOS XE/IOS&apos;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;psirt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;save&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;Firepower&apos;&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;psirt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;productNames&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;psirt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;devicesImpacted&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;ASA/Firepower&apos;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;psirt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;save&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;Unified Communications&apos;&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;psirt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;productNames&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;psirt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;devicesImpacted&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;Collab&apos;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;psirt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;save&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;Jabber&apos;&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;psirt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;productNames&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;psirt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;devicesImpacted&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;Collab&apos;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;psirt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;save&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;Webex&apos;&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;psirt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;productNames&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;psirt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;devicesImpacted&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;Collab&apos;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;psirt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;save&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;HyperFlex&apos;&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;psirt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;productNames&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;psirt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;devicesImpacted&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;Hyperflex&apos;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;psirt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;save&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;psirt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;devicesImpacted&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;other&apos;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;psirt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;save&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;hr /&gt;
+&lt;h1 id=&quot;58-grafana&quot;&gt;5.8 Grafana&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Create a new dashboard and add a new panel&lt;/li&gt;
+  &lt;li&gt;Configure &lt;strong&gt;query options&lt;/strong&gt; as below.  We’ll query by the devicesImpacted field we created previously&lt;/li&gt;
+  &lt;li&gt;Select PieChartv2 from the right, optionally change the PieChart type to &lt;strong&gt;donut&lt;/strong&gt;, add the labels name, value and percent and give the chart a title.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Your preview pane should now look like below - click save and apply
+&lt;img src=&quot;https://github.com/j-sulliman/j-sulliman.github.io/blob/master/images/OpenVuln_Platforms_Impacted.png?raw=true&quot; alt=&quot;Platforms Impacted&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Create a new panel to show advisories by severity and date&lt;/li&gt;
+  &lt;li&gt;Time Column = &lt;strong&gt;firstPublished&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Metric Column = &lt;strong&gt;advisoryTitle&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;From the select column select &lt;strong&gt;cvssBaseScore&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Select &lt;strong&gt;Bars&lt;/strong&gt; from the right&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Your preview pane should now look like below - click save and apply
+&lt;img src=&quot;https://github.com/j-sulliman/j-sulliman.github.io/blob/master/images/Advisories_by_date.png?raw=true&quot; alt=&quot;Advisories By Date&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Create a new panel to hold advisories detail table as below&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Time Column = &lt;strong&gt;firstPublished&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Add all relevant columns&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Your preview pane should now look like below - click save and apply.  The publication URL provides a useful hyperlink to the advisory detail on tools.cisco.com.
+&lt;img src=&quot;https://github.com/j-sulliman/j-sulliman.github.io/blob/master/images/Openvuln_Table.png?raw=true&quot; alt=&quot;Advisories Table&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;59-alerting-for-new-advisories&quot;&gt;5.9 Alerting for new Advisories&lt;/h1&gt;
+
+&lt;p&gt;Grafana has build in alerting capabilities:&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Grafana alerting allows you to attach rules to your dashboard panels. When you save the dashboard, Grafana extracts the alert rules into a separate alert rule storage and schedules them for evaluation.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Let’s give it a try.&lt;/p&gt;
+
+&lt;h2 id=&quot;591-smtp-settings-and-grafanaini&quot;&gt;5.9.1 SMTP settings and Grafana.ini&lt;/h2&gt;
+
+&lt;p&gt;Edit grafana.ini to reflect the SMTP settings for your email account.&lt;/p&gt;
+
+&lt;p&gt;Note - I’m using Homebrew on mac, grafana.ini is as below - this will likely be different depending on your OS.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(venv) % nano /opt/homebrew/etc/grafana/grafana.ini&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#################################### SMTP / Emailing ##########################
+[smtp]
+enabled = true
+host = smtp.gmail.com:587
+user = &amp;lt;your-email&amp;gt;@gmail.com
+# If the password contains # or ; you have to wrap it with triple quotes. Ex &quot;&quot;&quot;#password;&quot;&quot;&quot;
+password = [**********]
+;cert_file =
+;key_file =
+;skip_verify = false
+from_address = admin@grafana.localhost
+from_name = Grafana
+# EHLO identity in SMTP dialog (defaults to instance_name)
+;ehlo_identity = dashboard.example.com
+# SMTP startTLS policy (defaults to &apos;OpportunisticStartTLS&apos;)
+;startTLS_policy = NoStartTLS
+
+[emails]
+;welcome_email_on_sign_up = false
+;templates_pattern = emails/*.html
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Check the status of test email from Grafana’s alerting/ email test.  In my case the test failed.  No error message is given.  But from grafana.log we see below io timeout:
+From &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(venv) % tail /opt/homebrew/var/log/grafana/grafana.log&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;venv&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; % &lt;span class=&quot;nb&quot;&gt;tail&lt;/span&gt; /opt/homebrew/var/log/grafana/grafana.log
+&lt;span class=&quot;nv&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;2021-05-22T20:30:45+1200 &lt;span class=&quot;nv&quot;&gt;lvl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;eror &lt;span class=&quot;nv&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;failed to send notification&quot;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;logger&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;alerting.notifier &lt;span class=&quot;nv&quot;&gt;uid&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Failed to send notification to email addresses: sulliman@gmail.com: dial tcp 74.125.24.109:587: i/o timeout&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;After allowing TCP 587 outbound on firewall and resending a test email:&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;2021-05-23T12:54:28+1200 &lt;span class=&quot;nv&quot;&gt;lvl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;info &lt;span class=&quot;nv&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Sending alert notification to&quot;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;logger&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;alerting.notifier.email &lt;span class=&quot;nv&quot;&gt;addresses&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=[&lt;/span&gt;sulliman@gmail.com] &lt;span class=&quot;nv&quot;&gt;singleEmail&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;false&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Test email received -
+&lt;img src=&quot;https://github.com/j-sulliman/j-sulliman.github.io/blob/master/images/Grafana_test_notification.png?raw=true&quot; alt=&quot;Test Notification&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Edit the alert field of one of your graph panels.  In this example, I’m checking for new alerts every 12 hours.  If an advisory is published within the last 24 hours an email alert will be sent to the email address you’ve entered in the notifications channel.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://github.com/j-sulliman/j-sulliman.github.io/blob/master/images/Advisory_Alert.png?raw=true&quot; alt=&quot;Advisory Alert&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;You’ll now receive alert notifications when new PSIRTS are detected.
+&lt;img src=&quot;https://github.com/j-sulliman/j-sulliman.github.io/blob/master/images/PSIRT_Notification.png?raw=true&quot; alt=&quot;New PSIRT Notification&quot; /&gt;&lt;/p&gt;</content><author><name>Jamie Sullivan</name></author><summary type="html">5.1 Introduction</summary></entry><entry><title type="html">Part 4.2 [sdwan] : cisco sdwan vmanage api visualisations with grafana</title><link href="https://j-sulliman.github.io//2021/05/18/Part-4.2-SDWAN-Cisco-SDWAN-vManage-API-Visualisations-with-Grafana.html" rel="alternate" type="text/html" title="Part 4.2 [sdwan] : cisco sdwan vmanage api visualisations with grafana" /><published>2021-05-18T08:00:34+12:00</published><updated>2021-05-18T08:00:34+12:00</updated><id>https://j-sulliman.github.io//2021/05/18/Part%204.2%20%5BSDWAN%5D%20:%20Cisco%20SDWAN%20-%20vManage%20API%20Visualisations%20with%20Grafana</id><content type="html" xml:base="https://j-sulliman.github.io//2021/05/18/Part-4.2-SDWAN-Cisco-SDWAN-vManage-API-Visualisations-with-Grafana.html">&lt;h2 id=&quot;article-index&quot;&gt;Article Index&lt;/h2&gt;
 
 &lt;table&gt;
   &lt;thead&gt;
@@ -464,7 +917,7 @@ Token: 06B2E640C58DB66335A94CF381E447BAEB6534972587362EF47BB3E1FF5023E8EA605FB09
 
 &lt;p&gt;I’ll update this page with the next architecture soon.&lt;/p&gt;
 
-&lt;p&gt;Jamie&lt;/p&gt;</content><author><name>Jamie Sullivan</name></author><summary type="html">Article Index</summary></entry><entry><title type="html">Part 5.0 [openvuln api] : cisco psirt and security vulnerability dashboard with grafana</title><link href="https://j-sulliman.github.io//2021/05/18/Part-5.0-OpenVuln-API-Cisco-PSIRT-and-Security-Vulnerability-Dashboard-with-Grafana.html" rel="alternate" type="text/html" title="Part 5.0 [openvuln api] : cisco psirt and security vulnerability dashboard with grafana" /><published>2021-05-18T08:00:34+12:00</published><updated>2021-05-18T08:00:34+12:00</updated><id>https://j-sulliman.github.io//2021/05/18/Part%205.0%20%5BOpenVuln%20API%5D%20:%20Cisco%20PSIRT%20and%20Security%20Vulnerability%20Dashboard%20with%20Grafana</id><content type="html" xml:base="https://j-sulliman.github.io//2021/05/18/Part-5.0-OpenVuln-API-Cisco-PSIRT-and-Security-Vulnerability-Dashboard-with-Grafana.html">&lt;p&gt;Comming&lt;/p&gt;</content><author><name>Jamie Sullivan</name></author><summary type="html">Comming</summary></entry><entry><title type="html">Part 4.1 [sdwan] : cisco sdwan lab build</title><link href="https://j-sulliman.github.io//2021/05/14/Part-4.1-SDWAN-Cisco-SDWAN-Lab-Build.html" rel="alternate" type="text/html" title="Part 4.1 [sdwan] : cisco sdwan lab build" /><published>2021-05-14T08:00:00+12:00</published><updated>2021-05-14T08:00:00+12:00</updated><id>https://j-sulliman.github.io//2021/05/14/Part%204.1%20%5BSDWAN%5D%20:%20Cisco%20SDWAN%20Lab%20Build</id><content type="html" xml:base="https://j-sulliman.github.io//2021/05/14/Part-4.1-SDWAN-Cisco-SDWAN-Lab-Build.html">&lt;h1 id=&quot;part-4-cisco-sdwan-virtual-lab-deployment&quot;&gt;Part (4) Cisco SDWAN Virtual Lab Deployment&lt;/h1&gt;
+&lt;p&gt;Jamie&lt;/p&gt;</content><author><name>Jamie Sullivan</name></author><summary type="html">Article Index</summary></entry><entry><title type="html">Part 4.1 [sdwan] : cisco sdwan lab build</title><link href="https://j-sulliman.github.io//2021/05/14/Part-4.1-SDWAN-Cisco-SDWAN-Lab-Build.html" rel="alternate" type="text/html" title="Part 4.1 [sdwan] : cisco sdwan lab build" /><published>2021-05-14T08:00:00+12:00</published><updated>2021-05-14T08:00:00+12:00</updated><id>https://j-sulliman.github.io//2021/05/14/Part%204.1%20%5BSDWAN%5D%20:%20Cisco%20SDWAN%20Lab%20Build</id><content type="html" xml:base="https://j-sulliman.github.io//2021/05/14/Part-4.1-SDWAN-Cisco-SDWAN-Lab-Build.html">&lt;h1 id=&quot;part-4-cisco-sdwan-virtual-lab-deployment&quot;&gt;Part (4) Cisco SDWAN Virtual Lab Deployment&lt;/h1&gt;
 
 &lt;p&gt;We’ve covered creating a Meraki and DCNM dashboard using APIs and Grafana in previous updates.  In this update we continue building out our Grafana dashboard with a focus on SDWAN and vManage APIs.&lt;/p&gt;
 
