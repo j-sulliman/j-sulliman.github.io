@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://j-sulliman.github.io//feed.xml" rel="self" type="application/atom+xml" /><link href="https://j-sulliman.github.io//" rel="alternate" type="text/html" /><updated>2021-05-23T20:43:37+12:00</updated><id>https://j-sulliman.github.io//feed.xml</id><title type="html">Jamie Sullivan’s Blog</title><subtitle>Personal Blog for Networking, Datacenter and automation / programmability.  All content is my own and does not represent the views of my employer.</subtitle><entry><title type="html">Part 5.0 [openvuln api] : cisco psirt and security vulnerability dashboard with grafana</title><link href="https://j-sulliman.github.io//2021/05/23/Part-5.0-OpenVuln-API-Cisco-PSIRT-and-Security-Vulnerability-Dashboard-with-Grafana.html" rel="alternate" type="text/html" title="Part 5.0 [openvuln api] : cisco psirt and security vulnerability dashboard with grafana" /><published>2021-05-23T20:00:34+12:00</published><updated>2021-05-23T20:00:34+12:00</updated><id>https://j-sulliman.github.io//2021/05/23/Part%205.0%20%5BOpenVuln%20API%5D%20:%20Cisco%20PSIRT%20and%20Security%20Vulnerability%20Dashboard%20with%20Grafana</id><content type="html" xml:base="https://j-sulliman.github.io//2021/05/23/Part-5.0-OpenVuln-API-Cisco-PSIRT-and-Security-Vulnerability-Dashboard-with-Grafana.html">&lt;h1 id=&quot;article-index&quot;&gt;Article Index&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://j-sulliman.github.io//feed.xml" rel="self" type="application/atom+xml" /><link href="https://j-sulliman.github.io//" rel="alternate" type="text/html" /><updated>2021-05-24T08:32:31+12:00</updated><id>https://j-sulliman.github.io//feed.xml</id><title type="html">Jamie Sullivan’s Blog</title><subtitle>Personal Blog for Networking, Datacenter and automation / programmability.  All content is my own and does not represent the views of my employer.</subtitle><entry><title type="html">Part 5.0 [openvuln api] : cisco psirt and security vulnerability dashboard with grafana</title><link href="https://j-sulliman.github.io//2021/05/23/Part-5.0-OpenVuln-API-Cisco-PSIRT-and-Security-Vulnerability-Dashboard-with-Grafana.html" rel="alternate" type="text/html" title="Part 5.0 [openvuln api] : cisco psirt and security vulnerability dashboard with grafana" /><published>2021-05-23T20:00:34+12:00</published><updated>2021-05-23T20:00:34+12:00</updated><id>https://j-sulliman.github.io//2021/05/23/Part%205.0%20%5BOpenVuln%20API%5D%20:%20Cisco%20PSIRT%20and%20Security%20Vulnerability%20Dashboard%20with%20Grafana</id><content type="html" xml:base="https://j-sulliman.github.io//2021/05/23/Part-5.0-OpenVuln-API-Cisco-PSIRT-and-Security-Vulnerability-Dashboard-with-Grafana.html">&lt;h1 id=&quot;article-index&quot;&gt;Article Index&lt;/h1&gt;
 
 &lt;table&gt;
   &lt;thead&gt;
@@ -49,7 +49,7 @@
     &lt;tr&gt;
       &lt;td&gt;5.0&lt;/td&gt;
       &lt;td&gt;OpenVuln API&lt;/td&gt;
-      &lt;td&gt;&lt;a href=&quot;https://j-sulliman.github.io/2021/05/23/Part-5.0-OpenVuln-API-Cisco-PSIRT-and-Security-Vulnerability-Dashboard-with-Grafana.html&quot;&gt;Building a SD-WAN Dashboard with Grafana, Django and Python&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;a href=&quot;https://j-sulliman.github.io/2021/05/23/Part-5.0-OpenVuln-API-Cisco-PSIRT-and-Security-Vulnerability-Dashboard-with-Grafana.html&quot;&gt;Building a Security Advisory Dashboard with Grafana, Django and Python&lt;/a&gt;&lt;/td&gt;
       &lt;td&gt;Visualising OpenVuln APIs with Grafana&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
@@ -87,12 +87,6 @@
 
 &lt;p&gt;Following the &lt;strong&gt;Accessing the API&lt;/strong&gt; section of the API reference guide, register a new application and select the OpenVuln API.  Once registered, you’ll have an API key and secret that can be used to authenticate your requests:
 &lt;img src=&quot;https://github.com/j-sulliman/j-sulliman.github.io/blob/master/images/OpenVuln_App_and_Key.png?raw=true&quot; alt=&quot;API Console&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;In the GitHub repository linked above, you’ll find code samples for curl, go, php, ruby, javascript.&lt;/p&gt;
-
-&lt;p&gt;There’s a python library available that can be installed via pip (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pip install openVulnQuery&lt;/code&gt;).&lt;/p&gt;
-
-&lt;p&gt;In my case I’ve used the native python requests package.&lt;/p&gt;
 
 &lt;hr /&gt;
 &lt;h1 id=&quot;54-create-our-openvuln-app-in-django&quot;&gt;5.4 Create our OpenVuln App in Django&lt;/h1&gt;
@@ -166,6 +160,13 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;hr /&gt;
 &lt;h1 id=&quot;55-python-requests-functions&quot;&gt;5.5 Python Requests Functions&lt;/h1&gt;
+
+&lt;p&gt;In the GitHub repository linked above, you’ll find code samples for curl, go, php, ruby, javascript.&lt;/p&gt;
+
+&lt;p&gt;There’s a python library available that can be installed via pip (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pip install openVulnQuery&lt;/code&gt;).&lt;/p&gt;
+
+&lt;p&gt;In my case I’ve used the native python requests package.&lt;/p&gt;
+
 &lt;p&gt;Create the  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Apps &amp;gt; openvuln_api.py&lt;/code&gt; file - this will store all our OpenVuln python functions.&lt;/p&gt;
 
 &lt;p&gt;Retrieving the access token:&lt;/p&gt;
@@ -455,7 +456,7 @@ cisco-sa-sd-wan-vmanage-4TbynnhZ, Cisco SD-WAN vManage Software Vulnerabilities
 
 &lt;h1 id=&quot;59-alerting-for-new-advisories&quot;&gt;5.9 Alerting for new Advisories&lt;/h1&gt;
 
-&lt;p&gt;Grafana has build in alerting capabilities:&lt;/p&gt;
+&lt;p&gt;Grafana has built in alerting capabilities:&lt;/p&gt;
 &lt;blockquote&gt;
   &lt;p&gt;Grafana alerting allows you to attach rules to your dashboard panels. When you save the dashboard, Grafana extracts the alert rules into a separate alert rule storage and schedules them for evaluation.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -2992,15 +2993,61 @@ ESI: 0300.0000.00fd.e900.0309
 &lt;p&gt;Jamie&lt;/p&gt;</content><author><name>Jamie Sullivan</name></author><summary type="html">Part (3.2) DCNM and VXLAN BGP and EVPN Lab with Nexus 9000v</summary></entry><entry><title type="html">Part 1 [intro] : building a multidomain dashboard with cisco apis and grafana</title><link href="https://j-sulliman.github.io//2021/04/27/Part-1-Intro-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html" rel="alternate" type="text/html" title="Part 1 [intro] : building a multidomain dashboard with cisco apis and grafana" /><published>2021-04-27T08:00:34+12:00</published><updated>2021-04-27T08:00:34+12:00</updated><id>https://j-sulliman.github.io//2021/04/27/Part%201%20%5BIntro%5D%20:%20Building%20a%20Multidomain%20Dashboard%20with%20Cisco%20APIs%20and%20Grafana</id><content type="html" xml:base="https://j-sulliman.github.io//2021/04/27/Part-1-Intro-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html">&lt;h1 id=&quot;10-introduction---network-and-infra-monitoring-with-grafana-django-and-python&quot;&gt;1.0 Introduction - Network and Infra Monitoring with Grafana, Django and Python&lt;/h1&gt;
 &lt;p&gt;In this series, we use REST APIs, Python, Django Webframework, PostgresSQL and Grafana to demonstrate building a cross-domain visualisations Dashboard for Cisco network and Infrastructure.&lt;/p&gt;
 
-&lt;p&gt;| Section | Architecture | Link | Topic
-———— | ———— | ————- | ————-
-1 | Introduction | &lt;a href=&quot;https://j-sulliman.github.io/2021/04/26/Part-1-Intro-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html&quot;&gt;building a multidomain dashboard with cisco apis and grafana&lt;/a&gt; | Solution Overview
-2 | Meraki | &lt;a href=&quot;https://j-sulliman.github.io/2021/04/26/Part-2-Meraki-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html&quot;&gt;Building a Meraki Dashboard with Grafana, Django and Python&lt;/a&gt; | Visualising Meraki APIs with Grafana.
-3.1 | DCNM &amp;amp; EVPN VXLAN | &lt;a href=&quot;https://j-sulliman.github.io/2021/05/04/Part-3.1-DCNM-Lab-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html&quot;&gt;DCNM VXLAN BGP and EVPN Lab with Nexus 9000v&lt;/a&gt; | DCNM, N9000v, EVPN and VXLAN Lab deployment
-3.2 | DCNM &amp;amp; EVPN VXLAN | &lt;a href=&quot;https://j-sulliman.github.io/2021/05/04/Part-3.2-DCNM-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html&quot;&gt;Building a DCNM Dashboard with Grafana, Django and Python&lt;/a&gt; | Visualising DCNM APIs with Grafana.
-4.1 | SDWAN | &lt;a href=&quot;https://j-sulliman.github.io/2021/05/13/Part-4.1-SDWAN-Cisco-SDWAN-Lab-Build.html&quot;&gt;Cisco SDWAN Virtual Lab Build&lt;/a&gt; | Cisco SDWAN Virtual Lab deployment
-4.2 | SDWAN | &lt;a href=&quot;https://j-sulliman.github.io/2021/05/17/Part-4.2-SDWAN-Cisco-SDWAN-vManage-API-Visualisations-with-Grafana.html&quot;&gt;Building a SD-WAN Dashboard with Grafana, Django and Python&lt;/a&gt; | Visualising vManage APIs with Grafana
-5.0 | OpenVuln API | &lt;a href=&quot;https://j-sulliman.github.io/2021/05/23/Part-5.0-OpenVuln-API-Cisco-PSIRT-and-Security-Vulnerability-Dashboard-with-Grafana.html&quot;&gt;Building a SD-WAN Dashboard with Grafana, Django and Python&lt;/a&gt; | Visualising OpenVuln APIs with Grafana&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Section&lt;/th&gt;
+      &lt;th&gt;Architecture&lt;/th&gt;
+      &lt;th&gt;Link&lt;/th&gt;
+      &lt;th&gt;Topic&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;Introduction&lt;/td&gt;
+      &lt;td&gt;&lt;a href=&quot;https://j-sulliman.github.io/2021/04/26/Part-1-Intro-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html&quot;&gt;building a multidomain dashboard with cisco apis and grafana&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Solution Overview&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;Meraki&lt;/td&gt;
+      &lt;td&gt;&lt;a href=&quot;https://j-sulliman.github.io/2021/04/26/Part-2-Meraki-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html&quot;&gt;Building a Meraki Dashboard with Grafana, Django and Python&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Visualising Meraki APIs with Grafana.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;3.1&lt;/td&gt;
+      &lt;td&gt;DCNM &amp;amp; EVPN VXLAN&lt;/td&gt;
+      &lt;td&gt;&lt;a href=&quot;https://j-sulliman.github.io/2021/05/04/Part-3.1-DCNM-Lab-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html&quot;&gt;DCNM VXLAN BGP and EVPN Lab with Nexus 9000v&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;DCNM, N9000v, EVPN and VXLAN Lab deployment&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;3.2&lt;/td&gt;
+      &lt;td&gt;DCNM &amp;amp; EVPN VXLAN&lt;/td&gt;
+      &lt;td&gt;&lt;a href=&quot;https://j-sulliman.github.io/2021/05/04/Part-3.2-DCNM-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html&quot;&gt;Building a DCNM Dashboard with Grafana, Django and Python&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Visualising DCNM APIs with Grafana.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;4.1&lt;/td&gt;
+      &lt;td&gt;SDWAN&lt;/td&gt;
+      &lt;td&gt;&lt;a href=&quot;https://j-sulliman.github.io/2021/05/13/Part-4.1-SDWAN-Cisco-SDWAN-Lab-Build.html&quot;&gt;Cisco SDWAN Virtual Lab Build&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Cisco SDWAN Virtual Lab deployment&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;4.2&lt;/td&gt;
+      &lt;td&gt;SDWAN&lt;/td&gt;
+      &lt;td&gt;&lt;a href=&quot;https://j-sulliman.github.io/2021/05/17/Part-4.2-SDWAN-Cisco-SDWAN-vManage-API-Visualisations-with-Grafana.html&quot;&gt;Building a SD-WAN Dashboard with Grafana, Django and Python&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Visualising vManage APIs with Grafana&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;5.0&lt;/td&gt;
+      &lt;td&gt;OpenVuln API&lt;/td&gt;
+      &lt;td&gt;&lt;a href=&quot;https://j-sulliman.github.io/2021/05/23/Part-5.0-OpenVuln-API-Cisco-PSIRT-and-Security-Vulnerability-Dashboard-with-Grafana.html&quot;&gt;Building a SD-WAN Dashboard with Grafana, Django and Python&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Visualising OpenVuln APIs with Grafana&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
 &lt;h2 id=&quot;12-lab-overview&quot;&gt;1.2 Lab Overview&lt;/h2&gt;
 &lt;p&gt;&lt;img src=&quot;https://github.com/j-sulliman/j-sulliman.github.io/blob/master/Overview_1.png?raw=true&quot; alt=&quot;alt text&quot; /&gt;&lt;/p&gt;
 
