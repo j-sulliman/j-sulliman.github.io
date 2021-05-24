@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Part 2 [meraki] : building a multidomain dashboard with cisco apis and grafana | Jamie Sullivan’s Blog</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Part 2 [meraki] : building a multidomain dashboard with cisco apis and grafana" />
+<meta name="author" content="Jamie Sullivan" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="2.0 Building a Meraki Dashboard with Grafana, Django and Python" />
+<meta property="og:description" content="2.0 Building a Meraki Dashboard with Grafana, Django and Python" />
+<link rel="canonical" href="https://j-sulliman.github.io//2021/04/27/Part-2-Meraki-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html" />
+<meta property="og:url" content="https://j-sulliman.github.io//2021/04/27/Part-2-Meraki-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html" />
+<meta property="og:site_name" content="Jamie Sullivan’s Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-04-27T08:00:34+12:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Part 2 [meraki] : building a multidomain dashboard with cisco apis and grafana" />
+<script type="application/ld+json">
+{"headline":"Part 2 [meraki] : building a multidomain dashboard with cisco apis and grafana","dateModified":"2021-04-27T08:00:34+12:00","datePublished":"2021-04-27T08:00:34+12:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://j-sulliman.github.io//2021/04/27/Part-2-Meraki-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html"},"author":{"@type":"Person","name":"Jamie Sullivan"},"url":"https://j-sulliman.github.io//2021/04/27/Part-2-Meraki-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html","description":"2.0 Building a Meraki Dashboard with Grafana, Django and Python","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://j-sulliman.github.io//feed.xml" title="Jamie Sullivan's Blog" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Jamie Sullivan&#39;s Blog</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a><a class="page-link" href="/test.html">Home</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Part 2 [meraki] : building a multidomain dashboard with cisco apis and grafana</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2021-04-27T08:00:34+12:00" itemprop="datePublished">Apr 27, 2021
+      </time>• <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Jamie Sullivan</span></span></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <h1 id="20-building-a-meraki-dashboard-with-grafana-django-and-python">2.0 Building a Meraki Dashboard with Grafana, Django and Python</h1>
+
+<h2 id="21-introduction">2.1 Introduction</h2>
+<p>We continue from our overview and initial setup discussed in part (1), by exploring Meraki’s APIs, adding functionality and models to our django install and visualising the captured data with Grafana.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Section</th>
+      <th>Architecture</th>
+      <th>Link</th>
+      <th>Topic</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Introduction</td>
+      <td><a href="https://j-sulliman.github.io/2021/04/26/Part-1-Intro-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html">building a multidomain dashboard with cisco apis and grafana</a></td>
+      <td>Solution Overview</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Meraki</td>
+      <td><a href="https://j-sulliman.github.io/2021/04/26/Part-2-Meraki-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html">Building a Meraki Dashboard with Grafana, Django and Python</a></td>
+      <td>Visualising Meraki APIs with Grafana.</td>
+    </tr>
+    <tr>
+      <td>3.1</td>
+      <td>DCNM &amp; EVPN VXLAN</td>
+      <td><a href="https://j-sulliman.github.io/2021/05/04/Part-3.1-DCNM-Lab-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html">DCNM VXLAN BGP and EVPN Lab with Nexus 9000v</a></td>
+      <td>DCNM, N9000v, EVPN and VXLAN Lab deployment</td>
+    </tr>
+    <tr>
+      <td>3.2</td>
+      <td>DCNM &amp; EVPN VXLAN</td>
+      <td><a href="https://j-sulliman.github.io/2021/05/04/Part-3.2-DCNM-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html">Building a DCNM Dashboard with Grafana, Django and Python</a></td>
+      <td>Visualising DCNM APIs with Grafana.</td>
+    </tr>
+    <tr>
+      <td>4.1</td>
+      <td>SDWAN</td>
+      <td><a href="https://j-sulliman.github.io/2021/05/13/Part-4.1-SDWAN-Cisco-SDWAN-Lab-Build.html">Cisco SDWAN Virtual Lab Build</a></td>
+      <td>Cisco SDWAN Virtual Lab deployment</td>
+    </tr>
+    <tr>
+      <td>4.2</td>
+      <td>SDWAN</td>
+      <td><a href="https://j-sulliman.github.io/2021/05/17/Part-4.2-SDWAN-Cisco-SDWAN-vManage-API-Visualisations-with-Grafana.html">Building a SD-WAN Dashboard with Grafana, Django and Python</a></td>
+      <td>Visualising vManage APIs with Grafana</td>
+    </tr>
+    <tr>
+      <td>5.0</td>
+      <td>OpenVuln API</td>
+      <td><a href="https://j-sulliman.github.io/2021/05/23/Part-5.0-OpenVuln-API-Cisco-PSIRT-and-Security-Vulnerability-Dashboard-with-Grafana.html">Building a SD-WAN Dashboard with Grafana, Django and Python</a></td>
+      <td>Visualising OpenVuln APIs with Grafana</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="22-solution-overview---cisco-meraki-apis-and-visualisations-with-grafana-green-components">2.2 Solution Overview - Cisco Meraki APIs and Visualisations with Grafana (green components)</h2>
+<p><img src="https://github.com/j-sulliman/j-sulliman.github.io/blob/master/Meraki_Solution_overview.png?raw=true" alt="alt text" /></p>
+
+<h2 id="23-resources">2.3 Resources</h2>
+<ul>
+  <li><a href="https://developer.cisco.com/startnow/#meraki-v0">Meraki Learning Track on DevNet</a></li>
+  <li><a href="https://docs.djangoproject.com/en/3.2/ref/databases/#postgresql-notes">Postgres &amp; Django Interop</a></li>
+</ul>
+
+<h2 id="24-implementation">2.4 Implementation</h2>
+<h3 id="241-enable-the-meraki-api">2.4.1 Enable the Meraki API</h3>
+<p>From Dashboard, enable the API, under organisation settings as shown below, create and note down the API key from your profile
+<img src="https://github.com/j-sulliman/j-sulliman.github.io/blob/master/Enable_meraki_api.png?raw=true" alt="alt text" /></p>
+
+<h3 id="242-create-the-meraki-app-directory-structure-in-django">2.4.2 Create the Meraki App (Directory Structure) in django</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">zsh</span><span class="o">-</span><span class="n">shell</span> <span class="n">grafana</span><span class="o">-</span><span class="n">cisco</span><span class="o">-</span><span class="n">demo</span> <span class="o">%</span> <span class="n">source</span> <span class="n">venv</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
+<span class="p">(</span><span class="n">venv</span><span class="p">)</span> <span class="n">zsh</span><span class="o">-</span><span class="n">shell</span> <span class="n">grafana</span><span class="o">-</span><span class="n">cisco</span><span class="o">-</span><span class="n">demo</span> <span class="o">%</span> <span class="n">cd</span> <span class="n">cisco_grafana</span>
+<span class="p">(</span><span class="n">venv</span><span class="p">)</span> <span class="n">zsh</span><span class="o">-</span><span class="n">shell</span> <span class="n">cisco_grafana</span> <span class="o">%</span> <span class="n">python</span> <span class="n">manage</span><span class="p">.</span><span class="n">py</span> <span class="n">startapp</span> <span class="n">meraki</span>
+<span class="p">(</span><span class="n">venv</span><span class="p">)</span> <span class="n">zsh</span><span class="o">-</span><span class="n">shell</span> <span class="n">cisco_grafana</span> <span class="o">%</span>
+</code></pre></div></div>
+<p>Django will have created a directory structure as shown:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">venv</span><span class="p">)</span> <span class="n">zsh</span><span class="o">-</span><span class="n">shell</span> <span class="n">cisco_grafana</span> <span class="o">%</span> <span class="n">ls</span> <span class="n">meraki</span>
+<span class="n">__init__</span><span class="p">.</span><span class="n">py</span>	<span class="n">admin</span><span class="p">.</span><span class="n">py</span>	<span class="n">apps</span><span class="p">.</span><span class="n">py</span>		<span class="n">migrations</span>	<span class="n">models</span><span class="p">.</span><span class="n">py</span>	<span class="n">tests</span><span class="p">.</span><span class="n">py</span>	<span class="n">views</span><span class="p">.</span><span class="n">py</span>
+</code></pre></div></div>
+
+<p>Add the grafana app to cisco-grafana/settings.py:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Application definition
+</span>
+<span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s">'django.contrib.admin'</span><span class="p">,</span>
+    <span class="s">'django.contrib.auth'</span><span class="p">,</span>
+    <span class="s">'django.contrib.contenttypes'</span><span class="p">,</span>
+    <span class="s">'django.contrib.sessions'</span><span class="p">,</span>
+    <span class="s">'django.contrib.messages'</span><span class="p">,</span>
+    <span class="s">'django.contrib.staticfiles'</span><span class="p">,</span>
+    <span class="s">'meraki'</span><span class="p">,</span> <span class="c1">## Add this
+</span><span class="p">]</span>
+</code></pre></div></div>
+
+<h3 id="243-create-python-api-requests-functions-to-retrieve-meraki-orgs">2.4.3 Create Python API Requests functions to retrieve Meraki Orgs</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">pprint</span> <span class="k">as</span> <span class="n">pp</span>
+<span class="kn">from</span> <span class="nn">requests.auth</span> <span class="kn">import</span> <span class="n">HTTPBasicAuth</span>
+<span class="n">requests</span><span class="p">.</span><span class="n">urllib3</span><span class="p">.</span><span class="n">disable_warnings</span><span class="p">(</span><span class="n">requests</span><span class="p">.</span><span class="n">urllib3</span><span class="p">.</span><span class="n">exceptions</span><span class="p">.</span><span class="n">InsecureRequestWarning</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">meraki_http_get</span><span class="p">(</span><span class="n">meraki_url</span><span class="p">):</span>
+    <span class="n">base_url</span> <span class="o">=</span> <span class="p">(</span><span class="s">'https://api.meraki.com/api/v1/{}'</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">meraki_url</span><span class="p">))</span>
+
+    <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s">'X-Cisco-Meraki-API-Key'</span><span class="p">:</span> <span class="s">'&lt;your unique api key as defined above&gt;'</span><span class="p">}</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">get_response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">base_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">verify</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+        <span class="n">status</span> <span class="o">=</span> <span class="n">get_response</span><span class="p">.</span><span class="n">status_code</span>
+        <span class="n">get_response</span> <span class="o">=</span> <span class="n">get_response</span><span class="p">.</span><span class="n">json</span><span class="p">()</span>
+        <span class="n">time</span><span class="p">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'Meraki Cloud not reachable - check connection'</span><span class="p">)</span>
+        <span class="n">get_response</span> <span class="o">=</span> <span class="s">'unreachable'</span>
+        <span class="n">status</span> <span class="o">=</span> <span class="s">'unreachable'</span>
+    <span class="k">return</span> <span class="n">get_response</span><span class="p">,</span> <span class="n">status</span>
+
+<span class="n">api_resp</span><span class="p">,</span> <span class="n">api_status</span> <span class="o">=</span> <span class="n">meraki_http_get</span><span class="p">(</span><span class="n">meraki_url</span><span class="o">=</span><span class="s">'organizations'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">api_status</span><span class="p">)</span>
+<span class="n">pp</span><span class="p">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">api_resp</span><span class="p">)</span>
+</code></pre></div></div>
+<p>Run the function and validate the output.  You should receive a ‘200’ response and your organisation id.  If not  (i.e. you receive an http response of 400), check that your API key and URL is correct - you can test the API call in Postman to validate that it’s been enabled.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">venv</span><span class="p">)</span> <span class="n">zsh</span><span class="o">-</span><span class="n">shell</span> <span class="n">apps</span> <span class="o">%</span> <span class="n">python</span> <span class="n">meraki_api</span><span class="p">.</span><span class="n">py</span>
+<span class="mi">200</span>
+<span class="p">[{</span><span class="s">'id'</span><span class="p">:</span> <span class="s">'863545'</span><span class="p">,</span>
+  <span class="s">'name'</span><span class="p">:</span> <span class="s">'Home'</span><span class="p">,</span>
+  <span class="s">'url'</span><span class="p">:</span> <span class="s">'https://n215.meraki.com/o/oDNX_a/manage/organization/overview'</span><span class="p">}]</span>
+</code></pre></div></div>
+
+<p>At this point you should still have an empty ‘models.py’ file that was created when running <strong>python manage.py createapp meraki</strong> command previously.  We’ll insert our meraki model definitions into models.py below</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">venv</span><span class="p">)</span> <span class="n">zsh</span><span class="o">-</span><span class="n">shell</span> <span class="n">cisco_grafana</span> <span class="o">%</span> <span class="n">cat</span> <span class="n">meraki</span><span class="o">/</span><span class="n">models</span><span class="p">.</span><span class="n">py</span>
+<span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+
+<span class="c1"># Create your models here.
+</span></code></pre></div></div>
+
+<p>Define a model/table to hold the organisation data that was returned above - edit the <strong>meraki &gt; models.py</strong> file so that it reflects below:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+<span class="kn">from</span> <span class="nn">django.utils</span> <span class="kn">import</span> <span class="n">timezone</span>
+
+<span class="k">class</span> <span class="nc">Organizations</span><span class="p">(</span><span class="n">models</span><span class="p">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+    <span class="n">last_updated</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="n">timezone</span><span class="p">.</span><span class="n">now</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Create the Organisations model using the makemigrations command as shown:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">venv</span><span class="p">)</span> <span class="n">zsh</span><span class="o">-</span><span class="n">shell</span> <span class="n">cisco_grafana</span> <span class="o">%</span> <span class="n">python</span> <span class="n">manage</span><span class="p">.</span><span class="n">py</span> <span class="n">makemigrations</span> <span class="n">meraki</span>
+<span class="n">Migrations</span> <span class="k">for</span> <span class="s">'meraki'</span><span class="p">:</span>
+  <span class="n">meraki</span><span class="o">/</span><span class="n">migrations</span><span class="o">/</span><span class="mi">0001</span><span class="n">_initial</span><span class="p">.</span><span class="n">py</span>
+    <span class="o">-</span> <span class="n">Create</span> <span class="n">model</span> <span class="n">Organizations</span>
+</code></pre></div></div>
+
+<p>And commit the changes to the database:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">venv</span><span class="p">)</span> <span class="n">zsh</span><span class="o">-</span><span class="n">shell</span> <span class="n">cisco_grafana</span> <span class="o">%</span> <span class="n">python</span> <span class="n">manage</span><span class="p">.</span><span class="n">py</span> <span class="n">migrate</span>       
+<span class="n">Operations</span> <span class="n">to</span> <span class="n">perform</span><span class="p">:</span>
+  <span class="n">Apply</span> <span class="nb">all</span> <span class="n">migrations</span><span class="p">:</span> <span class="n">admin</span><span class="p">,</span> <span class="n">auth</span><span class="p">,</span> <span class="n">contenttypes</span><span class="p">,</span> <span class="n">meraki</span><span class="p">,</span> <span class="n">sessions</span>
+</code></pre></div></div>
+
+<p>You can validate the table’s been created with PgAdmin</p>
+
+<h3 id="244-write-output-to-database">2.4.4 Write output to database</h3>
+<p>Add below to the meraki_api.py file - see comments for explanation.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="c1"># Add your own path to django install location here
+</span><span class="n">sys</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s">"/Users/jamespsullivan/Documents/grafana-cisco-demo/cisco_grafana/"</span><span class="p">)</span>
+
+<span class="c1"># We need to import django configuration settings to write our API response using the django models API
+</span><span class="n">os</span><span class="p">.</span><span class="n">environ</span><span class="p">[</span><span class="s">'DJANGO_SETTINGS_MODULE'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'cisco_grafana.settings'</span>
+
+<span class="kn">import</span> <span class="nn">django</span>
+<span class="n">django</span><span class="p">.</span><span class="n">setup</span><span class="p">()</span>
+
+<span class="c1"># Import the organisations model we defined earlier
+</span><span class="kn">from</span> <span class="nn">meraki.models</span> <span class="kn">import</span> <span class="n">Organizations</span>
+
+<span class="c1"># Write function to iterate over organisations found in our API request and save these to database
+</span><span class="k">def</span> <span class="nf">meraki_orgs_to_db</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">org</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+        <span class="n">org_entry</span> <span class="o">=</span> <span class="n">Organizations</span><span class="p">(</span>
+            <span class="nb">id</span> <span class="o">=</span> <span class="n">org</span><span class="p">[</span><span class="s">'id'</span><span class="p">],</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="n">org</span><span class="p">[</span><span class="s">'name'</span><span class="p">],</span>
+            <span class="n">url</span> <span class="o">=</span> <span class="n">org</span><span class="p">[</span><span class="s">'url'</span><span class="p">]</span>
+            <span class="p">)</span>
+        <span class="n">org_entry</span><span class="p">.</span><span class="n">save</span><span class="p">()</span>
+
+<span class="c1"># Call function and pass in our organisation data from api response
+</span><span class="n">meraki_orgs_to_db</span><span class="p">(</span><span class="n">org_resp</span><span class="p">)</span>
+</code></pre></div></div>
+<h3 id="245-retrieve-meraki-networks">2.4.5 Retrieve meraki networks</h3>
+
+<p>Now that we have the meraki organisation data in the postgres database, we need to (a) Define a new model in meraki/models.py to hold network information, (b) iterate over each org entry in the database and send a REST API query to find configured networks:</p>
+
+<h4 id="2451-a-define-a-new-model-in-merakimodelspy-to-hold-network-information">2.4.5.1 (a) Define a new model in meraki/models.py to hold network information</h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">MerakiNetworks</span><span class="p">(</span><span class="n">models</span><span class="p">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+    <span class="n">organizationId</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+    <span class="n">productTypes</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+    <span class="n">timeZone</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+    <span class="n">last_updated</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="n">timezone</span><span class="p">.</span><span class="n">now</span><span class="p">)</span>
+</code></pre></div></div>
+<p>Commit the new networks model to the database</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>venv<span class="o">)</span> zsh-shell cisco_grafana % python manage.py makemigrations meraki
+Migrations <span class="k">for</span> <span class="s1">'meraki'</span>:
+  meraki/migrations/0002_merakinetworks.py
+    - Create model MerakiNetworks
+<span class="o">(</span>venv<span class="o">)</span> zsh-shell cisco_grafana % python manage.py migrate meraki
+</code></pre></div></div>
+<h4 id="2452-b-iterate-over-each-org-entry-in-the-database-and-send-a-rest-api-query-to-find-configured-networks">2.4.5.2 (b) Iterate over each org entry in the database and send a REST API query to find configured networks</h4>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">meraki.models</span> <span class="kn">import</span> <span class="n">Organizations</span><span class="p">,</span> <span class="n">MerakiNetworks</span> <span class="c1"># Edit this line to include MerakiNetworks model
+</span>
+<span class="k">def</span> <span class="nf">meraki_networks_to_db</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">orgs</span> <span class="ow">in</span> <span class="n">Organizations</span><span class="p">.</span><span class="n">objects</span><span class="p">.</span><span class="nb">all</span><span class="p">():</span>
+        <span class="n">networks</span><span class="p">,</span> <span class="n">status</span> <span class="o">=</span> <span class="n">meraki_http_get</span><span class="p">(</span><span class="s">'organizations/{}/networks'</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span>
+                        <span class="n">orgs</span><span class="p">.</span><span class="nb">id</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">network</span> <span class="ow">in</span> <span class="n">networks</span><span class="p">:</span>
+            <span class="n">network_entry</span> <span class="o">=</span> <span class="n">MerakiNetworks</span><span class="p">(</span>
+                <span class="nb">id</span> <span class="o">=</span> <span class="n">network</span><span class="p">[</span><span class="s">'id'</span><span class="p">],</span>
+                <span class="n">name</span> <span class="o">=</span> <span class="n">network</span><span class="p">[</span><span class="s">'name'</span><span class="p">],</span>
+                <span class="n">organizationId</span> <span class="o">=</span> <span class="n">network</span><span class="p">[</span><span class="s">'organizationId'</span><span class="p">],</span>
+                <span class="n">productTypes</span> <span class="o">=</span> <span class="n">network</span><span class="p">[</span><span class="s">'productTypes'</span><span class="p">],</span>
+                <span class="n">timeZone</span> <span class="o">=</span> <span class="n">network</span><span class="p">[</span><span class="s">'timeZone'</span><span class="p">]</span>
+                <span class="p">)</span>
+            <span class="n">network_entry</span><span class="p">.</span><span class="n">save</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>Validate the networks have been written to the database with PgAdmin
+<img src="https://github.com/j-sulliman/j-sulliman.github.io/blob/master/Meraki_PgAdmin.png?raw=true" alt="alt text" /></p>
+
+<h3 id="246-retrieve-meraki-devices">2.4.6 Retrieve Meraki Devices</h3>
+<p>We retrieved our network IDs in the previous step and can now use that network ID to run an API query for devices using the DN or syntax <strong>/networks/{networkId}/devices</strong>.</p>
+
+<p>We can use the <a href="https://developer.cisco.com/meraki/api-v1/#!get-network-devices">Meraki API Documentation</a>, to create our model in meraki/models.py</p>
+
+<h3 id="247-merakidevices-model">2.4.7 MerakiDevices Model</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">MerakiDevices</span><span class="p">(</span><span class="n">models</span><span class="p">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">serial</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">address</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+    <span class="n">mac</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+    <span class="n">lanIp</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+    <span class="n">networkId</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+    <span class="n">firmware</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+    <span class="n">wan1Ip</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">wan2Ip</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">last_updated</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="n">timezone</span><span class="p">.</span><span class="n">now</span><span class="p">)</span>
+</code></pre></div></div>
+<p>Commit MerakiDevices model to database</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">venv</span><span class="p">)</span> <span class="n">zsh</span><span class="o">-</span><span class="n">shell</span> <span class="n">cisco_grafana</span> <span class="o">%</span> <span class="n">python</span> <span class="n">manage</span><span class="p">.</span><span class="n">py</span> <span class="n">makemigrations</span> <span class="n">meraki</span>
+<span class="n">Migrations</span> <span class="k">for</span> <span class="s">'meraki'</span><span class="p">:</span>
+  <span class="n">meraki</span><span class="o">/</span><span class="n">migrations</span><span class="o">/</span><span class="mi">0003</span><span class="n">_merakidevices</span><span class="p">.</span><span class="n">py</span>
+    <span class="o">-</span> <span class="n">Create</span> <span class="n">model</span> <span class="n">MerakiDevices</span>
+<span class="p">(</span><span class="n">venv</span><span class="p">)</span> <span class="n">zsh</span><span class="o">-</span><span class="n">shell</span> <span class="n">cisco_grafana</span> <span class="o">%</span> <span class="n">python</span> <span class="n">manage</span><span class="p">.</span><span class="n">py</span> <span class="n">migrate</span> <span class="n">meraki</span>       
+<span class="n">Operations</span> <span class="n">to</span> <span class="n">perform</span><span class="p">:</span>
+  <span class="n">Apply</span> <span class="nb">all</span> <span class="n">migrations</span><span class="p">:</span> <span class="n">meraki</span>
+</code></pre></div></div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Import the meraki devices model we defined previously
+</span><span class="kn">from</span> <span class="nn">meraki.models</span> <span class="kn">import</span> <span class="n">Organizations</span><span class="p">,</span> <span class="n">MerakiNetworks</span><span class="p">,</span> <span class="n">MerakiDevices</span>  
+
+<span class="c1"># Iterate over MerakiNetworks table and retrieve the NetworkID, use this
+# to query networks for devices and write the output to MerakiDevices model we
+# defined previously.
+</span><span class="k">def</span> <span class="nf">meraki_devices_to_db</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">networks</span> <span class="ow">in</span> <span class="n">MerakiNetworks</span><span class="p">.</span><span class="n">objects</span><span class="p">.</span><span class="nb">all</span><span class="p">():</span>
+        <span class="n">devices</span><span class="p">,</span> <span class="n">status</span> <span class="o">=</span> <span class="n">meraki_http_get</span><span class="p">(</span><span class="s">'networks/{}/devices'</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span>
+                        <span class="n">networks</span><span class="p">.</span><span class="nb">id</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">device</span> <span class="ow">in</span> <span class="n">devices</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s">'MX'</span> <span class="ow">in</span> <span class="n">device</span><span class="p">[</span><span class="s">'model'</span><span class="p">]:</span>
+                <span class="n">device_entry</span> <span class="o">=</span> <span class="n">MerakiDevices</span><span class="p">(</span>
+                    <span class="n">address</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'address'</span><span class="p">],</span>
+                    <span class="n">serial</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'serial'</span><span class="p">],</span>
+                    <span class="n">mac</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'mac'</span><span class="p">],</span>
+                    <span class="n">lanIp</span> <span class="o">=</span> <span class="s">'NA'</span><span class="p">,</span>
+                    <span class="n">url</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'url'</span><span class="p">],</span>
+                    <span class="n">networkId</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'networkId'</span><span class="p">],</span>
+                    <span class="n">firmware</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'firmware'</span><span class="p">],</span>
+                    <span class="n">model</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'model'</span><span class="p">],</span>
+                    <span class="n">wan1Ip</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'wan1Ip'</span><span class="p">],</span>
+                    <span class="n">wan2Ip</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'wan2Ip'</span><span class="p">]</span>
+                    <span class="p">)</span>
+                <span class="n">device_entry</span><span class="p">.</span><span class="n">save</span><span class="p">()</span>
+            <span class="k">elif</span> <span class="s">'MX'</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">device</span><span class="p">[</span><span class="s">'model'</span><span class="p">]:</span>
+                <span class="n">device_entry</span> <span class="o">=</span> <span class="n">MerakiDevices</span><span class="p">(</span>
+                    <span class="n">address</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'address'</span><span class="p">],</span>
+                    <span class="n">serial</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'serial'</span><span class="p">],</span>
+                    <span class="n">firmware</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'firmware'</span><span class="p">],</span>
+                    <span class="n">mac</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'mac'</span><span class="p">],</span>
+                    <span class="n">lanIp</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'lanIp'</span><span class="p">],</span>
+                    <span class="n">url</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'url'</span><span class="p">],</span>
+                    <span class="n">networkId</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'networkId'</span><span class="p">],</span>
+                    <span class="n">model</span> <span class="o">=</span> <span class="n">device</span><span class="p">[</span><span class="s">'model'</span><span class="p">]</span>
+                    <span class="p">)</span>
+                <span class="n">device_entry</span><span class="p">.</span><span class="n">save</span><span class="p">()</span>
+
+<span class="n">meraki_devices_to_db</span><span class="p">()</span>
+</code></pre></div></div>
+<p>Verify devices have been retrieved and written to database with PgAdmin.</p>
+
+<h1 id="25-grafana-visualisations">2.5 Grafana Visualisations</h1>
+
+<h2 id="251-installation">2.5.1 Installation</h2>
+<p>Installation of Grafana is straightforward - you can find guides for Linux, macOS, Windows and containers
+here <a href="https://grafana.com/docs/grafana/latest/installation/">Grafana Installation</a></p>
+
+<p>Point Grafana to PostgresSQL as below
+<img src="https://github.com/j-sulliman/j-sulliman.github.io/blob/master/Postgres%20datasource.png?raw=true" alt="alt text" /></p>
+
+<p>Create a new dashboard and add a new panel - configure <strong>query options</strong> as below.  Note - if you don’t configure <strong>“aggregate: count”</strong> as shown, you’ll most likely receive an error.</p>
+
+<p>Select PieChartv2 from the right, optionally change the PieChart type to <strong>donut</strong>, add the labels name, value and percent and give the chart a title.</p>
+
+<p>Your preview pane should now look like below - click save and apply
+<img src="https://github.com/j-sulliman/j-sulliman.github.io/blob/master/meraki_query.png?raw=true" alt="alt text" /></p>
+
+<p>Return to the dashboard and duplicate the Devices PieChart, edit the duplicate chart, in the <strong>query options</strong>, replace <strong>model</strong> metric columns with <strong>firmware</strong>, you’ll now have a summary of firmware breakdowns in the environment also.</p>
+
+<ul>
+  <li>Return to the dashboard and add another panel, again select the <strong>MerakiDevices</strong> table.</li>
+  <li>From the right hand pane, select <strong>table</strong></li>
+  <li>In the <strong>query options</strong>, select “format as: table”</li>
+  <li>Add columns of interest to the table</li>
+</ul>
+
+<p><img src="https://github.com/j-sulliman/j-sulliman.github.io/blob/master/Meraki_device_table.png?raw=true" alt="alt text" /></p>
+
+<p>If you’ve managed to follow the above successfully, your dashboard should look like below.
+<img src="https://github.com/j-sulliman/j-sulliman.github.io/blob/master/Meraki%20Dashboard%20Example.png?raw=true" alt="alt text" /></p>
+
+<p>Using the <a href="https://developer.cisco.com/meraki/api-v1/">Meraki API Documentation</a> as a guide, you can experiment with this process to create visualisations and graphs for other devices.</p>
+
+<p>…follow up for DCNM dashboard to follow soon.</p>
+
+<p>Jamie</p>
+
+  </div><a class="u-url" href="/2021/04/27/Part-2-Meraki-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Jamie Sullivan&#39;s Blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Jamie Sullivan&#39;s Blog</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/j-sulliman"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">j-sulliman</span></a></li><li><a href="https://www.linkedin.com/in/jamie-sullivan-71575421"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#linkedin"></use></svg> <span class="username">jamie-sullivan-71575421</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Personal Blog for Networking, Datacenter and automation / programmability.  All content is my own and does not represent the views of my employer.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
