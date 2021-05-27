@@ -16,7 +16,8 @@ We continue from our overview and initial setup discussed in part (1), by explor
 3.2 | DCNM & EVPN VXLAN | [Building a DCNM Dashboard with Grafana, Django and Python](https://j-sulliman.github.io/2021/05/04/Part-3.2-DCNM-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html) | Visualising DCNM APIs with Grafana.
 4.1 | SDWAN | [Cisco SDWAN Virtual Lab Build](https://j-sulliman.github.io/2021/05/13/Part-4.1-SDWAN-Cisco-SDWAN-Lab-Build.html) | Cisco SDWAN Virtual Lab deployment
 4.2 | SDWAN | [Building a SD-WAN Dashboard with Grafana, Django and Python](https://j-sulliman.github.io/2021/05/17/Part-4.2-SDWAN-Cisco-SDWAN-vManage-API-Visualisations-with-Grafana.html) | Visualising vManage APIs with Grafana
-5.0 | OpenVuln API | [Building a SD-WAN Dashboard with Grafana, Django and Python](https://j-sulliman.github.io/2021/05/23/Part-5.0-OpenVuln-API-Cisco-PSIRT-and-Security-Vulnerability-Dashboard-with-Grafana.html) | Visualising OpenVuln APIs with Grafana
+5.0 | OpenVuln API | [Building a Security Advisory Dashboard with Grafana, Django and Python](https://j-sulliman.github.io/2021/05/23/Part-5.0-OpenVuln-API-Cisco-PSIRT-and-Security-Vulnerability-Dashboard-with-Grafana.html) | Visualising OpenVuln APIs with Grafana
+6.0 | DNA Center| [Building a DNA-C Dashboard with Grafana, Django and Python](https://j-sulliman.github.io/2021/05/25/Part-6.0-DNAC-Cisco-DNA-Center-Dashboard-with-Grafana.html) | Visualising DNA-C APIs with Grafana
 
 ## 2.2 Solution Overview - Cisco Meraki APIs and Visualisations with Grafana (green components)
 ![alt text](https://github.com/j-sulliman/j-sulliman.github.io/blob/master/Meraki_Solution_overview.png?raw=true)
