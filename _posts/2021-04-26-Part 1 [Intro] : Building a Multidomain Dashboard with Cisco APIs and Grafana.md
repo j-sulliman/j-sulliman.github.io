@@ -16,7 +16,7 @@ In this series, we use REST APIs, Python, Django Webframework, PostgresSQL and G
 4.2 | SDWAN | [Building a SD-WAN Dashboard with Grafana, Django and Python](https://j-sulliman.github.io/2021/05/17/Part-4.2-SDWAN-Cisco-SDWAN-vManage-API-Visualisations-with-Grafana.html) | Visualising vManage APIs with Grafana
 5.0 | OpenVuln API | [Building a Security Advisory Dashboard with Grafana, Django and Python](https://j-sulliman.github.io/2021/05/23/Part-5.0-OpenVuln-API-Cisco-PSIRT-and-Security-Vulnerability-Dashboard-with-Grafana.html) | Visualising OpenVuln APIs with Grafana
 6.0 | DNA Center| [Building a DNA-C Dashboard with Grafana, Django and Python](https://j-sulliman.github.io/2021/05/25/Part-6.0-DNAC-Cisco-DNA-Center-Dashboard-with-Grafana.html) | Visualising DNA-C APIs with Grafana
-7.0 | ACI and Conclusion | [Building an ACI Dashboard with Grafana, Django and Python](https://j-sulliman.github.io/2021/05/25/Part-6.0-DNAC-Cisco-DNA-Center-Dashboard-with-Grafana.html) | Visualising ACI APIs with Grafana, Django send_email and django_tables2
+7.0 | ACI and Conclusion | [Building an ACI Dashboard with Grafana, Django and Python](https://j-sulliman.github.io/2021/06/02/Part-7.0-ACI-and-Conclusion-Building-a-Multidomain-Dashboard-with-ACI-APIs-and-Grafana.html) | Visualising ACI APIs with Grafana, Django send_email and django_tables2
 
 ## 1.2 Lab Overview
 ![alt text](https://github.com/j-sulliman/j-sulliman.github.io/blob/master/Overview_1.png?raw=true)
