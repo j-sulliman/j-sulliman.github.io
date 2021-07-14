@@ -18,7 +18,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Part 7.0 [aci and conclusion] : building a multidomain dashboard with aci apis and grafana" />
 <script type="application/ld+json">
-{"headline":"Part 7.0 [aci and conclusion] : building a multidomain dashboard with aci apis and grafana","dateModified":"2021-06-03T08:00:00+12:00","datePublished":"2021-06-03T08:00:00+12:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://j-sulliman.github.io//2021/06/03/Part-7.0-ACI-and-Conclusion-Building-a-Multidomain-Dashboard-with-ACI-APIs-and-Grafana.html"},"url":"https://j-sulliman.github.io//2021/06/03/Part-7.0-ACI-and-Conclusion-Building-a-Multidomain-Dashboard-with-ACI-APIs-and-Grafana.html","author":{"@type":"Person","name":"Jamie Sullivan"},"@type":"BlogPosting","description":"Section Architecture Link Topic 1.0 Introduction building a multidomain dashboard with cisco apis and grafana Solution Overview 2.0 Meraki Building a Meraki Dashboard with Grafana, Django and Python Visualising Meraki APIs with Grafana. 3.1 DCNM &amp; EVPN VXLAN DCNM VXLAN BGP and EVPN Lab with Nexus 9000v DCNM, N9000v, EVPN and VXLAN Lab deployment 3.2 DCNM &amp; EVPN VXLAN Building a DCNM Dashboard with Grafana, Django and Python Visualising DCNM APIs with Grafana. 4.1 SDWAN Cisco SDWAN Virtual Lab Build Cisco SDWAN Virtual Lab deployment 4.2 SDWAN Building a SD-WAN Dashboard with Grafana, Django and Python Visualising vManage APIs with Grafana 5.0 OpenVuln API Building a Security Advisory Dashboard with Grafana, Django and Python Visualising OpenVuln APIs with Grafana 6.0 DNA Center Building a DNA-C Dashboard with Grafana, Django and Python Visualising DNA-C APIs with Grafana 7.0 ACI and Conclusion Building an ACI Dashboard with Grafana, Django and Python Visualising ACI APIs with Grafana, Django send_email and django_tables2","@context":"https://schema.org"}</script>
+{"datePublished":"2021-06-03T08:00:00+12:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://j-sulliman.github.io//2021/06/03/Part-7.0-ACI-and-Conclusion-Building-a-Multidomain-Dashboard-with-ACI-APIs-and-Grafana.html"},"url":"https://j-sulliman.github.io//2021/06/03/Part-7.0-ACI-and-Conclusion-Building-a-Multidomain-Dashboard-with-ACI-APIs-and-Grafana.html","author":{"@type":"Person","name":"Jamie Sullivan"},"@type":"BlogPosting","description":"Section Architecture Link Topic 1.0 Introduction building a multidomain dashboard with cisco apis and grafana Solution Overview 2.0 Meraki Building a Meraki Dashboard with Grafana, Django and Python Visualising Meraki APIs with Grafana. 3.1 DCNM &amp; EVPN VXLAN DCNM VXLAN BGP and EVPN Lab with Nexus 9000v DCNM, N9000v, EVPN and VXLAN Lab deployment 3.2 DCNM &amp; EVPN VXLAN Building a DCNM Dashboard with Grafana, Django and Python Visualising DCNM APIs with Grafana. 4.1 SDWAN Cisco SDWAN Virtual Lab Build Cisco SDWAN Virtual Lab deployment 4.2 SDWAN Building a SD-WAN Dashboard with Grafana, Django and Python Visualising vManage APIs with Grafana 5.0 OpenVuln API Building a Security Advisory Dashboard with Grafana, Django and Python Visualising OpenVuln APIs with Grafana 6.0 DNA Center Building a DNA-C Dashboard with Grafana, Django and Python Visualising DNA-C APIs with Grafana 7.0 ACI and Conclusion Building an ACI Dashboard with Grafana, Django and Python Visualising ACI APIs with Grafana, Django send_email and django_tables2","headline":"Part 7.0 [aci and conclusion] : building a multidomain dashboard with aci apis and grafana","dateModified":"2021-06-03T08:00:00+12:00","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://j-sulliman.github.io//feed.xml" title="Jamie Sullivan&apos;s Blog" /></head>
 <body><header class="site-header" role="banner">
@@ -109,7 +109,7 @@
     <tr>
       <td>7.0</td>
       <td>ACI and Conclusion</td>
-      <td><a href="https://j-sulliman.github.io/2021/05/25/Part-6.0-DNAC-Cisco-DNA-Center-Dashboard-with-Grafana.html">Building an ACI Dashboard with Grafana, Django and Python</a></td>
+      <td><a href="https://j-sulliman.github.io/2021/06/02/Part-7.0-ACI-and-Conclusion-Building-a-Multidomain-Dashboard-with-ACI-APIs-and-Grafana.html">Building an ACI Dashboard with Grafana, Django and Python</a></td>
       <td>Visualising ACI APIs with Grafana, Django send_email and django_tables2</td>
     </tr>
   </tbody>
@@ -124,7 +124,7 @@
 <p>This update we look into Cisco’s software defined data center network solution, or ACI.<br />
 <img src="https://github.com/j-sulliman/j-sulliman.github.io/blob/master/images/ACI_Solution_overview.png?raw=true" alt="Solution Overview" /></p>
 
-<p>As mentioned in part one of this series, the nice thing about django, and python in general is its extensibility and flexibility to address future requirements as they pop up.</p>
+<p>As mentioned in part one of this series, the nice thing about django, and python in general is its extensibility and flexibility to address future requirements as they arise.</p>
 
 <p>We’ll add additional functionality by incorporating Django’s send_mail function to provide customised, automated email alerting and the django_tables2 module to provide a web based view of all the tables stored in our database across all architectures.</p>
 
@@ -613,7 +613,7 @@ Migrations <span class="k">for</span> <span class="s1">'aci'</span>:
 Operations to perform:
   Apply all migrations: aci
 </code></pre></div></div>
-<p>You’ll see the tables we’ve created for ACI and PgAdmin, and if you’ve followed along with previous updates, the 30+ tables created for Meraki, SDWAN, DCNM, DNAC, OpenVuln API.</p>
+<p>You’ll see the tables we’ve created for ACI in PgAdmin, and if you’ve followed along with previous updates, the 30+ tables created for Meraki, SDWAN, DCNM, DNAC, OpenVuln API.</p>
 
 <p><img src="https://github.com/j-sulliman/j-sulliman.github.io/blob/master/images/final_tables.png?raw=true" alt="pgAdmin Final" /></p>
 
@@ -652,7 +652,7 @@ Operations to perform:
 
 <p>Django provides the send_mail module that allows email notifications to be sent from Django.  We’ll use this to create alerting from our application if an object status changes, or configuration is modified.</p>
 
-<p>With the call home email alert functionality of ACI and other Cisco products, do we really need to? No, but worst case, maybe the functions would be useful for another project?  Or if we wanted to include some other devices in our dashboard that don’t support call home.</p>
+<p>With the call home email alert functionality of ACI and other Cisco products, do we really need to use a seperate function to implement email based alerts? Short answer, no.  But if we wanted to include devices in our dashboard that don’t support call home this could be useul..worst case, we have sample code in our library to use for another project later.</p>
 
 <p>In the example below we send an alert if a configuration change is made to an object. Configurable objects in ACI have a modified time stamp attribute or <strong>modTs</strong>.  If this attribute changes between API calls, it would indicate that a configuration change has occurred.</p>
 
@@ -1041,7 +1041,7 @@ Operations to perform:
 </code></pre></div></div>
 <h1 id="746-aggregating-and-continuously-running-our-functions">7.4.6 Aggregating and continuously running our functions</h1>
 
-<p>Until now, we’ve been calling our API functions arbitrarily from our scripts, this being the last update, we’ll consolidate these into a single script via a While Loop so they can be aggregated and run continuously.</p>
+<p>Until now, we’ve been calling our API functions arbitrarily from our scripts, this being the last update, we’ll consolidate these into a single application via a While Loop so they can be aggregated and run continuously.</p>
 
 <p>Create the file <code class="language-plaintext highlighter-rouge">cisco_grafana_main.py</code> in the root directory (the same directory level as <code class="language-plaintext highlighter-rouge">manage.py</code>) and add the following.</p>
 

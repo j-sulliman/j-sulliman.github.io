@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://j-sulliman.github.io//feed.xml" rel="self" type="application/atom+xml" /><link href="https://j-sulliman.github.io//" rel="alternate" type="text/html" /><updated>2021-06-06T23:38:06+12:00</updated><id>https://j-sulliman.github.io//feed.xml</id><title type="html">Jamie Sullivan’s Blog</title><subtitle>Personal Blog for Networking, Datacenter and automation / programmability.  All content is my own and does not represent the views of my employer.</subtitle><entry><title type="html">Part 7.0 [aci and conclusion] : building a multidomain dashboard with aci apis and grafana</title><link href="https://j-sulliman.github.io//2021/06/03/Part-7.0-ACI-and-Conclusion-Building-a-Multidomain-Dashboard-with-ACI-APIs-and-Grafana.html" rel="alternate" type="text/html" title="Part 7.0 [aci and conclusion] : building a multidomain dashboard with aci apis and grafana" /><published>2021-06-03T08:00:00+12:00</published><updated>2021-06-03T08:00:00+12:00</updated><id>https://j-sulliman.github.io//2021/06/03/Part%207.0%20%5BACI%20and%20Conclusion%5D%20:%20Building%20a%20Multidomain%20Dashboard%20with%20ACI%20APIs%20and%20Grafana</id><content type="html" xml:base="https://j-sulliman.github.io//2021/06/03/Part-7.0-ACI-and-Conclusion-Building-a-Multidomain-Dashboard-with-ACI-APIs-and-Grafana.html">&lt;table&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://j-sulliman.github.io//feed.xml" rel="self" type="application/atom+xml" /><link href="https://j-sulliman.github.io//" rel="alternate" type="text/html" /><updated>2021-07-14T17:52:40+12:00</updated><id>https://j-sulliman.github.io//feed.xml</id><title type="html">Jamie Sullivan’s Blog</title><subtitle>Personal Blog for Networking, Datacenter and automation / programmability.  All content is my own and does not represent the views of my employer.</subtitle><entry><title type="html">Part 7.0 [aci and conclusion] : building a multidomain dashboard with aci apis and grafana</title><link href="https://j-sulliman.github.io//2021/06/03/Part-7.0-ACI-and-Conclusion-Building-a-Multidomain-Dashboard-with-ACI-APIs-and-Grafana.html" rel="alternate" type="text/html" title="Part 7.0 [aci and conclusion] : building a multidomain dashboard with aci apis and grafana" /><published>2021-06-03T08:00:00+12:00</published><updated>2021-06-03T08:00:00+12:00</updated><id>https://j-sulliman.github.io//2021/06/03/Part%207.0%20%5BACI%20and%20Conclusion%5D%20:%20Building%20a%20Multidomain%20Dashboard%20with%20ACI%20APIs%20and%20Grafana</id><content type="html" xml:base="https://j-sulliman.github.io//2021/06/03/Part-7.0-ACI-and-Conclusion-Building-a-Multidomain-Dashboard-with-ACI-APIs-and-Grafana.html">&lt;table&gt;
   &lt;thead&gt;
     &lt;tr&gt;
       &lt;th&gt;Section&lt;/th&gt;
@@ -59,7 +59,7 @@
     &lt;tr&gt;
       &lt;td&gt;7.0&lt;/td&gt;
       &lt;td&gt;ACI and Conclusion&lt;/td&gt;
-      &lt;td&gt;&lt;a href=&quot;https://j-sulliman.github.io/2021/05/25/Part-6.0-DNAC-Cisco-DNA-Center-Dashboard-with-Grafana.html&quot;&gt;Building an ACI Dashboard with Grafana, Django and Python&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;a href=&quot;https://j-sulliman.github.io/2021/06/02/Part-7.0-ACI-and-Conclusion-Building-a-Multidomain-Dashboard-with-ACI-APIs-and-Grafana.html&quot;&gt;Building an ACI Dashboard with Grafana, Django and Python&lt;/a&gt;&lt;/td&gt;
       &lt;td&gt;Visualising ACI APIs with Grafana, Django send_email and django_tables2&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
@@ -74,7 +74,7 @@
 &lt;p&gt;This update we look into Cisco’s software defined data center network solution, or ACI.&lt;br /&gt;
 &lt;img src=&quot;https://github.com/j-sulliman/j-sulliman.github.io/blob/master/images/ACI_Solution_overview.png?raw=true&quot; alt=&quot;Solution Overview&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;As mentioned in part one of this series, the nice thing about django, and python in general is its extensibility and flexibility to address future requirements as they pop up.&lt;/p&gt;
+&lt;p&gt;As mentioned in part one of this series, the nice thing about django, and python in general is its extensibility and flexibility to address future requirements as they arise.&lt;/p&gt;
 
 &lt;p&gt;We’ll add additional functionality by incorporating Django’s send_mail function to provide customised, automated email alerting and the django_tables2 module to provide a web based view of all the tables stored in our database across all architectures.&lt;/p&gt;
 
@@ -563,7 +563,7 @@ Migrations &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot
 Operations to perform:
   Apply all migrations: aci
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;You’ll see the tables we’ve created for ACI and PgAdmin, and if you’ve followed along with previous updates, the 30+ tables created for Meraki, SDWAN, DCNM, DNAC, OpenVuln API.&lt;/p&gt;
+&lt;p&gt;You’ll see the tables we’ve created for ACI in PgAdmin, and if you’ve followed along with previous updates, the 30+ tables created for Meraki, SDWAN, DCNM, DNAC, OpenVuln API.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://github.com/j-sulliman/j-sulliman.github.io/blob/master/images/final_tables.png?raw=true&quot; alt=&quot;pgAdmin Final&quot; /&gt;&lt;/p&gt;
 
@@ -602,7 +602,7 @@ Operations to perform:
 
 &lt;p&gt;Django provides the send_mail module that allows email notifications to be sent from Django.  We’ll use this to create alerting from our application if an object status changes, or configuration is modified.&lt;/p&gt;
 
-&lt;p&gt;With the call home email alert functionality of ACI and other Cisco products, do we really need to? No, but worst case, maybe the functions would be useful for another project?  Or if we wanted to include some other devices in our dashboard that don’t support call home.&lt;/p&gt;
+&lt;p&gt;With the call home email alert functionality of ACI and other Cisco products, do we really need to use a seperate function to implement email based alerts? Short answer, no.  But if we wanted to include devices in our dashboard that don’t support call home this could be useul..worst case, we have sample code in our library to use for another project later.&lt;/p&gt;
 
 &lt;p&gt;In the example below we send an alert if a configuration change is made to an object. Configurable objects in ACI have a modified time stamp attribute or &lt;strong&gt;modTs&lt;/strong&gt;.  If this attribute changes between API calls, it would indicate that a configuration change has occurred.&lt;/p&gt;
 
@@ -991,7 +991,7 @@ Operations to perform:
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;h1 id=&quot;746-aggregating-and-continuously-running-our-functions&quot;&gt;7.4.6 Aggregating and continuously running our functions&lt;/h1&gt;
 
-&lt;p&gt;Until now, we’ve been calling our API functions arbitrarily from our scripts, this being the last update, we’ll consolidate these into a single script via a While Loop so they can be aggregated and run continuously.&lt;/p&gt;
+&lt;p&gt;Until now, we’ve been calling our API functions arbitrarily from our scripts, this being the last update, we’ll consolidate these into a single application via a While Loop so they can be aggregated and run continuously.&lt;/p&gt;
 
 &lt;p&gt;Create the file &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cisco_grafana_main.py&lt;/code&gt; in the root directory (the same directory level as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;manage.py&lt;/code&gt;) and add the following.&lt;/p&gt;
 
@@ -1251,7 +1251,7 @@ API Request Successful &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;procSysC
     &lt;tr&gt;
       &lt;td&gt;7.0&lt;/td&gt;
       &lt;td&gt;ACI and Conclusion&lt;/td&gt;
-      &lt;td&gt;&lt;a href=&quot;https://j-sulliman.github.io/2021/05/25/Part-6.0-DNAC-Cisco-DNA-Center-Dashboard-with-Grafana.html&quot;&gt;Building an ACI Dashboard with Grafana, Django and Python&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;a href=&quot;https://j-sulliman.github.io/2021/06/02/Part-7.0-ACI-and-Conclusion-Building-a-Multidomain-Dashboard-with-ACI-APIs-and-Grafana.html&quot;&gt;Building an ACI Dashboard with Grafana, Django and Python&lt;/a&gt;&lt;/td&gt;
       &lt;td&gt;Visualising ACI APIs with Grafana, Django send_email and django_tables2&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
@@ -1923,7 +1923,7 @@ Operations to perform:
     &lt;tr&gt;
       &lt;td&gt;7.0&lt;/td&gt;
       &lt;td&gt;ACI and Conclusion&lt;/td&gt;
-      &lt;td&gt;&lt;a href=&quot;https://j-sulliman.github.io/2021/05/25/Part-6.0-DNAC-Cisco-DNA-Center-Dashboard-with-Grafana.html&quot;&gt;Building an ACI Dashboard with Grafana, Django and Python&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;a href=&quot;https://j-sulliman.github.io/2021/06/02/Part-7.0-ACI-and-Conclusion-Building-a-Multidomain-Dashboard-with-ACI-APIs-and-Grafana.html&quot;&gt;Building an ACI Dashboard with Grafana, Django and Python&lt;/a&gt;&lt;/td&gt;
       &lt;td&gt;Visualising ACI APIs with Grafana, Django send_email and django_tables2&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
@@ -2446,7 +2446,7 @@ From &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(venv) %
     &lt;tr&gt;
       &lt;td&gt;7.0&lt;/td&gt;
       &lt;td&gt;ACI and Conclusion&lt;/td&gt;
-      &lt;td&gt;&lt;a href=&quot;https://j-sulliman.github.io/2021/05/25/Part-6.0-DNAC-Cisco-DNA-Center-Dashboard-with-Grafana.html&quot;&gt;Building an ACI Dashboard with Grafana, Django and Python&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;a href=&quot;https://j-sulliman.github.io/2021/06/02/Part-7.0-ACI-and-Conclusion-Building-a-Multidomain-Dashboard-with-ACI-APIs-and-Grafana.html&quot;&gt;Building an ACI Dashboard with Grafana, Django and Python&lt;/a&gt;&lt;/td&gt;
       &lt;td&gt;Visualising ACI APIs with Grafana, Django send_email and django_tables2&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
@@ -2940,7 +2940,7 @@ Token: 06B2E640C58DB66335A94CF381E447BAEB6534972587362EF47BB3E1FF5023E8EA605FB09
     &lt;tr&gt;
       &lt;td&gt;7.0&lt;/td&gt;
       &lt;td&gt;ACI and Conclusion&lt;/td&gt;
-      &lt;td&gt;&lt;a href=&quot;https://j-sulliman.github.io/2021/05/25/Part-6.0-DNAC-Cisco-DNA-Center-Dashboard-with-Grafana.html&quot;&gt;Building an ACI Dashboard with Grafana, Django and Python&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;a href=&quot;https://j-sulliman.github.io/2021/06/02/Part-7.0-ACI-and-Conclusion-Building-a-Multidomain-Dashboard-with-ACI-APIs-and-Grafana.html&quot;&gt;Building an ACI Dashboard with Grafana, Django and Python&lt;/a&gt;&lt;/td&gt;
       &lt;td&gt;Visualising ACI APIs with Grafana, Django send_email and django_tables2&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
@@ -3870,7 +3870,7 @@ vmanage dtls 1.1.1.1         1000       0      10.254.254.1                     
     &lt;tr&gt;
       &lt;td&gt;7.0&lt;/td&gt;
       &lt;td&gt;ACI and Conclusion&lt;/td&gt;
-      &lt;td&gt;&lt;a href=&quot;https://j-sulliman.github.io/2021/05/25/Part-6.0-DNAC-Cisco-DNA-Center-Dashboard-with-Grafana.html&quot;&gt;Building an ACI Dashboard with Grafana, Django and Python&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;a href=&quot;https://j-sulliman.github.io/2021/06/02/Part-7.0-ACI-and-Conclusion-Building-a-Multidomain-Dashboard-with-ACI-APIs-and-Grafana.html&quot;&gt;Building an ACI Dashboard with Grafana, Django and Python&lt;/a&gt;&lt;/td&gt;
       &lt;td&gt;Visualising ACI APIs with Grafana, Django send_email and django_tables2&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
@@ -4235,7 +4235,7 @@ ESI: 0300.0000.00fd.e900.0309
     &lt;tr&gt;
       &lt;td&gt;7.0&lt;/td&gt;
       &lt;td&gt;ACI and Conclusion&lt;/td&gt;
-      &lt;td&gt;&lt;a href=&quot;https://j-sulliman.github.io/2021/05/25/Part-6.0-DNAC-Cisco-DNA-Center-Dashboard-with-Grafana.html&quot;&gt;Building an ACI Dashboard with Grafana, Django and Python&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;a href=&quot;https://j-sulliman.github.io/2021/06/02/Part-7.0-ACI-and-Conclusion-Building-a-Multidomain-Dashboard-with-ACI-APIs-and-Grafana.html&quot;&gt;Building an ACI Dashboard with Grafana, Django and Python&lt;/a&gt;&lt;/td&gt;
       &lt;td&gt;Visualising ACI APIs with Grafana, Django send_email and django_tables2&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
@@ -4978,7 +4978,7 @@ ESI: 0300.0000.00fd.e900.0309
     &lt;tr&gt;
       &lt;td&gt;7.0&lt;/td&gt;
       &lt;td&gt;ACI and Conclusion&lt;/td&gt;
-      &lt;td&gt;&lt;a href=&quot;https://j-sulliman.github.io/2021/05/25/Part-6.0-DNAC-Cisco-DNA-Center-Dashboard-with-Grafana.html&quot;&gt;Building an ACI Dashboard with Grafana, Django and Python&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;a href=&quot;https://j-sulliman.github.io/2021/06/02/Part-7.0-ACI-and-Conclusion-Building-a-Multidomain-Dashboard-with-ACI-APIs-and-Grafana.html&quot;&gt;Building an ACI Dashboard with Grafana, Django and Python&lt;/a&gt;&lt;/td&gt;
       &lt;td&gt;Visualising ACI APIs with Grafana, Django send_email and django_tables2&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
@@ -5337,7 +5337,7 @@ here &lt;a href=&quot;https://grafana.com/docs/grafana/latest/installation/&quot
     &lt;tr&gt;
       &lt;td&gt;7.0&lt;/td&gt;
       &lt;td&gt;ACI and Conclusion&lt;/td&gt;
-      &lt;td&gt;&lt;a href=&quot;https://j-sulliman.github.io/2021/05/25/Part-6.0-DNAC-Cisco-DNA-Center-Dashboard-with-Grafana.html&quot;&gt;Building an ACI Dashboard with Grafana, Django and Python&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;a href=&quot;https://j-sulliman.github.io/2021/06/02/Part-7.0-ACI-and-Conclusion-Building-a-Multidomain-Dashboard-with-ACI-APIs-and-Grafana.html&quot;&gt;Building an ACI Dashboard with Grafana, Django and Python&lt;/a&gt;&lt;/td&gt;
       &lt;td&gt;Visualising ACI APIs with Grafana, Django send_email and django_tables2&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
