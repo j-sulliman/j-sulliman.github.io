@@ -29,7 +29,8 @@ github_username:  j-sulliman
 linkedin_username: jamie-sullivan-71575421
 
 # Build settings
-theme: minima
+#theme: minima
+remote_theme: pmarsceill/just-the-docs
 plugins:
   - jekyll-feed
 
