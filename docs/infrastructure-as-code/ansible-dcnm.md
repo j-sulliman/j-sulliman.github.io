@@ -27,7 +27,9 @@ In a [previous article](https://j-sulliman.github.io/2021/05/04/Part-3.1-DCNM-La
 
 # References and Resources
 
-All of the ansible files, hosts, playbooks variables, used in this project can be found in the public github repository [ansible_nxos_evpn](https://github.com/j-sulliman/ansible_nxos_evpn.git).
+All of the ansible files, hosts, playbooks variables, used in this project can be found in the public github repository:
+
+[View the code on GitHub](https://github.com/j-sulliman/ansible_nxos_evpn.git){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 }
 
 Other resources I found really useful:
 * The free introductory Ansible course available from [RedHat](https://www.redhat.com/en/blog/new-free-ansible-course).
