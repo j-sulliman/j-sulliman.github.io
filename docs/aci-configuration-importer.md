@@ -19,7 +19,7 @@ Optional editing and review of imported data through Django admin front end (i.e
 
 Post imported objects to APIC (EPGS are be default included in a preferred group)
 
-![alt text](https://github.com/j-sulliman/acici/blob/master/Screen%20Shot%202019-07-19%20at%2010.38.25%20AM.png)
+![alt text](https://github.com/j-sulliman/acici/blob/master/overview.png)
 
 # Demo
 <iframe width="700" height="400" src="https://www.youtube.com/embed/V_Qyy2QHGVY" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
@@ -60,26 +60,26 @@ Login as admin/C1sc0123
 
 Menu --> Upload Config File
 
-![alt text](https://github.com/j-sulliman/nxos_to_aci/blob/master/Screen%20Shot%202019-07-18%20at%201.23.58%20PM.png)
+![alt text](https://github.com/j-sulliman/acici/blob/master/acici-upload.png)
 
 Provide the defaults for configuration naming convention and BD construct.  BD mode in most cases should be l2 which will enable ARP and BUM flooding.  L3 mode will enable unicast routing and configure the SVI address as a BD Subnet.  EPGs will be created as "Preferred group - Include" members.
 
-![alt text](https://github.com/j-sulliman/nxos_to_aci/blob/master/Screen%20Shot%202019-07-18%20at%201.26.01%20PM.png)
+![alt text](https://github.com/j-sulliman/acici/blob/master/tenant-defaults.png)
 
 
 View and Edit the Imported configuration
-![alt text](https://github.com/j-sulliman/nxos_to_aci/blob/master/Screen%20Shot%202019-07-18%20at%201.51.46%20PM.png)
+![alt text](https://github.com/j-sulliman/acici/blob/master/imported-epgs.png)
 
 Enter the APIC connection info and submit
-![alt text](https://github.com/j-sulliman/nxos_to_aci/blob/master/Screen%20Shot%202019-07-18%20at%201.52.47%20PM.png)
+![alt text](https://github.com/j-sulliman/acici/blob/master/push-to-apic.png)
 
 
 View the resulting JSON and HTTP Post status code
-![alt text](https://github.com/j-sulliman/nxos_to_aci/blob/master/Screen%20Shot%202019-07-18%20at%201.56.15%20PM.png)
+![alt text](https://github.com/j-sulliman/acici/blob/master/epg-json.png)
 - Object configuration and DN/URL can be used with other REST API clients - i.e. postman, curl, or paste directly into APIC
 
 Check the APIC
-![alt text](https://github.com/j-sulliman/nxos_to_aci/blob/master/Screen%20Shot%202019-07-18%20at%201.57.24%20PM.png)
+![alt text](https://github.com/j-sulliman/acici/blob/master/apic-import.png)
 
 # Create associated fabric access policies and L3Os manually
 Rationale - items like Physical domain, vlan pools to legacy network will likely only be configured once.  
