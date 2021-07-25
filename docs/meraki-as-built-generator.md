@@ -26,7 +26,7 @@ editing and customisation.
 # Setup
 
 1) Ensure Meraki API Access is enabled
-![alt text](https://github.com/j-sulliman/meraki/blob/master/AsBuilts/media/Enable-API.png)
+![alt text](https://github.com/j-sulliman/meraki/blob/master/AsBuilts/media/Enable-API.png?raw=true)
 
 
 # Create virtual environment / sandbox
@@ -77,14 +77,14 @@ Quit the server with CONTROL-C.
 
 # Browse to main page and enter API Key and Customer Name
 i.e. http://127.0.0.1:8080/meraki/defaults/
-![alt text](https://github.com/j-sulliman/meraki/blob/master/AsBuilts/media/main-page.png)
+![alt text](https://github.com/j-sulliman/meraki/blob/master/AsBuilts/media/main-page.png?raw=true)
 
 Download and review the generated As Built Document
-![alt text](https://github.com/j-sulliman/meraki/blob/master/AsBuilts/media/Document-Example.png)
+![alt text](https://github.com/j-sulliman/meraki/blob/master/AsBuilts/media/Document-Example.png?raw=true)
 
 
 Optionally review and delete the Logfile / API call status codes appended to the end of document
-![alt text](https://github.com/j-sulliman/meraki/blob/master/AsBuilts/media/Log-File.png)
+![alt text](https://github.com/j-sulliman/meraki/blob/master/AsBuilts/media/Log-File.png?raw=true)
 
 
 # Disclaimer

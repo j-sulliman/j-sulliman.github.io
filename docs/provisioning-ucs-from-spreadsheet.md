@@ -18,13 +18,13 @@ Gather requirements and design inputs for UCS implementation
 Enter into spreadsheet (ucs-implementation-data.xlsx) - this spreadsheet would be the source of truth for UCS design and implementation detail
 Pre production implementation - Push the configuration parameters / inputs to UCS Platform Emulator / non production environment and validate and adjust as needed
 
-![alt text](https://github.com/j-sulliman/pufs/blob/master/Spreadsheet.png)
+![alt text](https://github.com/j-sulliman/pufs/blob/master/Spreadsheet.png?raw=true)
 
 A Design Document in word format will be automatically generated - this can be used as a starting point for Detailed Design or As Builts
 Once satisified with pre-prod (or UCS Platform Emulator) configuration push to production
 
 
-![alt text](https://github.com/j-sulliman/pufs/blob/master/UCS%20Design%20Document.png)
+![alt text](https://github.com/j-sulliman/pufs/blob/master/UCS%20Design%20Document.png?raw=true)
 
 # Demo
 <iframe width="700" height="400" src="https://www.youtube.com/embed/nKs3KvOY_Tw" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
@@ -55,7 +55,7 @@ python ucs_app.py -a <UCSM IP> -u <UCSM Username> -p <UCSM Password> -f <spreads
 ```
 
 # Validate the configuration in UCSM and Review the generated word document
-![alt text](https://github.com/j-sulliman/pufs/blob/master/UCSM.png)
+![alt text](https://github.com/j-sulliman/pufs/blob/master/UCSM.png?raw=true)
 
 # Assumptions
 Script has been tested against the following UCSM software versions:
