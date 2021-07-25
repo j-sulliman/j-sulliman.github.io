@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Meraki As-Built Generator
-parent:
+parent: NetDevOps -  all other articles
 nav_order: last
 ---
 

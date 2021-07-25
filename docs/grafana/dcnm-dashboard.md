@@ -3,6 +3,7 @@ layout: default
 title: 3.2 Building a DCNM Dashboard
 parent: Creating a Dashboard with Grafana Django and Cisco APIs
 nav_order: 5
+last_modified_date: 2021-05-05 08:00:34 +1200
 ---
 # Part (3.2) DCNM and VXLAN BGP and EVPN Lab with Nexus 9000v
 

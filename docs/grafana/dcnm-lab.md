@@ -3,6 +3,7 @@ layout: default
 title: 3.1 DCNM Lab Build
 parent: Creating a Dashboard with Grafana Django and Cisco APIs
 nav_order: 4
+last_modified_date: 2021-05-05 08:00:34 +1200
 ---
 # Part (3.1) DCNM and VXLAN BGP and EVPN Lab with Nexus 9000v Overview
 In this update we outline the virtual lab topology used as the sandbox to explore APIs and Visualisations with Grafana and DCNM.  If you already have a DCNM environment available, you can skip this page and continue to Part 3.2.

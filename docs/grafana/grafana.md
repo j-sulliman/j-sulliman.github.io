@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Creating a Dashboard with Grafana Django and Cisco APIs
+title: Grafana Django and Cisco APIs Dashboard
 nav_order: 8
 has_children: true
 permalink: docs/grafana

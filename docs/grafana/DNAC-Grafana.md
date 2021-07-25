@@ -3,6 +3,7 @@ layout: default
 title: 6.0 Cisco DNAC Dashboard
 parent: Creating a Dashboard with Grafana Django and Cisco APIs
 nav_order: 9
+last_modified_date: 2021-05-26 08:00:00 +1200
 ---
 
 

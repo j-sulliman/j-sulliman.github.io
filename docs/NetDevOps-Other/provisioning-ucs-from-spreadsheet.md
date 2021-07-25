@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Provisioning UCS from Spreadsheet
-parent:
+parent: NetDevOps -  all other articles
 nav_order: last
 ---
 

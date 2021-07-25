@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Nexus to ACI Configuration Importer
-parent:
+parent: NetDevOps -  all other articles
 nav_order: last
 ---
 

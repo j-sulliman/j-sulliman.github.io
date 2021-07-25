@@ -3,6 +3,7 @@ layout: default
 title:  1. Introduction
 parent: Creating a Dashboard with Grafana Django and Cisco APIs
 nav_order: 2
+last_modified_date: 2021-04-27 08:00:34 +1200
 ---
 # 1.0 Introduction - Network and Infra Monitoring with Grafana, Django and Python
 In this series, we use REST APIs, Python, Django Webframework, PostgresSQL and Grafana to demonstrate building a cross-domain visualisations Dashboard for Cisco network and Infrastructure.
