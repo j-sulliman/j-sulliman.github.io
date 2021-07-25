@@ -19,7 +19,7 @@ Optional editing and review of imported data through Django admin front end (i.e
 
 Post imported objects to APIC (EPGS are be default included in a preferred group)
 
-![overview](https://github.com/j-sulliman/acici/blob/master/overview.png)
+![overview](https://github.com/j-sulliman/acici/blob/master/overview.png?raw=true)
 
 # Demo
 <iframe width="700" height="400" src="https://www.youtube.com/embed/V_Qyy2QHGVY" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
