@@ -3,6 +3,7 @@ layout: default
 title: Nexus to ACI Configuration Importer
 parent: NetDevOps -  all other articles
 nav_order: last
+last_modified_date: 2021-07-19 08:00:00 +1200
 ---
 
 [![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/j-sulliman/acici)

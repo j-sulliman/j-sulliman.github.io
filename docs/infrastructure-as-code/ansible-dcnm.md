@@ -3,6 +3,7 @@ layout: default
 title: 1. Deploying an EVPN and VXLAN Fabric with Ansible
 parent: Infrastructure as Code
 nav_order: 1
+last_modified_date: 2021-07-19 08:00:00 +1200
 ---
 
 # Introduction
