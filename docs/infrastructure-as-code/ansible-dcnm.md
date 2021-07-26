@@ -20,7 +20,7 @@ But some food for thought around the supportability of the automation approach a
 * Is the team equipped to maintain often poorly documented python code? Is that code free of bugs, fully tested? Secure?
 * Or are you better off using a well documented and supported off-the-shelf tool?
 
-We've seen the adoption of Agile, cross functional teams become widespread, but the number of MSPs and enterprises that have truly adopted DevOps and created cross-functional software development, infrastructure and systems engineering teams, that have the capability to support custom automation tools and code.  For must, this is still an aspiration.
+We've seen the adoption of Agile, cross functional teams become widespread, but the number of MSPs and enterprises that have truly adopted DevOps and created cross-functional software development, infrastructure and systems engineering teams, that have the capability to support custom automation tools and code.  For most organisations, this is still an aspiration.
 
 The further we progress from delivery - design, implementation to operational hand-over, the more important the choice and supportability of automation tools becomes. Particularly in Enterprises where infrastructure and operations teams do not have easy access to developers to provide the review and QA of the automation tools that infrastructure engineers have created.
 
