@@ -13,7 +13,7 @@ Custom scripting and automation works well in project delivery where there's usu
 
 But some food for thought around the supportability of the automation approach and tool sets you use.
 
-* Does the problem you are solving through automation need supported and maintained by a wider team on an ongoing basis? Or one or two delivery engineers?
+* Does the problem you are solving through automation need to be supported and maintained by a wider team on an ongoing basis? Or by one or two delivery engineers?
 * Is DevOps practices, capability and adoption a current reality or a future aspiration?  
 * Does the code need to be supported on an ongoing basis?
 * Who is going to support it?
