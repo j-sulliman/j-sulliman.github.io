@@ -9,7 +9,9 @@ last_modified_date: 2021-07-19 08:00:00 +1200
 # Introduction
 
 
-Custom scripting and automation works well in the project space where there's usually one or two delivery engineers  implementing the solution.  Some food for thought around the supportability of the automation approach and tool sets you use.
+Custom scripting and automation works well in project delivery where there's usually one or two delivery engineers implementing the solution.  
+
+But some food for thought around the supportability of the automation approach and tool sets you use.
 
 * Does the problem you are solving through automation need supported and maintained by a wider team on an ongoing basis? Or one or two delivery engineers?
 * How many enterprises and managed service providers have truly adopted a DevOps approach delivery and operations?
