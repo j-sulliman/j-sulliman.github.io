@@ -6,7 +6,7 @@ has_children: true
 permalink: docs/NetDevOps-Other
 ---
 
-# Building a multidomain Dashboard with Cisco apis and Grafana
+# DevOps and NetDevOps
 {: .no_toc }
 
 Here I capture other automation articles and topics, including DevNet Code Exchange submissions.
