@@ -8,24 +8,6 @@ last_modified_date: 2021-07-19 08:00:00 +1200
 
 # Introduction
 
-
-Custom scripting and automation works well in project delivery where there's usually one or two delivery engineers implementing the solution.  
-
-But some food for thought around the supportability of the automation approach and tool sets you use.
-
-* Does the problem you are solving through automation need to be supported and maintained by a wider team on an ongoing basis? Or by one or two delivery engineers?
-* Is DevOps practices, capability and adoption a current reality or a future aspiration?  
-* Does the code need to be supported on an ongoing basis?
-* Who is going to support it?
-* Is the team equipped to maintain often poorly documented python code? Is that code free of bugs, fully tested? Secure?
-* Or are you better off using a well documented and supported off-the-shelf tool?
-
-We've seen the adoption of Agile, cross functional teams become widespread, but the number of MSPs and enterprises that have truly adopted DevOps and created cross-functional software development, infrastructure and systems engineering teams, that have the capability to support custom automation tools and code.  For most organisations, this is still an aspiration.
-
-The further we progress from delivery - design, implementation to operational hand-over, the more important the choice and supportability of automation tools becomes. Particularly in Enterprises where infrastructure and operations teams do not have easy access to developers to provide the review and QA of the automation tools that infrastructure engineers have created.
-
-This is where configuration automation or "Infrastructure as Code" tools such as Ansible have greater relevance, automation of environments at scale, where supportability and re-use by a wider team of engineers, each likely with varying levels of programming and automation skills.... Those organisations, where DevOps is still immature, or an aspirational goal
-
 In a [previous article](https://j-sulliman.github.io/2021/05/04/Part-3.1-DCNM-Lab-Building-a-Multidomain-Dashboard-with-Cisco-APIs-and-Grafana.html) we stepped through creating a virtualised EVPN and VXLAN lab using DCNM and N9000vs. This article, I outline my learnings from my first real foray into Ansible (better late than never!) - using playbooks and templates to deploy a non DCNM controlled fabric.  
 
 ##### Ansible and EVPN VXLAN Deployment - adjust the playback speed to suit.
