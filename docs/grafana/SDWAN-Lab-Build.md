@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 4.1 Cisco SDWAN Lab Build
-parent: Creating a Dashboard with Grafana Django and Cisco APIs
+parent: Grafana Django and Cisco APIs Dashboard
 nav_order: 6
 last_modified_date: 2021-05-14 08:00:00 +1200
 ---

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 2. Building a Meraki Dashboard
-parent: Creating a Dashboard with Grafana Django and Cisco APIs
+parent: Grafana Django and Cisco APIs Dashboard
 nav_order: 3
 last_modified_date: 2021-04-27 08:00:34 +1200
 ---

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 3.2 Building a DCNM Dashboard
-parent: Creating a Dashboard with Grafana Django and Cisco APIs
+parent: Grafana Django and Cisco APIs Dashboard
 nav_order: 5
 last_modified_date: 2021-05-05 08:00:34 +1200
 ---

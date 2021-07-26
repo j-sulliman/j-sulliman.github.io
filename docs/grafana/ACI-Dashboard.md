@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 7.0 Cisco ACI Dashboard
-parent: Creating a Dashboard with Grafana Django and Cisco APIs
+parent: Grafana Django and Cisco APIs Dashboard
 nav_order: 10
 last_modified_date: 2021-06-03 08:00:00 +1200
 ---

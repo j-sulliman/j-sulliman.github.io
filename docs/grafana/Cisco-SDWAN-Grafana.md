@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 4.2 Cisco SDWAN and vManage Dashboard
-parent: Creating a Dashboard with Grafana Django and Cisco APIs
+parent: Grafana Django and Cisco APIs Dashboard
 nav_order: 7
 last_modified_date: 2021-05-18 08:00:34 +1200
 ---
