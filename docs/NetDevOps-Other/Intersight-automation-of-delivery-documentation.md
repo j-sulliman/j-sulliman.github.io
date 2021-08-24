@@ -13,6 +13,7 @@ last_modified_date: 2021-07-19 08:00:00 +1200
 Autmatic generation of base AsBuilt documents for intersight.
 
 Reports on:
+
 * Firmware
 * Blade and rackmount servers
 * Hyperflex
@@ -20,7 +21,8 @@ Reports on:
 * Service Profiles
 * Management Interfaces
 
-Overview: 
+Overview:
+
 * Uses the intersight_rest API to pull data from intersight
 * Django and Bootrap4 provide the web front end to receive user input (intersight API keys) by way of a form
 * Data retrieved from API call is stored in a dataframe using the pandas module
@@ -31,10 +33,8 @@ Overview:
 ## Demo (click to view)
 [![IMAGE ALT TEXT](http://img.youtube.com/vi/EjcmM4tDglg/0.jpg)](http://www.youtube.com/watch?v=EjcmM4tDglg "iABG")
 
-
 Enter your intersight API keys using the form on the left, documents will be output for download on the right:
 ![alt text](https://github.com/j-sulliman/j-sulliman.github.io/blob/master/images/iABG_Example.PNG?raw=true)
-
 
 Word Template:
 ![alt text](https://github.com/j-sulliman/j-sulliman.github.io/blob/master/images/word_example.PNG?raw=true)
