@@ -10,15 +10,15 @@ permalink: docs/observability/dotnet-containers
 
 
 # 1.1 Introduction
-I've recently taken first steps into the unknown world of dotnet, and if I'm honest testing my surface level knowledge of docker containers.
 
-For this article I thought I'd document instrumenting a basic dotnet6 application with a sql backend, hosted as a docker container using the sample eShopOnWeb application, to hopefully help others who are interested in learning the basics of dotnet6, docker and instrumenting with a AppDynamics APM agent.
+For this article I thought I'd document instrumenting a basic dotnet6 application with a sql backend, hosted as a docker container using the sample eShopOnWeb application, to hopefully help others who like me may be interested in learning the basics of dotnet6, docker and instrumenting with a AppDynamics APM agent.
 
 
 # 1.2 References
 *  [Install the .NET Agent for Linux in Containers](https://docs.appdynamics.com/appd/22.x/latest/en/application-monitoring/install-app-server-agents/net-agent/net-agent-for-linux/net-agent-for-linux-container-installation/install-the-net-agent-for-linux-in-containers#id-.Installthe.NETAgentforLinuxinContainersv22.2-dockerfile)
 *  [eShopOnWeb GitHub Repo](https://github.com/dotnet-architecture/eShopOnWeb)
 *  [Apache JMeter](https://jmeter.apache.org/download_jmeter.cgi)
+
 ---
 
 # 1.3 Download the eShop Web github repo
@@ -103,7 +103,7 @@ ENV APPDYNAMICS_ANALYTICS_SSL_ENABLED=true
 Edit docker-compuse file, in my case I needed to:
 * Hard code DNS server in the hosts /etc/resolve.conf file (I only allow DNS to Cisco umbrella DNS servers on my home network)
 * Set the network mode to bridge to allow outside (i.e 443 to the AppD controller)
-* Set the "links" parameter to allow the front end container to talk to the sql-server container
+* Setting the network mode to bridge allows access to the outside network, but breaks connections between containers - set the "links" parameter to allow the front end container to talk to the sql-server container
 
 ```shell
 $ cat docker-compose.yml 
@@ -229,5 +229,8 @@ I've setup some basic HTTP Requests as below - apache-jmeter.  (Note the server 
 
 All going well, we'll now see the application flow map and business transactions populate in the controller
 
+Flow Map:
 ![Flow-Map](https://github.com/j-sulliman/j-sulliman.github.io/blob/master/assets/images/dotnet-flowmap.png?raw=true)
+
+Business Transactions:
 ![Business-Transactions](https://github.com/j-sulliman/j-sulliman.github.io/blob/master/assets/images/dotnet-bts.png?raw=true)
