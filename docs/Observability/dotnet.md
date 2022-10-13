@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Part 1 - Instrumenting a dotnet6 container with appdynamics
-nav_order: last
+nav_order: 10
 last_modified_date: 2021-10-12 08:00:00 +1200
 published: true
 perent: Observability
@@ -15,6 +15,8 @@ For this article I document instrumenting a basic dotnet6 application with a sql
 
 If this is your first foray into AppDynamics or, you just want to step through some structured self-paced labs, I recommend checking out the following [Appdynamics on DevNet](https://developer.cisco.com/site/appdynamics/)
 
+
+While this mostly follows the official documentation noted below - there were a few caveats, hurdles and a bit of trial and error to get things working, hopefully this will save someone time!
 
 # 1.2 References
 *  [Install the .NET Agent for Linux in Containers](https://docs.appdynamics.com/appd/22.x/latest/en/application-monitoring/install-app-server-agents/net-agent/net-agent-for-linux/net-agent-for-linux-container-installation/install-the-net-agent-for-linux-in-containers#id-.Installthe.NETAgentforLinuxinContainersv22.2-dockerfile)
