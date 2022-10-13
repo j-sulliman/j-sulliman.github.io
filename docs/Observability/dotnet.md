@@ -19,11 +19,9 @@ For this article I thought I'd document instrumenting a basic dotnet6 applicatio
 *  [Install the .NET Agent for Linux in Containers](https://docs.appdynamics.com/appd/22.x/latest/en/application-monitoring/install-app-server-agents/net-agent/net-agent-for-linux/net-agent-for-linux-container-installation/install-the-net-agent-for-linux-in-containers#id-.Installthe.NETAgentforLinuxinContainersv22.2-dockerfile)
 *  [eShopOnWeb GitHub Repo](https://github.com/dotnet-architecture/eShopOnWeb)
 *  [Apache JMeter](https://jmeter.apache.org/download_jmeter.cgi)
-* [Markdown Language - Getting Started](https://www.markdownguide.org/getting-started/)
-
 ---
-# 6.3 Create our DNAC App in Django
 
+# 1.3 Download the eShop Web github repo
 
 
 Create the directory for our sandbox:
@@ -38,6 +36,7 @@ $ git init
 $ git pull https://github.com/dotnet-architecture/eShopOnWeb.git
 ```
 
+# 1.4 Edit the docker files to install the AppDynamics Agent
 As noted in the installation documents - download and unzip the .NET Agent for linux:
 
 ```shell
@@ -88,15 +87,15 @@ ENV CORECLR_PROFILER_PATH="/opt/appdynamics/libappdprofiler.so"
 ENV APPDYNAMICS_AGENT_APPLICATION_NAME="z_jamie_dotnet_eShopOnWeb"
 ENV APPDYNAMICS_AGENT_TIER_NAME="Web_Front_End"
 ENV APPDYNAMICS_AGENT_ACCOUNT_NAME="apjsales2"
-ENV APPDYNAMICS_AGENT_ACCOUNT_ACCESS_KEY="qbun9eri2zro"
-ENV APPDYNAMICS_CONTROLLER_HOST_NAME="apjsales2.saas.appdynamics.com"
+ENV APPDYNAMICS_AGENT_ACCOUNT_ACCESS_KEY="your-access-key"
+ENV APPDYNAMICS_CONTROLLER_HOST_NAME="example.saas.appdynamics.com"
 ENV APPDYNAMICS_CONTROLLER_PORT=443    
 ENV APPDYNAMICS_CONTROLLER_SSL_ENABLED=true   
 ENV APPDYNAMICS_AGENT_REUSE_NODE_NAME=true
 ENV APPDYNAMICS_AGENT_REUSE_NODE_NAME_PREFIX="jamies-instance" 
 ENV LD_LIBRARY_PATH=/opt/appdynamics/dotnet
 # variables required to send transaction analytics data
-ENV APPDYNAMICS_ANALYTICS_HOST_NAME="apjsales2.saas.appdynamics.com"
+ENV APPDYNAMICS_ANALYTICS_HOST_NAME="example.saas.appdynamics.com"
 ENV APPDYNAMICS_ANALYTICS_PORT=443
 ENV APPDYNAMICS_ANALYTICS_SSL_ENABLED=true
 ```
@@ -184,6 +183,7 @@ The directory structure should resemble below - note the locations of the AppDyn
 └── tests
 ```
 
+# 1.4 Build and Start the Docker Containers
 Let's try building the docker images:
 
 ```shell
@@ -210,7 +210,7 @@ You should be able to browse to the site on the above IP address:
 
 ![Front-End](https://user-images.githubusercontent.com/782127/88414268-92d83a00-cdaa-11ea-9b4c-db67d95be039.png)
 
-# Using Apache JMeter to Generate Traffic
+# 1.5 Using Apache JMeter to Generate Traffic
 
 Here we use the free Apache JMeter utility to generate traffic to the eshop website.
 
@@ -224,3 +224,10 @@ $ ./jmeter.sh
 
 I've setup some basic HTTP Requests as below - apache-jmeter.  (Note the server name or IP and Paths fields):
 
+![Front-End](https://github.com/j-sulliman/j-sulliman.github.io/blob/master/assets/images/apache-jmeter.png?raw=true)
+
+
+All going well, we'll now see the application flow map and business transactions populate in the controller
+
+![Flow-Map](https://github.com/j-sulliman/j-sulliman.github.io/blob/master/assets/images/dotnet-flowmap.png?raw=true)
+![Business-Transactions](https://github.com/j-sulliman/j-sulliman.github.io/blob/master/assets/images/dotnet-bts.png?raw=true)
