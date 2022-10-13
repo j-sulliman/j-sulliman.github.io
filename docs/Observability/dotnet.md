@@ -11,7 +11,7 @@ permalink: docs/observability/dotnet-containers
 
 # 1.1 Introduction
 
-For this article I thought I'd document instrumenting a basic dotnet6 application with a sql backend, hosted as a docker container using the sample eShopOnWeb application, to hopefully help others who like me may be interested in learning the basics of dotnet6, docker and instrumenting with a AppDynamics APM agent.
+For this article I document instrumenting a basic dotnet6 application with a sql backend, hosted as a docker container using the sample [eShopOnWeb application](https://github.com/dotnet-architecture/eShopOnWeb). 
 
 If this is your first foray into AppDynamics or, you just want to step through some structured self-paced labs, I recommend checking out the following [Appdynamics on DevNet](https://developer.cisco.com/site/appdynamics/)
 
