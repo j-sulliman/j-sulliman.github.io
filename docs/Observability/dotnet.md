@@ -238,3 +238,9 @@ Flow Map:
 
 Business Transactions:
 ![Business-Transactions](https://github.com/j-sulliman/j-sulliman.github.io/blob/master/assets/images/dotnet-bts.png?raw=true)
+
+
+What have we achieved?
+* Deployed a multi-tiered dotnet6 application on docker
+* Instrumented with AppDynamics for code level visibility and application performance monitoring
+
