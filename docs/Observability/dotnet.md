@@ -2,7 +2,7 @@
 layout: default
 title: Part 1 - Instrumenting a dotnet6 container with appdynamics
 nav_order: last
-last_modified_date: 2021-10-14 08:00:00 +1200
+last_modified_date: 2021-10-12 08:00:00 +1200
 published: true
 perent: Observability
 permalink: docs/observability/dotnet-containers
@@ -211,4 +211,16 @@ You should be able to browse to the site on the above IP address:
 ![Front-End](https://user-images.githubusercontent.com/782127/88414268-92d83a00-cdaa-11ea-9b4c-db67d95be039.png)
 
 # Using Apache JMeter to Generate Traffic
+
+Here we use the free Apache JMeter utility to generate traffic to the eshop website.
+
+Download using the link above (note the Java 1.8+ requirement) and run:
+
+```shell
+$ cd ~/Downloads/apache-jmeter-5.5/
+$ cd bin/
+$ ./jmeter.sh
+```
+
+I've setup some basic HTTP Requests as below - apache-jmeter.  (Note the server name or IP and Paths fields):
 
