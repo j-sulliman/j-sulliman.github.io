@@ -13,7 +13,7 @@ permalink: docs/observability/dotnet-containers
 
 For this article I document instrumenting a basic dotnet6 application with a sql backend, hosted as a docker container using the sample [eShopOnWeb application](https://github.com/dotnet-architecture/eShopOnWeb). 
 
-If this is your first foray into AppDynamics or, you just want to step through some structured self-paced labs, I recommend checking out the following [Appdynamics on DevNet](https://developer.cisco.com/site/appdynamics/)
+If this is your first foray into AppDynamics or, you just want to step through some structured self-paced labs, I recommend checking out the self-paced labs [Appdynamics on DevNet](https://developer.cisco.com/site/appdynamics/)
 
 
 While this mostly follows the official documentation noted below - there were a few caveats, hurdles and a bit of trial and error to get things working, hopefully this will save someone time!
@@ -90,7 +90,7 @@ ENV CORECLR_ENABLE_PROFILING=1
 ENV CORECLR_PROFILER_PATH="/opt/appdynamics/libappdprofiler.so"
 ENV APPDYNAMICS_AGENT_APPLICATION_NAME="z_jamie_dotnet_eShopOnWeb"
 ENV APPDYNAMICS_AGENT_TIER_NAME="Web_Front_End"
-ENV APPDYNAMICS_AGENT_ACCOUNT_NAME="apjsales2"
+ENV APPDYNAMICS_AGENT_ACCOUNT_NAME="example"
 ENV APPDYNAMICS_AGENT_ACCOUNT_ACCESS_KEY="your-access-key"
 ENV APPDYNAMICS_CONTROLLER_HOST_NAME="example.saas.appdynamics.com"
 ENV APPDYNAMICS_CONTROLLER_PORT=443    
@@ -104,7 +104,7 @@ ENV APPDYNAMICS_ANALYTICS_PORT=443
 ENV APPDYNAMICS_ANALYTICS_SSL_ENABLED=true
 ```
 
-Edit docker-compose file, in my case I needed to:
+Edit the docker-compose file, in my case I needed to:
 * Hard code DNS server in the hosts /etc/resolve.conf file (I only allow DNS to Cisco umbrella DNS servers on my home network)
 * Set the network mode to bridge to allow outside (i.e 443 to the AppD controller)
 * Setting the network mode to bridge allows access to the outside network, but breaks connections between containers - set the "links" parameter to allow the front end container to talk to the sql-server container
@@ -226,7 +226,7 @@ $ cd bin/
 $ ./jmeter.sh
 ```
 
-I've setup some basic HTTP Requests as below - apache-jmeter.  (Note the server name or IP and Paths fields):
+I've setup some basic HTTP Requests as below.  Note the server name or IP and Paths fields:
 
 ![Front-End](https://github.com/j-sulliman/j-sulliman.github.io/blob/master/assets/images/apache-jmeter.png?raw=true)
 
@@ -244,3 +244,4 @@ What have we achieved?
 * Deployed a multi-tiered dotnet6 application on docker
 * Instrumented with AppDynamics for code level visibility and application performance monitoring
 
+More to follow.
