@@ -3,8 +3,8 @@ layout: default
 title: Part 1 - Instrumenting a dotnet6 container with appdynamics
 nav_order: 10
 last_modified_date: 2021-10-12 08:00:00 +1200
+parent: Observability
 published: true
-perent: Observability
 permalink: docs/observability/dotnet-containers
 ---
 
